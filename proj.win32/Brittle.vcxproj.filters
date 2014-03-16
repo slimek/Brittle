@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="1. Public Headers">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="2. Source Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="1. Public Headers\Core">
+      <UniqueIdentifier>{0db36862-4cca-4a1d-b072-035b32b2d1a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Precompiled Header">
+      <UniqueIdentifier>{30aa4837-8d49-42b1-b9f2-98fa807d00c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1. Public Headers\Setup">
+      <UniqueIdentifier>{df96c2d9-f3e6-4d1a-ab6c-389214a6f0be}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\BrittlePch.h">
+      <Filter>3. Precompiled Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Core\GameApp.h">
+      <Filter>1. Public Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Core\GameAppSettings.h">
+      <Filter>1. Public Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h">
+      <Filter>1. Public Headers\Setup</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Core.cpp">
+      <Filter>2. Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

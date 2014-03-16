@@ -1,0 +1,26 @@
+# Common Generated Files
+lib/
+obj/
+
+# Visual Studio Generated Files
+ipch/
+[Dd]ebug*/
+[Rr]elease*/
+*.opensdf
+*.sdf
+*.suo
+*.user
+
+# Eclipse + NDK Generated Files
+bin/
+gen/
+libs/
+.settings/
+
+# Xcode Generated Files
+*.xcworkspacedata
+*.xcuserstate
+xcschememanagement.plist
+*.xcscheme
+*.a
+*.user
