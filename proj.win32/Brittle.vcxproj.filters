@@ -32,6 +32,9 @@
     <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h">
       <Filter>1. Public Headers\Setup</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Core\GameScene.h">
+      <Filter>1. Public Headers\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">
