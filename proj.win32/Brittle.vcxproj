@@ -17,6 +17,7 @@
     <ClInclude Include="..\src\BrittlePch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src.win32\CoreWin32.cpp" />
     <ClCompile Include="..\src\Core.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

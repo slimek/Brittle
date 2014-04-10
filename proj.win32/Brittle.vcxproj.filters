@@ -12,16 +12,19 @@
     <Filter Include="1. Public Headers\Core">
       <UniqueIdentifier>{0db36862-4cca-4a1d-b072-035b32b2d1a4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="3. Precompiled Header">
-      <UniqueIdentifier>{30aa4837-8d49-42b1-b9f2-98fa807d00c6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="1. Public Headers\Setup">
       <UniqueIdentifier>{df96c2d9-f3e6-4d1a-ab6c-389214a6f0be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4. Precompiled Header">
+      <UniqueIdentifier>{30aa4837-8d49-42b1-b9f2-98fa807d00c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Win32 Platform">
+      <UniqueIdentifier>{d81a9c4b-dbaa-4a85-811b-00e68ac04645}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
-      <Filter>3. Precompiled Header</Filter>
+      <Filter>4. Precompiled Header</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Core\GameApp.h">
       <Filter>1. Public Headers\Core</Filter>
@@ -36,6 +39,9 @@
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">
       <Filter>2. Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src.win32\CoreWin32.cpp">
+      <Filter>3. Win32 Platform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
