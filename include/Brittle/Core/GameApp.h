@@ -42,6 +42,29 @@ public:
     void applicationDidEnterBackground() override;
     void applicationWillEnterForeground() override;
 
+
+private:
+
+    /// Application Events ///
+
+    virtual void OnLaunch() {}
+    virtual void OnEnterBackground() {}
+    virtual void OnEnterForeground() {}
+
+
+    /// Scene Management ///
+
+    virtual GameScene* CreateScene( Int sceneId ) = 0;
+
+
+    /// Platform Dependent ///
+
+    void InitPlatform();
+
+
+    /// Data Members ///
+
+    GameAppSettings m_settings;
 };
 
 

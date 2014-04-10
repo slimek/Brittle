@@ -17,6 +17,11 @@ namespace Brittle
 
 struct GameAppSettings
 {
+    GameAppSettings()
+        : initialSceneId( 0 )
+    {}
+
+    Int initialSceneId;
 };
 
 
