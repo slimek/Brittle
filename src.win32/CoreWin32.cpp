@@ -31,11 +31,14 @@ void GameApp::InitPlatform()
 
     /// Create GLView with Size and Title ///
 
+    const DesktopSettings& ds = m_settings.desktop;
+
+    auto glview = GLView::create( ds.frameTitle );
+    glview->setFrameSize( ds.frameWidth, ds.frameHeight );
+
     auto director = Director::getInstance();
     CARAMEL_ASSERT( nullptr == director->getOpenGLView() );
 
-    // TODO: Get the Windows title from platform settings.
-    auto glview = GLView::create( "Brittle App" );
     director->setOpenGLView( glview );
 }
 

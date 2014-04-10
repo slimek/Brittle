@@ -12,7 +12,25 @@ namespace Brittle
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Game Application Settings
+// Desktop Settings
+//
+
+struct DesktopSettings
+{
+    DesktopSettings()
+        : frameWidth( 800 )
+        , frameHeight( 600 )
+    {}
+
+    Float frameWidth;
+    Float frameHeight;
+    std::string frameTitle;
+};
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Game Application Settings - Integrated
 //
 
 struct GameAppSettings
@@ -22,6 +40,8 @@ struct GameAppSettings
     {}
 
     Int initialSceneId;
+
+    DesktopSettings desktop;
 };
 
 
