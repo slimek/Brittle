@@ -43,5 +43,8 @@
     <ClCompile Include="..\src.win32\CoreWin32.cpp">
       <Filter>3. Win32 Platform</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\BrittlePch.cpp">
+      <Filter>4. Precompiled Header</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

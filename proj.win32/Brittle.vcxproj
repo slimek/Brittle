@@ -18,6 +18,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src.win32\CoreWin32.cpp" />
+    <ClCompile Include="..\src\BrittlePch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\src\Core.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -59,13 +63,13 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\src;..\include;..\..\Caramel\include;..\..\CandyJar\include;..\..\Cocos2d-x3\external\glfw3\include\win32;..\..\Cocos2d-x3\external\win32-specific\gles\include\OGLES;..\..\Cocos2d-x3\cocos\math\kazmath;..\..\Cocos2d-x3\cocos\physics;..\..\Cocos2d-x3\cocos\2d\platform\win32;..\..\Cocos2d-x3\cocos\2d;..\..\Cocos2d-x3\cocos\base</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>BrittlePch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -80,14 +84,14 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\src;..\include;..\..\Caramel\include;..\..\CandyJar\include;..\..\Cocos2d-x3\external\glfw3\include\win32;..\..\Cocos2d-x3\external\win32-specific\gles\include\OGLES;..\..\Cocos2d-x3\cocos\math\kazmath;..\..\Cocos2d-x3\cocos\physics;..\..\Cocos2d-x3\cocos\2d\platform\win32;..\..\Cocos2d-x3\cocos\2d;..\..\Cocos2d-x3\cocos\base</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>BrittlePch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
