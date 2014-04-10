@@ -23,6 +23,14 @@ using namespace Caramel;
 typedef Caramel::Bool Bool;
 
 
+//
+// Forward Declarations
+//
+
+class GameApp;
+class GameScene;
+
+
 } // namespace Brittle
 
 

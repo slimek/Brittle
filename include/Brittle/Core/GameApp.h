@@ -52,6 +52,11 @@ private:
     virtual void OnEnterForeground() {}
 
 
+    /// Scene Management ///
+
+    virtual GameScene* CreateScene( Int sceneId ) = 0;
+
+
     /// Platform Dependent ///
 
     void InitPlatform();

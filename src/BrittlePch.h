@@ -18,6 +18,9 @@
 // Headers
 //
 
+// Cocos2d-x Headers
+#include <cocos2d.h>
+
 // Caramel Headres
 #include <Caramel/Setup/PchHeaders.h>
 
