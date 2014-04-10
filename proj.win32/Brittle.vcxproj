@@ -71,8 +71,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>ws2_32.lib;opengl32.lib;glew32.lib;glfw3.lib;libpng.lib;libjpeg.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cocos2d-x3\external\win32-specific\gles\prebuilt;..\..\Cocos2d-x3\external\glfw3\prebuilt\win32;..\..\Cocos2d-x3\external\png\prebuilt\win32;..\..\Cocos2d-x3\external\jpeg\prebuilt\win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -94,8 +95,9 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>ws2_32.lib;opengl32.lib;glew32.lib;glfw3.lib;libpng.lib;libjpeg.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cocos2d-x3\external\win32-specific\gles\prebuilt;..\..\Cocos2d-x3\external\glfw3\prebuilt\win32;..\..\Cocos2d-x3\external\png\prebuilt\win32;..\..\Cocos2d-x3\external\jpeg\prebuilt\win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;glfw3.lib;libpng.lib;libjpeg.lib;libzlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
