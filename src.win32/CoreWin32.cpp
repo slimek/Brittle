@@ -40,6 +40,23 @@ void GameApp::InitPlatform()
     CARAMEL_ASSERT( nullptr == director->getOpenGLView() );
 
     director->setOpenGLView( glview );
+
+
+    //
+    // Specify Assets path in Win32
+    // - 1. Relateive path from working directory to assets.
+    //   2. Add an additional assets.win32 .
+    //
+
+    if ( ds.assetsPath.empty() )
+    {
+        CARAMEL_THROW( "Assets path not set" );
+    }
+
+    auto fileUtils = CCFileUtils::getInstance();
+
+    fileUtils->addSearchPath( ds.assetsPath );
+    fileUtils->addSearchPath( ds.assetsPath + ".win32" );
 }
 
 

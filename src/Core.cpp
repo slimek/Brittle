@@ -3,6 +3,7 @@
 #include "BrittlePch.h"
 
 #include <Brittle/Core/GameApp.h>
+#include <Brittle/Core/GameScene.h>
 #include <Caramel/Error/CatchException.h>
 
 
@@ -13,6 +14,7 @@ namespace Brittle
 // [Contents]
 //
 //   GameApp
+//   GameScene
 //
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -25,6 +27,17 @@ Bool GameApp::applicationDidFinishLaunching()
     CARAMEL_TRACE_INFO( "Application Did Finish Launching" );
 
     this->OnLaunch();
+
+    auto initialScene = this->CreateScene( m_settings.initialSceneId );
+    initialScene->autorelease();
+    Director::getInstance()->pushScene( initialScene );
+
+
+    /// Specify Default Search Path ///
+
+    auto fileUtils = CCFileUtils::getInstance();
+    fileUtils->addSearchPath( fileUtils->getWritablePath() );
+
     return true;
 }
 
@@ -59,6 +72,19 @@ Int GameApp::Run( const GameAppSettings& settings )
     }
 
     return xc.Result();
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Game Scene
+//
+
+void GameScene::onEnter()
+{
+    this->Scene::onEnter();
+
+    this->OnEnterScene();
 }
 
 

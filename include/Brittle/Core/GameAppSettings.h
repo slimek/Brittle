@@ -25,6 +25,7 @@ struct DesktopSettings
     Float frameWidth;
     Float frameHeight;
     std::string frameTitle;
+    std::string assetsPath;
 };
 
 

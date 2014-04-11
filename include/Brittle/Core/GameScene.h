@@ -17,6 +17,18 @@ namespace Brittle
 
 class GameScene : public Scene
 {
+public:
+
+    /// Node Events ///
+
+    void onEnter() override;
+
+
+private:
+
+    /// Game Scene Events ///
+
+    virtual void OnEnterScene() {}
 };
 
 
