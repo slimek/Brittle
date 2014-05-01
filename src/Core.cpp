@@ -71,6 +71,8 @@ Int GameApp::Run( const GameAppSettings& settings )
         return EXIT_FAILURE;
     }
 
+    this->ExitPlatform();
+
     return xc.Result();
 }
 

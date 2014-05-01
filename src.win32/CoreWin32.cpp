@@ -4,6 +4,7 @@
 
 #include <Brittle/Core/GameApp.h>
 #include <Caramel/Windows/DebuggerTraceAdapter.h>
+#include <cocostudio/ObjectFactory.h>
 
 
 namespace Brittle
@@ -57,6 +58,12 @@ void GameApp::InitPlatform()
 
     fileUtils->addSearchPath( ds.assetsPath );
     fileUtils->addSearchPath( ds.assetsPath + ".win32" );
+}
+
+
+void GameApp::ExitPlatform()
+{
+    cocostudio::ObjectFactory::destroyInstance();
 }
 
 

@@ -60,6 +60,7 @@ private:
     /// Platform Dependent ///
 
     void InitPlatform();
+    void ExitPlatform();
 
 
     /// Data Members ///

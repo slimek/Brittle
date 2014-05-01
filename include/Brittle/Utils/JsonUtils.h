@@ -23,17 +23,9 @@ namespace Brittle
 //   2. The value is not convertible to the required type.
 //
 
-inline Bool QueryArray( const Json::Value& json, const std::string& name, Json::Value& value )
-{
-    if ( ! json.isMember( name )) { return false; }
-
-    const auto& temp = json[ name ];
-    
-    if ( ! temp.isConvertibleTo( Json::arrayValue )) { return false; }
-
-    value = temp;
-    return true;
-}
+Bool QueryFloat ( const Json::Value& json, const std::string& name, Float& value );
+Bool QueryString( const Json::Value& json, const std::string& name, std::string& value );
+Bool QueryArray ( const Json::Value& json, const std::string& name, Json::Value& value );
 
 
 ///////////////////////////////////////////////////////////////////////////////

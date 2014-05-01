@@ -23,6 +23,7 @@
 
 // Caramel Headres
 #include <Caramel/Setup/PchHeaders.h>
+#include <Caramel/String/Format.h>
 
 
 ///////////////////////////////////////////////////////////////////////////////

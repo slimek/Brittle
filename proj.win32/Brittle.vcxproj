@@ -21,6 +21,7 @@
     <ClInclude Include="..\include\Brittle\Utils\JsonUtils.h" />
     <ClInclude Include="..\src\BrittlePch.h" />
     <ClInclude Include="..\src\Ui\PanelBuilder.h" />
+    <ClInclude Include="..\src\Ui\WidgetBuilder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src.win32\CoreWin32.cpp" />
@@ -30,6 +31,7 @@
     </ClCompile>
     <ClCompile Include="..\src\Core.cpp" />
     <ClCompile Include="..\src\Ui.cpp" />
+    <ClCompile Include="..\src\Utils.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{41283D12-4162-449D-8F7A-BEC4C994321E}</ProjectGuid>
