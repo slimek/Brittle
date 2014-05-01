@@ -21,6 +21,9 @@
     <Filter Include="3. Win32 Platform">
       <UniqueIdentifier>{d81a9c4b-dbaa-4a85-811b-00e68ac04645}</UniqueIdentifier>
     </Filter>
+    <Filter Include="1. Public Headers\Ui">
+      <UniqueIdentifier>{8b303aac-7763-4866-8e68-f5e6e176106e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
@@ -37,6 +40,9 @@
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Core\GameScene.h">
       <Filter>1. Public Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Ui\UiTypes.h">
+      <Filter>1. Public Headers\Ui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

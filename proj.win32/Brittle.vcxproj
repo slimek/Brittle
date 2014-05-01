@@ -15,6 +15,7 @@
     <ClInclude Include="..\include\Brittle\Core\GameAppSettings.h" />
     <ClInclude Include="..\include\Brittle\Core\GameScene.h" />
     <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h" />
+    <ClInclude Include="..\include\Brittle\Ui\UiTypes.h" />
     <ClInclude Include="..\src\BrittlePch.h" />
   </ItemGroup>
   <ItemGroup>
