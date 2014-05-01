@@ -53,7 +53,7 @@ void GameApp::InitPlatform()
         CARAMEL_THROW( "Assets path not set" );
     }
 
-    auto fileUtils = CCFileUtils::getInstance();
+    auto fileUtils = FileUtils::getInstance();
 
     fileUtils->addSearchPath( ds.assetsPath );
     fileUtils->addSearchPath( ds.assetsPath + ".win32" );
