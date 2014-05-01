@@ -18,6 +18,7 @@
     <ClInclude Include="..\include\Brittle\Ui\Panel.h" />
     <ClInclude Include="..\include\Brittle\Ui\PanelBuilder.h" />
     <ClInclude Include="..\include\Brittle\Ui\UiTypes.h" />
+    <ClInclude Include="..\include\Brittle\Utils\JsonUtils.h" />
     <ClInclude Include="..\src\BrittlePch.h" />
     <ClInclude Include="..\src\Ui\PanelBuilder.h" />
   </ItemGroup>

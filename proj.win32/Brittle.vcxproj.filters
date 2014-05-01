@@ -27,6 +27,9 @@
     <Filter Include="2. Source Files\Ui">
       <UniqueIdentifier>{39b12d20-19d0-49f7-892d-48bc4d079c22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="1. Public Headers\Utils">
+      <UniqueIdentifier>{1f2a7e4e-5713-4f79-9ca3-cb009d52cc14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
@@ -55,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="..\src\Ui\PanelBuilder.h">
       <Filter>2. Source Files\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Utils\JsonUtils.h">
+      <Filter>1. Public Headers\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

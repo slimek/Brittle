@@ -4,6 +4,7 @@
 
 #include "Ui/PanelBuilder.h"
 #include <Brittle/Ui/Panel.h>
+#include <Brittle/Utils/JsonUtils.h>
 #include <JsonCpp/reader.h>
 
 
@@ -52,7 +53,7 @@ void PanelBuilder::LoadJsonRoot()
 
     if ( ! fileUtils->isFileExist( m_layoutPath ))
     {
-        CARAMEL_THROW( "Panel layout file %s not found", m_layoutPath );
+        CARAMEL_THROW( "Panel layout %s file not found", m_layoutPath );
     }
 
     std::string layoutContent = fileUtils->getStringFromFile( m_layoutPath );
@@ -60,7 +61,7 @@ void PanelBuilder::LoadJsonRoot()
     Json::Reader reader;
     if ( ! reader.parse( layoutContent, m_rootJson ))
     {
-        CARAMEL_THROW( "Panel layout file %s parse failed :\n%s",
+        CARAMEL_THROW( "Panel layout %s parse failed :\n%s",
                        m_layoutPath, reader.getFormatedErrorMessages() );
     }
 }
@@ -68,7 +69,19 @@ void PanelBuilder::LoadJsonRoot()
 
 void PanelBuilder::BuildWidgets()
 {
-    
+    Bool b1 = m_rootJson.isMember( "widgets" );
+
+    Json::Value widgets;
+    if ( ! QueryArray( m_rootJson, "widgets", widgets ))
+    {
+        CARAMEL_TRACE_WARN( "Panel layout %s has no \"widgets\" value", m_layoutPath );
+        return;
+    }
+
+    for ( const auto& widget : widgets )
+    {
+        ; // TODO: Build each Widget.
+    }
 }
 
 
