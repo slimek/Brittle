@@ -24,6 +24,9 @@
     <Filter Include="1. Public Headers\Ui">
       <UniqueIdentifier>{8b303aac-7763-4866-8e68-f5e6e176106e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="2. Source Files\Ui">
+      <UniqueIdentifier>{39b12d20-19d0-49f7-892d-48bc4d079c22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
@@ -44,6 +47,15 @@
     <ClInclude Include="..\include\Brittle\Ui\UiTypes.h">
       <Filter>1. Public Headers\Ui</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Ui\Panel.h">
+      <Filter>1. Public Headers\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Ui\PanelBuilder.h">
+      <Filter>1. Public Headers\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ui\PanelBuilder.h">
+      <Filter>2. Source Files\Ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">
@@ -54,6 +66,9 @@
     </ClCompile>
     <ClCompile Include="..\src\BrittlePch.cpp">
       <Filter>4. Precompiled Header</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Ui.cpp">
+      <Filter>2. Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
