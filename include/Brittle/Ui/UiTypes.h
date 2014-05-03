@@ -34,6 +34,7 @@ namespace cocos2d { namespace ui
 class Widget;
 class ImageView;
 class Text;
+class TextBMFont;
 
 } } // namespace cocos2d::ui
 

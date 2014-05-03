@@ -5,6 +5,7 @@
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
+#include "Ui/WidgetAttributes.h"
 #include <Brittle/Ui/UiTypes.h>
 #include <JsonCpp/value.h>
 #include <ui/UIWidget.h>
@@ -37,6 +38,7 @@ private:
 
     void BuildImageView();
     void BuildText();
+    void BuildTextBMFont();
 
     Json::Value m_json;
     std::string m_path;

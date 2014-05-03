@@ -12,6 +12,7 @@
 #include <JsonCpp/reader.h>
 #include <ui/UIImageView.h>
 #include <ui/UIText.h>
+#include <ui/UITextBMFont.h>
 
 
 namespace Brittle
@@ -151,14 +152,16 @@ enum WidgetType
 {
     WT_IMAGE_VIEW,
     WT_TEXT,
+    WT_TEXT_BMFONT,
 };
 
 
 void WidgetBuilder::BuildWidgetByType()
 {
     static const auto uiTypes = LookupTable< WidgetType >
-        ( WT_IMAGE_VIEW, "ImageView", "Image" )
-        ( WT_TEXT,       "Text", "Label" );
+        ( WT_IMAGE_VIEW,  "ImageView", "Image" )
+        ( WT_TEXT,        "Text", "Label" )
+        ( WT_TEXT_BMFONT, "TextBMFont", "LabelFont" );
 
     WidgetType type;
     if ( ! uiTypes.FindValueByName( m_type, type ))
@@ -174,6 +177,10 @@ void WidgetBuilder::BuildWidgetByType()
 
     case WT_TEXT:
         this->BuildText();
+        break;
+
+    case WT_TEXT_BMFONT:
+        this->BuildTextBMFont();
         break;
 
     default:
@@ -237,6 +244,36 @@ void WidgetBuilder::BuildText()
     if ( QueryInt( m_json, "fontSize", fontSize ))
     {
         text->setFontSize( fontSize );
+    }
+
+    WidgetAttributes attrs;
+    this->ReadWidgetAttributes( attrs );
+    this->FillWidgetAttributes( text, attrs );
+
+    m_widget = text;
+}
+
+
+void WidgetBuilder::BuildTextBMFont()
+{
+    auto text = ui::TextBMFont::create();
+
+    std::string fontPath;
+    if ( QueryString( m_json, "fontPath", fontPath ))
+    {
+        if ( ! FileUtils::getInstance()->isFileExist( fontPath ))
+        {
+            CARAMEL_ALERT( "BMFont %s - fontPath %s not found",
+                           m_path, fontPath );
+        }
+
+        text->setFntFile( fontPath );
+    }
+
+    std::string textData;
+    if ( QueryString( m_json, "text", textData ))
+    {
+        text->setText( textData );
     }
 
     WidgetAttributes attrs;
