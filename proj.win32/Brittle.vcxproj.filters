@@ -62,6 +62,9 @@
     <ClInclude Include="..\src\Ui\WidgetBuilder.h">
       <Filter>2. Source Files\Ui</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Ui\WidgetAttributes.h">
+      <Filter>2. Source Files\Ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">

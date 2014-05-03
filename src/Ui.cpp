@@ -3,6 +3,7 @@
 #include "BrittlePch.h"
 
 #include "Ui/PanelBuilder.h"
+#include "Ui/WidgetAttributes.h"
 #include "Ui/WidgetBuilder.h"
 #include <Brittle/Ui/Panel.h>
 #include <Brittle/Utils/JsonUtils.h>
@@ -61,7 +62,7 @@ PanelBuilder::PanelBuilder( const std::string& layoutPath )
 
     m_panel = new Panel;
     m_panel->autorelease();
- 
+
     Path path( layoutPath );
     m_panel->setName( path.Stem().ToCstr() );
  
@@ -103,7 +104,14 @@ void PanelBuilder::BuildWidgets()
     for ( Uint i = 0; i < widgets.size(); ++ i )
     {
         WidgetBuilder builder( widgets[i], Format( "{0}[{1}]", m_layoutPath, i ));
-        m_panel->addChild( builder.GetWidget() );
+
+        ui::Widget* widget = builder.GetWidget();
+
+        // In some case, building a widget failed, but application can continue to run.
+        if ( widget )
+        {
+            m_panel->addChild( widget );
+        }
     }
 }
 
@@ -167,37 +175,36 @@ void WidgetBuilder::BuildWidgetByType()
 }
 
 
-void WidgetBuilder::ReadWidgetAttributes( ui::Widget* widget )
+void WidgetBuilder::ReadWidgetAttributes( WidgetAttributes& attrs )
 {
-    std::string name;
-    if ( QueryString( m_json, "name", name ))
-    {
-        widget->setName( name.c_str() );
-    }
-
-    Float x = 0;
-    if ( QueryFloat( m_json, "x", x ))
-    {
-        widget->setPositionX( x );
-    }
-
-    Float y = 0;
-    if ( QueryFloat( m_json, "y", y ))
-    {
-        widget->setPositionY( y );
-    }
+    QueryString( m_json, "name", attrs.name );
+    
+    QueryFloat( m_json, "x", attrs.position.x );
+    QueryFloat( m_json, "y", attrs.position.y );
 }
+
 
 
 void WidgetBuilder::BuildImageView()
 {
+    WidgetAttributes attrs;
+    this->ReadWidgetAttributes( attrs );
+
     auto image = ui::ImageView::create();
 
-    this->ReadWidgetAttributes( image );
+    image->setName( attrs.name.c_str() );
+    image->setPosition( attrs.position );
 
     std::string imagePath;
     if ( QueryString( m_json, "imagePath", imagePath ))
     {
+        if ( ! FileUtils::getInstance()->isFileExist( imagePath ))
+        {
+            CARAMEL_ALERT( "Image %s - imagePath %s not found",
+                           m_path, imagePath );
+            return;
+        }
+
         image->loadTexture( imagePath );
     }
 

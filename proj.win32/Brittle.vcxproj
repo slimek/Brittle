@@ -20,6 +20,7 @@
     <ClInclude Include="..\include\Brittle\Utils\JsonUtils.h" />
     <ClInclude Include="..\src\BrittlePch.h" />
     <ClInclude Include="..\src\Ui\PanelBuilder.h" />
+    <ClInclude Include="..\src\Ui\WidgetAttributes.h" />
     <ClInclude Include="..\src\Ui\WidgetBuilder.h" />
   </ItemGroup>
   <ItemGroup>

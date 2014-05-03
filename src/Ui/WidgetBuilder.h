@@ -32,7 +32,7 @@ private:
     void ReadNameAndType();
     void BuildWidgetByType();
     
-    void ReadWidgetAttributes( ui::Widget* widget );
+    void ReadWidgetAttributes( WidgetAttributes& attrs );
 
     void BuildImageView();
 
