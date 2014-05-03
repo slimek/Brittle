@@ -64,7 +64,7 @@ PanelBuilder::PanelBuilder( const std::string& layoutPath )
     m_panel->autorelease();
 
     Path path( layoutPath );
-    m_panel->setName( path.Stem().ToCstr() );
+    m_panel->setName( path.Stem().ToString().c_str() );
  
     this->BuildWidgets();   
 }
