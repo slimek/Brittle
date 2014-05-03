@@ -53,9 +53,6 @@
     <ClInclude Include="..\include\Brittle\Ui\Panel.h">
       <Filter>1. Public Headers\Ui</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Brittle\Ui\PanelBuilder.h">
-      <Filter>1. Public Headers\Ui</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Ui\PanelBuilder.h">
       <Filter>2. Source Files\Ui</Filter>
     </ClInclude>
