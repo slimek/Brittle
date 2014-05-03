@@ -33,8 +33,10 @@ private:
     void BuildWidgetByType();
     
     void ReadWidgetAttributes( WidgetAttributes& attrs );
+    void FillWidgetAttributes( ui::Widget* widget, const WidgetAttributes& attrs );
 
     void BuildImageView();
+    void BuildText();
 
     Json::Value m_json;
     std::string m_path;

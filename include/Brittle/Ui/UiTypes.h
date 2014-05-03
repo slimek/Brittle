@@ -33,6 +33,7 @@ namespace cocos2d { namespace ui
 
 class Widget;
 class ImageView;
+class Text;
 
 } } // namespace cocos2d::ui
 

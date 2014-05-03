@@ -11,6 +11,7 @@
 #include <Caramel/FileSystem/Path.h>
 #include <JsonCpp/reader.h>
 #include <ui/UIImageView.h>
+#include <ui/UIText.h>
 
 
 namespace Brittle
@@ -149,13 +150,15 @@ void WidgetBuilder::ReadNameAndType()
 enum WidgetType
 {
     WT_IMAGE_VIEW,
+    WT_TEXT,
 };
 
 
 void WidgetBuilder::BuildWidgetByType()
 {
     static const auto uiTypes = LookupTable< WidgetType >
-        ( WT_IMAGE_VIEW, "Image", "ImageView" );
+        ( WT_IMAGE_VIEW, "ImageView", "Image" )
+        ( WT_TEXT,       "Text", "Label" );
 
     WidgetType type;
     if ( ! uiTypes.FindValueByName( m_type, type ))
@@ -167,6 +170,10 @@ void WidgetBuilder::BuildWidgetByType()
     {
     case WT_IMAGE_VIEW:
         this->BuildImageView();
+        break;
+
+    case WT_TEXT:
+        this->BuildText();
         break;
 
     default:
@@ -184,16 +191,16 @@ void WidgetBuilder::ReadWidgetAttributes( WidgetAttributes& attrs )
 }
 
 
+void WidgetBuilder::FillWidgetAttributes( ui::Widget* widget, const WidgetAttributes& attrs )
+{
+    widget->setName( attrs.name.c_str() );
+    widget->setPosition( attrs.position );
+}
+
 
 void WidgetBuilder::BuildImageView()
 {
-    WidgetAttributes attrs;
-    this->ReadWidgetAttributes( attrs );
-
     auto image = ui::ImageView::create();
-
-    image->setName( attrs.name.c_str() );
-    image->setPosition( attrs.position );
 
     std::string imagePath;
     if ( QueryString( m_json, "imagePath", imagePath ))
@@ -208,7 +215,35 @@ void WidgetBuilder::BuildImageView()
         image->loadTexture( imagePath );
     }
 
+    WidgetAttributes attrs;
+    this->ReadWidgetAttributes( attrs );
+    this->FillWidgetAttributes( image, attrs );
+
     m_widget = image;
+}
+
+
+void WidgetBuilder::BuildText()
+{
+    auto text = ui::Text::create();
+
+    std::string textData;
+    if ( QueryString( m_json, "text", textData ))
+    {
+        text->setText( textData );
+    }
+
+    Int fontSize = text->getFontSize();
+    if ( QueryInt( m_json, "fontSize", fontSize ))
+    {
+        text->setFontSize( fontSize );
+    }
+
+    WidgetAttributes attrs;
+    this->ReadWidgetAttributes( attrs );
+    this->FillWidgetAttributes( text, attrs );
+
+    m_widget = text;
 }
 
 
