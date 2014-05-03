@@ -7,6 +7,7 @@
 #include <Brittle/Ui/Panel.h>
 #include <Brittle/Utils/JsonUtils.h>
 #include <Caramel/Data/LookupTable.h>
+#include <Caramel/FileSystem/Path.h>
 #include <JsonCpp/reader.h>
 #include <ui/UIImageView.h>
 
@@ -34,6 +35,19 @@ Panel* Panel::Create( const std::string& layoutPath )
 }
 
 
+ui::Widget* Panel::GetChild( const std::string& name ) const
+{
+    // TODO: In v3.0 ui::Widget::getChildByName() is non-const ...
+
+    auto widget = const_cast< Panel* >( this )->getChildByName( name.c_str() );
+    if ( ! widget )
+    {
+        CARAMEL_THROW( "Panel %s child %s not found", this->getName(), name );
+    }
+    return widget;
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Panel Builder
@@ -47,6 +61,9 @@ PanelBuilder::PanelBuilder( const std::string& layoutPath )
 
     m_panel = new Panel;
     m_panel->autorelease();
+ 
+    Path path( layoutPath );
+    m_panel->setName( path.Stem().ToCstr() );
  
     this->BuildWidgets();   
 }
