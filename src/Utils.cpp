@@ -19,6 +19,19 @@ namespace Brittle
 // JSON Utilities
 //
 
+Bool QueryInt( const Json::Value& json, const std::string& name, Int& value )
+{
+    if ( ! json.isMember( name )) { return false; }
+
+    const auto& ref = json[ name ];
+
+    if ( ! ref.isConvertibleTo( Json::intValue )) { return false; }
+
+    value = ref.asInt();
+    return true;
+}
+
+
 Bool QueryFloat( const Json::Value& json, const std::string& name, Float& value )
 {
     if ( ! json.isMember( name )) { return false; }

@@ -23,6 +23,7 @@ namespace Brittle
 //   2. The value is not convertible to the required type.
 //
 
+Bool QueryInt   ( const Json::Value& json, const std::string& name, Int& value );
 Bool QueryFloat ( const Json::Value& json, const std::string& name, Float& value );
 Bool QueryString( const Json::Value& json, const std::string& name, std::string& value );
 Bool QueryArray ( const Json::Value& json, const std::string& name, Json::Value& value );
