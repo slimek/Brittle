@@ -16,6 +16,7 @@ namespace Brittle
 //
 // JSON Value
 // - A lightweight wrapper of JsonCpp Value.
+//   Make the get-value process simpler.
 //
 
 class JsonValue

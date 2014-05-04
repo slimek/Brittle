@@ -22,6 +22,7 @@
     <ClInclude Include="..\src\Ui\PanelBuilder.h" />
     <ClInclude Include="..\src\Ui\WidgetAttributes.h" />
     <ClInclude Include="..\src\Ui\WidgetBuilder.h" />
+    <ClInclude Include="..\src\Ui\WidgetResizer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src.win32\CoreWin32.cpp" />

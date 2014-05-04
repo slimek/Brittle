@@ -26,7 +26,8 @@ public:
     
     WidgetBuilder( const Json::Value& json, const std::string& path );
 
-    ui::Widget* GetWidget() const { return m_widget; }
+    ui::Widget*      GetWidget()     const { return m_widget; }
+    WidgetAttributes GetAttributes() const { return m_attrs; }
 
 
 private:
@@ -34,8 +35,8 @@ private:
     void ReadNameAndType();
     void BuildWidgetByType();
     
-    void ReadWidgetAttributes( WidgetAttributes& attrs );
-    void FillWidgetAttributes( ui::Widget* widget, const WidgetAttributes& attrs );
+    void ReadWidgetAttributes();
+    void FillWidgetAttributes( ui::Widget* widget );
 
     void BuildImageView();
     void BuildText();
@@ -49,6 +50,7 @@ private:
     boost::optional< std::string > m_name;
 
     ui::Widget* m_widget;
+    WidgetAttributes m_attrs;
 };
 
 

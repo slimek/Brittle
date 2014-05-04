@@ -32,7 +32,7 @@ private:
 
     std::string m_layoutPath;
 
-    JsonValue m_rootJson;
+    JsonValue m_layoutJson;
 
     Panel* m_panel;
 };

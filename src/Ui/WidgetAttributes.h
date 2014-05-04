@@ -20,8 +20,6 @@ struct WidgetAttributes
 {
     WidgetAttributes() {}
 
-    std::string name;
-    
     Point position;    
 };
 

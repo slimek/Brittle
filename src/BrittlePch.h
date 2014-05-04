@@ -18,6 +18,9 @@
 // Headers
 //
 
+// C++ Headers
+#include <deque>
+
 // Cocos2d-x Headers
 #include <cocos2d.h>
 

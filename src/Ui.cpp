@@ -5,6 +5,7 @@
 #include "Ui/PanelBuilder.h"
 #include "Ui/WidgetAttributes.h"
 #include "Ui/WidgetBuilder.h"
+#include "Ui/WidgetResizer.h"
 #include <Brittle/Ui/Panel.h>
 #include <Caramel/Data/LookupTable.h>
 #include <Caramel/FileSystem/Path.h>
@@ -23,6 +24,7 @@ namespace Brittle
 //   Panel
 //   PanelBuilder
 //   WidgetBuilder
+//   WidgetResizer
 //
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -50,6 +52,17 @@ ui::Widget* Panel::GetChild( const std::string& name ) const
 }
 
 
+void Panel::setParent( Node* parent )
+{
+    this->ui::Widget::setParent( parent );
+
+    for ( const auto& resizer : m_resizers )
+    {
+        resizer->Resize( this );
+    }
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Panel Builder
@@ -63,6 +76,7 @@ PanelBuilder::PanelBuilder( const std::string& layoutPath )
 
     m_panel = new Panel;
     m_panel->autorelease();
+    m_panel->m_layoutJson = m_layoutJson;
 
     Path path( layoutPath );
     m_panel->setName( path.Stem().ToString().c_str() );
@@ -77,27 +91,27 @@ void PanelBuilder::LoadJsonRoot()
 
     if ( ! fileUtils->isFileExist( m_layoutPath ))
     {
-        CARAMEL_THROW( "Panel layout %s file not found", m_layoutPath );
+        CARAMEL_THROW( "Panel %s : layout file not found", m_layoutPath );
     }
 
     std::string layoutContent = fileUtils->getStringFromFile( m_layoutPath );
 
-    Json::Value root;
+    Json::Value json;
     Json::Reader reader;
-    if ( ! reader.parse( layoutContent, root ))
+    if ( ! reader.parse( layoutContent, json ))
     {
-        CARAMEL_THROW( "Panel layout %s parse failed :\n%s",
+        CARAMEL_THROW( "Panel %s : layout parse failed :\n%s",
                        m_layoutPath, reader.getFormatedErrorMessages() );
     }
 
-    m_rootJson = JsonValue( root, "Panel " + m_layoutPath );
+    m_layoutJson = JsonValue( json, "Panel " + m_layoutPath );
 }
 
 
 void PanelBuilder::BuildWidgets()
 {
     Json::Value widgets;
-    if ( ! m_rootJson.GetArray( "widgets", widgets ))
+    if ( ! m_layoutJson.GetArray( "widgets", widgets ))
     {
         CARAMEL_TRACE_WARN( "Panel layout %s has no \"widgets\" attribute", m_layoutPath );
         return;
@@ -113,6 +127,9 @@ void PanelBuilder::BuildWidgets()
         if ( widget )
         {
             m_panel->addChild( widget );
+
+            m_panel->m_resizers.push_back(
+                std::make_shared< WidgetResizer >( widget, builder.GetAttributes() ));
         }
     }
 }
@@ -191,22 +208,19 @@ void WidgetBuilder::BuildWidgetByType()
 }
 
 
-void WidgetBuilder::ReadWidgetAttributes( WidgetAttributes& attrs )
+void WidgetBuilder::ReadWidgetAttributes()
 {
-    if ( m_name )
-    {
-        attrs.name = m_name.get();
-    }
-    
-    m_json.GetFloat( "x", attrs.position.x );
-    m_json.GetFloat( "y", attrs.position.y );
+    m_json.GetFloat( "x", m_attrs.position.x );
+    m_json.GetFloat( "y", m_attrs.position.y );
 }
 
 
-void WidgetBuilder::FillWidgetAttributes( ui::Widget* widget, const WidgetAttributes& attrs )
+void WidgetBuilder::FillWidgetAttributes( ui::Widget* widget )
 {
-    widget->setName( attrs.name.c_str() );
-    widget->setPosition( attrs.position );
+    if ( m_name )
+    {
+        widget->setName( m_name.get().c_str() );
+    }
 }
 
 
@@ -227,10 +241,10 @@ void WidgetBuilder::BuildImageView()
         image->loadTexture( imagePath );
     }
 
-    WidgetAttributes attrs;
-    this->ReadWidgetAttributes( attrs );
-    this->FillWidgetAttributes( image, attrs );
+    this->ReadWidgetAttributes();
+    this->FillWidgetAttributes( image );
 
+    // Assign to m_widget only when built successfully.
     m_widget = image;
 }
 
@@ -251,10 +265,10 @@ void WidgetBuilder::BuildText()
         text->setFontSize( fontSize );
     }
 
-    WidgetAttributes attrs;
-    this->ReadWidgetAttributes( attrs );
-    this->FillWidgetAttributes( text, attrs );
+    this->ReadWidgetAttributes();
+    this->FillWidgetAttributes( text );
 
+    // Assign to m_widget only when built successfully.
     m_widget = text;
 }
 
@@ -281,11 +295,29 @@ void WidgetBuilder::BuildTextBMFont()
         text->setText( textData );
     }
 
-    WidgetAttributes attrs;
-    this->ReadWidgetAttributes( attrs );
-    this->FillWidgetAttributes( text, attrs );
+    this->ReadWidgetAttributes();
+    this->FillWidgetAttributes( text );
 
+    // Assign to m_widget only when built successfully.
     m_widget = text;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Widget Resizer
+//
+
+WidgetResizer::WidgetResizer( ui::Widget* widget, const WidgetAttributes& attrs )
+    : m_widget( widget )
+    , m_attrs( attrs )
+{
+}
+
+
+void WidgetResizer::Resize( Node* parent )
+{
+    m_widget->setPosition( m_attrs.position );
 }
 
 

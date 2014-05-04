@@ -65,6 +65,9 @@
     <ClInclude Include="..\include\Brittle\Utils\JsonValue.h">
       <Filter>1. Public Headers\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Ui\WidgetResizer.h">
+      <Filter>2. Source Files\Ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">

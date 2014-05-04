@@ -20,6 +20,12 @@ namespace Brittle
 class Panel;
 
 
+// UI Internal Utilities
+
+class WidgetResizer;
+typedef std::shared_ptr< WidgetResizer > WidgetResizerPtr;
+
+
 } // namespace Brittle
 
 

@@ -6,6 +6,7 @@
 
 #include <Brittle/Setup/BrittleDefs.h>
 #include <Brittle/Ui/UiTypes.h>
+#include <Brittle/Utils/JsonValue.h>
 #include <Caramel/Error/Exception.h>
 #include <ui/UIWidget.h>
 
@@ -29,6 +30,19 @@ public:
 
     template< typename WidgetType >
     void GetChild( const std::string& name, WidgetType*& widget ) const;
+
+    // Begins to layout when the parent is set.
+    // - This only affects position and size.
+    virtual void setParent( Node* parent ) override;
+
+private:
+
+    friend class PanelBuilder;
+    friend class PanelResizer;
+
+    JsonValue m_layoutJson;
+
+    std::deque< WidgetResizerPtr > m_resizers;
 };
 
 
