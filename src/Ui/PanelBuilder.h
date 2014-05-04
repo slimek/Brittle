@@ -6,7 +6,7 @@
 
 #include <Brittle/Setup/BrittleDefs.h>
 #include <Brittle/Ui/UiTypes.h>
-#include <JsonCpp/value.h>
+#include <Brittle/Utils/JsonValue.h>
 
 
 namespace Brittle
@@ -32,7 +32,7 @@ private:
 
     std::string m_layoutPath;
 
-    Json::Value m_rootJson;
+    JsonValue m_rootJson;
 
     Panel* m_panel;
 };

@@ -6,7 +6,6 @@
 #include "Ui/WidgetAttributes.h"
 #include "Ui/WidgetBuilder.h"
 #include <Brittle/Ui/Panel.h>
-#include <Brittle/Utils/JsonUtils.h>
 #include <Caramel/Data/LookupTable.h>
 #include <Caramel/FileSystem/Path.h>
 #include <JsonCpp/reader.h>
@@ -83,21 +82,22 @@ void PanelBuilder::LoadJsonRoot()
 
     std::string layoutContent = fileUtils->getStringFromFile( m_layoutPath );
 
+    Json::Value root;
     Json::Reader reader;
-    if ( ! reader.parse( layoutContent, m_rootJson ))
+    if ( ! reader.parse( layoutContent, root ))
     {
         CARAMEL_THROW( "Panel layout %s parse failed :\n%s",
                        m_layoutPath, reader.getFormatedErrorMessages() );
     }
+
+    m_rootJson = JsonValue( root, "Panel " + m_layoutPath );
 }
 
 
 void PanelBuilder::BuildWidgets()
 {
-    Bool b1 = m_rootJson.isMember( "widgets" );
-
     Json::Value widgets;
-    if ( ! QueryArray( m_rootJson, "widgets", widgets ))
+    if ( ! m_rootJson.GetArray( "widgets", widgets ))
     {
         CARAMEL_TRACE_WARN( "Panel layout %s has no \"widgets\" attribute", m_layoutPath );
         return;
@@ -124,7 +124,7 @@ void PanelBuilder::BuildWidgets()
 //
 
 WidgetBuilder::WidgetBuilder( const Json::Value& json, const std::string& path )
-    : m_json( json )
+    : m_json( json, "Widget " + path )
     , m_path( path )
     , m_widget( nullptr )
 {
@@ -135,16 +135,18 @@ WidgetBuilder::WidgetBuilder( const Json::Value& json, const std::string& path )
 
 void WidgetBuilder::ReadNameAndType()
 {
-    std::string name;
-    if ( QueryString( m_json, "name", name ))
+    if ( m_json.GetString( "name", m_name ))
     {
-        m_path += Format( "\"{0}\"", name );
+        m_path += Format( "\"{0}\"", m_name.get() );
     }
 
-    if ( ! QueryString( m_json, "type", m_type ))
+    if ( ! m_json.GetString( "type", m_type ))
     {
         CARAMEL_THROW( "Widget %s has no \"type\" attribute", m_path );
     }
+
+    // 讀取 name 和 type 之後，更新 JsonValue 的 tag，使錯誤訊息更清楚。
+    m_json.SetTag( m_type + " " + m_path );
 }
 
 
@@ -191,10 +193,13 @@ void WidgetBuilder::BuildWidgetByType()
 
 void WidgetBuilder::ReadWidgetAttributes( WidgetAttributes& attrs )
 {
-    QueryString( m_json, "name", attrs.name );
+    if ( m_name )
+    {
+        attrs.name = m_name.get();
+    }
     
-    QueryFloat( m_json, "x", attrs.position.x );
-    QueryFloat( m_json, "y", attrs.position.y );
+    m_json.GetFloat( "x", attrs.position.x );
+    m_json.GetFloat( "y", attrs.position.y );
 }
 
 
@@ -210,7 +215,7 @@ void WidgetBuilder::BuildImageView()
     auto image = ui::ImageView::create();
 
     std::string imagePath;
-    if ( QueryString( m_json, "imagePath", imagePath ))
+    if ( m_json.GetString( "imagePath", imagePath ))
     {
         if ( ! FileUtils::getInstance()->isFileExist( imagePath ))
         {
@@ -235,13 +240,13 @@ void WidgetBuilder::BuildText()
     auto text = ui::Text::create();
 
     std::string textData;
-    if ( QueryString( m_json, "text", textData ))
+    if ( m_json.GetString( "text", textData ))
     {
         text->setText( textData );
     }
 
     Int fontSize = text->getFontSize();
-    if ( QueryInt( m_json, "fontSize", fontSize ))
+    if ( m_json.GetInt( "fontSize", fontSize ))
     {
         text->setFontSize( fontSize );
     }
@@ -259,7 +264,7 @@ void WidgetBuilder::BuildTextBMFont()
     auto text = ui::TextBMFont::create();
 
     std::string fontPath;
-    if ( QueryString( m_json, "fontPath", fontPath ))
+    if ( m_json.GetString( "fontPath", fontPath ))
     {
         if ( ! FileUtils::getInstance()->isFileExist( fontPath ))
         {
@@ -271,7 +276,7 @@ void WidgetBuilder::BuildTextBMFont()
     }
 
     std::string textData;
-    if ( QueryString( m_json, "text", textData ))
+    if ( m_json.GetString( "text", textData ))
     {
         text->setText( textData );
     }

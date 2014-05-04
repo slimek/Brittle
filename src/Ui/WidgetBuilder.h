@@ -7,8 +7,9 @@
 #include <Brittle/Setup/BrittleDefs.h>
 #include "Ui/WidgetAttributes.h"
 #include <Brittle/Ui/UiTypes.h>
-#include <JsonCpp/value.h>
+#include <Brittle/Utils/JsonValue.h>
 #include <ui/UIWidget.h>
+#include <boost/optional.hpp>
 
 
 namespace Brittle
@@ -40,9 +41,12 @@ private:
     void BuildText();
     void BuildTextBMFont();
 
-    Json::Value m_json;
+    JsonValue m_json;
+
     std::string m_path;
     std::string m_type;
+
+    boost::optional< std::string > m_name;
 
     ui::Widget* m_widget;
 };

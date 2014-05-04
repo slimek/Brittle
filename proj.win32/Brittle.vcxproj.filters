@@ -56,14 +56,14 @@
     <ClInclude Include="..\src\Ui\PanelBuilder.h">
       <Filter>2. Source Files\Ui</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Brittle\Utils\JsonUtils.h">
-      <Filter>1. Public Headers\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Ui\WidgetBuilder.h">
       <Filter>2. Source Files\Ui</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Ui\WidgetAttributes.h">
       <Filter>2. Source Files\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Utils\JsonValue.h">
+      <Filter>1. Public Headers\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
