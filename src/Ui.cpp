@@ -3,8 +3,8 @@
 #include "BrittlePch.h"
 
 #include "Ui/PanelBuilder.h"
-#include "Ui/WidgetAttributes.h"
 #include "Ui/WidgetBuilder.h"
+#include "Ui/WidgetProperties.h"
 #include "Ui/WidgetResizer.h"
 #include <Brittle/Ui/Panel.h>
 #include <Caramel/Data/LookupTable.h>
@@ -129,7 +129,7 @@ void PanelBuilder::BuildWidgets()
             m_panel->addChild( widget );
 
             m_panel->m_resizers.push_back(
-                std::make_shared< WidgetResizer >( widget, builder.GetAttributes() ));
+                std::make_shared< WidgetResizer >( widget, builder.GetProperties() ));
         }
     }
 }
@@ -208,14 +208,14 @@ void WidgetBuilder::BuildWidgetByType()
 }
 
 
-void WidgetBuilder::ReadWidgetAttributes()
+void WidgetBuilder::ReadWidgetProperties()
 {
-    m_json.GetFloat( "x", m_attrs.position.x );
-    m_json.GetFloat( "y", m_attrs.position.y );
+    m_json.GetFloat( "x", m_props.position.x );
+    m_json.GetFloat( "y", m_props.position.y );
 }
 
 
-void WidgetBuilder::FillWidgetAttributes( ui::Widget* widget )
+void WidgetBuilder::FillWidgetProperties( ui::Widget* widget )
 {
     if ( m_name )
     {
@@ -241,8 +241,8 @@ void WidgetBuilder::BuildImageView()
         image->loadTexture( imagePath );
     }
 
-    this->ReadWidgetAttributes();
-    this->FillWidgetAttributes( image );
+    this->ReadWidgetProperties();
+    this->FillWidgetProperties( image );
 
     // Assign to m_widget only when built successfully.
     m_widget = image;
@@ -265,8 +265,8 @@ void WidgetBuilder::BuildText()
         text->setFontSize( fontSize );
     }
 
-    this->ReadWidgetAttributes();
-    this->FillWidgetAttributes( text );
+    this->ReadWidgetProperties();
+    this->FillWidgetProperties( text );
 
     // Assign to m_widget only when built successfully.
     m_widget = text;
@@ -295,8 +295,8 @@ void WidgetBuilder::BuildTextBMFont()
         text->setText( textData );
     }
 
-    this->ReadWidgetAttributes();
-    this->FillWidgetAttributes( text );
+    this->ReadWidgetProperties();
+    this->FillWidgetProperties( text );
 
     // Assign to m_widget only when built successfully.
     m_widget = text;
@@ -308,16 +308,16 @@ void WidgetBuilder::BuildTextBMFont()
 // Widget Resizer
 //
 
-WidgetResizer::WidgetResizer( ui::Widget* widget, const WidgetAttributes& attrs )
+WidgetResizer::WidgetResizer( ui::Widget* widget, const WidgetProperties& props )
     : m_widget( widget )
-    , m_attrs( attrs )
+    , m_props( props )
 {
 }
 
 
 void WidgetResizer::Resize( Node* parent )
 {
-    m_widget->setPosition( m_attrs.position );
+    m_widget->setPosition( m_props.position );
 }
 
 

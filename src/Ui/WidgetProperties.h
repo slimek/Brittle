@@ -1,7 +1,7 @@
-// Brittle C++ Library - UI - Widget Attributes Header
+// Brittle C++ Library - UI - Widget Properties Header
 
-#ifndef __BRITTLE_UI_WIDGET_ATTRIBUTES_H
-#define __BRITTLE_UI_WIDGET_ATTRIBUTES_H
+#ifndef __BRITTLE_UI_WIDGET_PROPERTIES_H
+#define __BRITTLE_UI_WIDGET_PROPERTIES_H
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
@@ -12,13 +12,13 @@ namespace Brittle
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Widget Attributes
+// Widget Properties
 // - For ui::Widget
 //
 
-struct WidgetAttributes
+struct WidgetProperties
 {
-    WidgetAttributes() {}
+    WidgetProperties() {}
 
     Point position;    
 };
@@ -28,4 +28,4 @@ struct WidgetAttributes
 
 } // namespace Brittle
 
-#endif // __BRITTLE_UI_WIDGET_ATTRIBUTES_H
+#endif // __BRITTLE_UI_WIDGET_PROPERTIES_H

@@ -5,7 +5,7 @@
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
-#include "Ui/WidgetAttributes.h"
+#include "Ui/WidgetProperties.h"
 #include <Brittle/Ui/UiTypes.h>
 
 
@@ -20,7 +20,7 @@ namespace Brittle
 class WidgetResizer
 {
 public:
-    WidgetResizer( ui::Widget* widget, const WidgetAttributes& attrs );
+    WidgetResizer( ui::Widget* widget, const WidgetProperties& props );
     virtual ~WidgetResizer() {}
 
     virtual void Resize( Node* parent );
@@ -29,7 +29,7 @@ public:
 private:
 
     ui::Widget* m_widget;
-    WidgetAttributes m_attrs;
+    WidgetProperties m_props;
 };
 
 

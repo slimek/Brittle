@@ -5,7 +5,7 @@
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
-#include "Ui/WidgetAttributes.h"
+#include "Ui/WidgetProperties.h"
 #include <Brittle/Ui/UiTypes.h>
 #include <Brittle/Utils/JsonValue.h>
 #include <ui/UIWidget.h>
@@ -27,7 +27,7 @@ public:
     WidgetBuilder( const Json::Value& json, const std::string& path );
 
     ui::Widget*      GetWidget()     const { return m_widget; }
-    WidgetAttributes GetAttributes() const { return m_attrs; }
+    WidgetProperties GetProperties() const { return m_props; }
 
 
 private:
@@ -35,8 +35,8 @@ private:
     void ReadNameAndType();
     void BuildWidgetByType();
     
-    void ReadWidgetAttributes();
-    void FillWidgetAttributes( ui::Widget* widget );
+    void ReadWidgetProperties();
+    void FillWidgetProperties( ui::Widget* widget );
 
     void BuildImageView();
     void BuildText();
@@ -50,7 +50,7 @@ private:
     boost::optional< std::string > m_name;
 
     ui::Widget* m_widget;
-    WidgetAttributes m_attrs;
+    WidgetProperties m_props;
 };
 
 
