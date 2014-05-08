@@ -25,6 +25,7 @@ namespace Brittle
 //   PanelBuilder
 //   WidgetBuilder
 //   WidgetResizer
+//   WidgetProperties
 //
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -56,6 +57,8 @@ void Panel::setParent( Node* parent )
 {
     this->ui::Widget::setParent( parent );
 
+    if ( nullptr == parent ) { return; }
+
     for ( const auto& resizer : m_resizers )
     {
         resizer->Resize( this );
@@ -80,7 +83,12 @@ PanelBuilder::PanelBuilder( const std::string& layoutPath )
 
     Path path( layoutPath );
     m_panel->setName( path.Stem().ToString().c_str() );
- 
+
+    // Read the properties of the panel itself 
+    WidgetProperties props;
+    props.Parse( m_layoutJson );
+    m_panel->m_resizers.push_back( std::make_shared< WidgetResizer >( m_panel, props ));
+
     this->BuildWidgets();   
 }
 
@@ -208,14 +216,7 @@ void WidgetBuilder::BuildWidgetByType()
 }
 
 
-void WidgetBuilder::ReadWidgetProperties()
-{
-    m_json.GetFloat( "x", m_props.position.x );
-    m_json.GetFloat( "y", m_props.position.y );
-}
-
-
-void WidgetBuilder::FillWidgetProperties( ui::Widget* widget )
+void WidgetBuilder::FillWidgetName( ui::Widget* widget )
 {
     if ( m_name )
     {
@@ -241,8 +242,9 @@ void WidgetBuilder::BuildImageView()
         image->loadTexture( imagePath );
     }
 
-    this->ReadWidgetProperties();
-    this->FillWidgetProperties( image );
+    m_props.Parse( m_json );
+
+    this->FillWidgetName( image );
 
     // Assign to m_widget only when built successfully.
     m_widget = image;
@@ -265,8 +267,8 @@ void WidgetBuilder::BuildText()
         text->setFontSize( fontSize );
     }
 
-    this->ReadWidgetProperties();
-    this->FillWidgetProperties( text );
+    m_props.Parse( m_json );
+    this->FillWidgetName( text );
 
     // Assign to m_widget only when built successfully.
     m_widget = text;
@@ -295,8 +297,8 @@ void WidgetBuilder::BuildTextBMFont()
         text->setText( textData );
     }
 
-    this->ReadWidgetProperties();
-    this->FillWidgetProperties( text );
+    m_props.Parse( m_json );
+    this->FillWidgetName( text );
 
     // Assign to m_widget only when built successfully.
     m_widget = text;
@@ -317,7 +319,52 @@ WidgetResizer::WidgetResizer( ui::Widget* widget, const WidgetProperties& props 
 
 void WidgetResizer::Resize( Node* parent )
 {
-    m_widget->setPosition( m_props.position );
+    if ( WP_FLAG_RECT_IS_SCENE & m_props.flags )
+    {
+        auto scene = Director::getInstance()->getRunningScene();
+        m_widget->setPosition( Point( 0, 0 ));
+        m_widget->setContentSize( scene->getContentSize() );
+    }
+    else
+    {
+        m_widget->setPosition( m_props.position );
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Widget Properties
+//
+
+void WidgetProperties::Parse( const JsonValue& json )
+{
+    this->ParseRect( json );
+
+    json.GetFloat( "x", this->position.x );
+    json.GetFloat( "y", this->position.y );
+}
+
+
+void WidgetProperties::ParseRect( const JsonValue& json )
+{
+    std::string rect;
+    if ( ! json.GetString( "rect", rect )) { return; }
+
+    static const auto stretchMethods = MakeLookupTable
+        ( STRETCH_FIT,     "fit" )
+        ( STRETCH_FILL,    "fill" )
+        ( STRETCH_STRETCH, "stretch" );
+
+    if ( stretchMethods.FindValueByText( rect, this->stretchMethod ))
+    {
+        this->flags |= WP_FLAG_USE_STRETCH_METHOD;
+    }
+
+    if ( "scene" == rect )
+    {
+        this->flags |= WP_FLAG_RECT_IS_SCENE;
+    }
 }
 
 

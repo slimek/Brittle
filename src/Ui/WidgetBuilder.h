@@ -23,7 +23,7 @@ namespace Brittle
 class WidgetBuilder
 {
 public:
-    
+
     WidgetBuilder( const Json::Value& json, const std::string& path );
 
     ui::Widget*      GetWidget()     const { return m_widget; }
@@ -35,8 +35,7 @@ private:
     void ReadNameAndType();
     void BuildWidgetByType();
     
-    void ReadWidgetProperties();
-    void FillWidgetProperties( ui::Widget* widget );
+    void FillWidgetName( ui::Widget* widget );
 
     void BuildImageView();
     void BuildText();
