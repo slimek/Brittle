@@ -37,6 +37,13 @@ public:
 
 
     //
+    // Basic Accessors
+    //
+
+    Json::Value GetJson() const { return m_json; }
+
+
+    //
     // Get Values of Object
     // - Use these functions the get an object's sub-values.
     //   If the value doesn't exist, returns false.
@@ -47,12 +54,17 @@ public:
     Bool GetInt   ( const std::string& name, Int& value ) const;
     Bool GetFloat ( const std::string& name, Float& value ) const;
     Bool GetString( const std::string& name, std::string& value ) const;
+    Bool GetArray ( const std::string& name, JsonValue& value ) const;
+    Bool GetObject( const std::string& name, JsonValue& value ) const;
+    Bool GetValue ( const std::string& name, JsonValue& value ) const;
+
     Bool GetArray ( const std::string& name, Json::Value& value ) const;
     Bool GetObject( const std::string& name, Json::Value& value ) const;
+    Bool GetValue ( const std::string& name, Json::Value& value ) const;
 
 
     //
-    // Get Values of Object, copy onto an optional
+    // Get Value, copy onto an optional
     //
 
     Bool GetString( const std::string& name, boost::optional< std::string >& value ) const;

@@ -87,6 +87,36 @@ Bool JsonValue::GetString( const std::string& name, std::string& value ) const
 }
 
 
+Bool JsonValue::GetArray( const std::string& name, JsonValue& value ) const
+{
+    Json::Value json;
+    if ( ! this->GetArray( name, json )) { return false; }
+
+    value = JsonValue( json, m_tag + "." + name );
+    return true;
+}
+
+
+Bool JsonValue::GetObject( const std::string& name, JsonValue& value ) const
+{
+    Json::Value json;
+    if ( ! this->GetObject( name, json )) { return false; }
+
+    value = JsonValue( json, m_tag + "." + name );
+    return true;
+}
+
+
+Bool JsonValue::GetValue( const std::string& name, JsonValue& value ) const
+{
+    Json::Value json;
+    if ( ! this->GetValue( name, json )) { return false; }
+
+    value = JsonValue( json, m_tag + "." + name );
+    return true;
+}
+
+
 Bool JsonValue::GetArray( const std::string& name, Json::Value& value ) const
 {
     if ( ! m_json.isMember( name )) { return false; }
@@ -117,6 +147,15 @@ Bool JsonValue::GetObject( const std::string& name, Json::Value& value ) const
     }
 
     value = ref;
+    return true;
+}
+
+
+Bool JsonValue::GetValue( const std::string& name, Json::Value& value ) const
+{
+    if ( ! m_json.isMember( name )) { return false; }
+
+    value = m_json[ name ];
     return true;
 }
 
