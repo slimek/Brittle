@@ -101,6 +101,20 @@ Bool JsonValue::GetArray( const std::string& name, Json::Value& value ) const
 
     value = ref;
     return true;
+}
+
+
+Bool JsonValue::GetObject( const std::string& name, Json::Value& value ) const
+{
+    if ( ! m_json.isMember( name )) { return false; }
+
+    const auto& ref = m_json[ name ];
+    
+    if ( ! ref.isConvertibleTo( Json::objectValue ))
+    {
+        CARAMEL_ALERT( "%s : \"%s\" is not convertible to object", m_tag, name );
+        return false;
+    }
 
     value = ref;
     return true;
@@ -108,7 +122,7 @@ Bool JsonValue::GetArray( const std::string& name, Json::Value& value ) const
 
 
 //
-// Get Value of Optional
+// Get Value, Copy onto Optional
 //
 
 Bool JsonValue::GetString( const std::string& name, boost::optional< std::string >& value ) const
@@ -120,6 +134,16 @@ Bool JsonValue::GetString( const std::string& name, boost::optional< std::string
         return true;
     }
     return false;
+}
+
+
+//
+// Predicates
+//
+
+Bool JsonValue::ContainsKey( const std::string& name ) const
+{
+    return m_json.isMember( name );
 }
 
 

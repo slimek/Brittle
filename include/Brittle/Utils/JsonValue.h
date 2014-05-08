@@ -43,8 +43,21 @@ public:
     Bool GetFloat ( const std::string& name, Float& value ) const;
     Bool GetString( const std::string& name, std::string& value ) const;
     Bool GetArray ( const std::string& name, Json::Value& value ) const;
+    Bool GetObject( const std::string& name, Json::Value& value ) const;
+
+
+    //
+    // Get Values of Object, copy onto an optional
+    //
 
     Bool GetString( const std::string& name, boost::optional< std::string >& value ) const;
+
+
+    //
+    // Predicates
+    //
+
+    Bool ContainsKey( const std::string& name ) const;
 
 
 private:
