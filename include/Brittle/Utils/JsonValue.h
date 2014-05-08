@@ -8,6 +8,11 @@
 #include <JsonCpp/value.h>
 #include <boost/optional.hpp>
 
+// the GetObject macro in <wingdi.h> is evil ~
+#if defined( CARAMEL_SYSTEM_IS_WINDOWS ) && defined( GetObject )
+#undef GetObject
+#endif
+
 
 namespace Brittle
 {
