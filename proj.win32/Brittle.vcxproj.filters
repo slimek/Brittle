@@ -68,6 +68,9 @@
     <ClInclude Include="..\src\Ui\WidgetProperties.h">
       <Filter>2. Source Files\Ui</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Utils\Geometry.h">
+      <Filter>1. Public Headers\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">
