@@ -42,6 +42,7 @@ private:
 
     JsonValue m_layoutJson;
 
+    WidgetResizerPtr m_selfResizer;
     std::deque< WidgetResizerPtr > m_resizers;
 };
 

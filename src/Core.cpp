@@ -86,6 +86,8 @@ void GameScene::onEnter()
 {
     this->Scene::onEnter();
 
+    this->setContentSize( Director::getInstance()->getVisibleSize() );
+
     this->OnEnterScene();
 }
 

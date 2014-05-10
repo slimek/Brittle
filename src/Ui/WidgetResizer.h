@@ -23,10 +23,11 @@ public:
     WidgetResizer( ui::Widget* widget, const WidgetProperties& props );
     virtual ~WidgetResizer() {}
 
-    virtual void Resize( Node* parent );
-
+    void Resize( const Rect& area );
 
 private:
+
+    void Stretch( const Rect& area );
 
     ui::Widget* m_widget;
     WidgetProperties m_props;

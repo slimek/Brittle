@@ -7,6 +7,7 @@
 #include "Ui/WidgetProperties.h"
 #include "Ui/WidgetResizer.h"
 #include <Brittle/Ui/Panel.h>
+#include <Brittle/Utils/Geometry.h>
 #include <Caramel/Data/LookupTable.h>
 #include <Caramel/FileSystem/Path.h>
 #include <JsonCpp/reader.h>
@@ -59,9 +60,11 @@ void Panel::setParent( Node* parent )
 
     if ( nullptr == parent ) { return; }
 
+    m_selfResizer->Resize( MakeRect( parent->getContentSize() ));
+
     for ( const auto& resizer : m_resizers )
     {
-        resizer->Resize( this );
+        resizer->Resize( MakeRect( this->getContentSize() ));
     }
 }
 
@@ -87,7 +90,7 @@ PanelBuilder::PanelBuilder( const std::string& layoutPath )
     // Read the properties of the panel itself 
     WidgetProperties props;
     props.Parse( m_layoutJson );
-    m_panel->m_resizers.push_back( std::make_shared< WidgetResizer >( m_panel, props ));
+    m_panel->m_selfResizer = std::make_shared< WidgetResizer >( m_panel, props );
 
     this->BuildWidgets();   
 }
@@ -317,17 +320,61 @@ WidgetResizer::WidgetResizer( ui::Widget* widget, const WidgetProperties& props 
 }
 
 
-void WidgetResizer::Resize( Node* parent )
+void WidgetResizer::Resize( const Rect& area )
 {
-    if ( WP_FLAG_RECT_IS_SCENE & m_props.flags )
+    const Size size = area.size;
+    const Vector2 origin = area.origin;
+
+    if ( WP_FLAG_USE_STRETCH_METHOD & m_props.flags )
     {
-        auto scene = Director::getInstance()->getRunningScene();
-        m_widget->setPosition( Point( 0, 0 ));
-        m_widget->setContentSize( scene->getContentSize() );
+        this->Stretch( area );
     }
     else
     {
         m_widget->setPosition( m_props.position );
+    }
+}
+
+
+void WidgetResizer::Stretch( const Rect& area )
+{
+    m_widget->setAnchorPoint( Vector2( 0.5, 0.5 ));
+    m_widget->setPosition( GetCenter( area ));
+
+    if ( ! m_widget->isIgnoreContentAdaptWithSize() )
+    {
+        m_widget->setSize( area.size );
+        return;
+    }
+
+    const Size size = m_widget->getSize();
+
+    const Float ratioX = area.size.width / size.width;
+    const Float ratioY = area.size.height / size.height;
+
+    switch ( m_props.stretchMethod )
+    {
+    case STRETCH_STRETCH:
+    {
+        m_widget->setScaleX( ratioX );
+        m_widget->setScaleY( ratioY );
+        return;
+    }
+
+    case STRETCH_FIT:
+    {
+        m_widget->setScale( std::min( ratioX, ratioY ));
+        return;
+    }
+
+    case STRETCH_FILL:
+    {
+        m_widget->setScale( std::max( ratioX, ratioY ));
+        return;
+    }
+
+    default:
+        CARAMEL_NOT_REACHED();
     }
 }
 
@@ -359,11 +406,6 @@ void WidgetProperties::ParseRect( const JsonValue& json )
     if ( stretchMethods.FindValueByText( rect, this->stretchMethod ))
     {
         this->flags |= WP_FLAG_USE_STRETCH_METHOD;
-    }
-
-    if ( "scene" == rect )
-    {
-        this->flags |= WP_FLAG_RECT_IS_SCENE;
     }
 }
 

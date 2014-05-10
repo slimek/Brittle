@@ -21,15 +21,13 @@ enum StretchMethod
     STRETCH_NONE    = 0,  // Keep original size
     STRETCH_FIT     = 1,  // Keep ratio, fit the inside, may has border
     STRETCH_FILL    = 2,  // Keep ratio, fill the all screen, may be cropped
-    STRETCH_STRETCH = 3,  // Stretch to all screen.
+    STRETCH_STRETCH = 3,  // Stretch both dimensions to fit content area
 };
 
 
 enum WidgetPropertiesFlags : Uint32
 {
-    WP_FLAG_USE_STRETCH_METHOD = 0x01,
-
-    WP_FLAG_RECT_IS_SCENE      = 0x10000,
+    WP_FLAG_USE_STRETCH_METHOD  = 0x01,
 };
 
 
@@ -49,28 +47,26 @@ struct WidgetProperties
     void Parse( const JsonValue& json );
 
     Vector2 position;
-
-    StretchMethod stretchMethod;
-
-
     Uint32 flags;
+    StretchMethod stretchMethod;
 
 private:
 
     void ParseRect( const JsonValue& json );
+    void ParseStretch( const JsonValue& json );
 };
 
 
 //
 // Widget JSON Syntax
 //
-// size :
-//   <stretch method>
-//     "fit"  
+// "rect":
+//   <coordiate>
+//     "x y width height"
+//   <stretchMethod>
+//     "fit"
 //     "fill"
 //     "stretch"
-//   <special>
-//     "scene"
 //
 
 ///////////////////////////////////////////////////////////////////////////////
