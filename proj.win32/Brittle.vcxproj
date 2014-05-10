@@ -58,9 +58,11 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Brittle.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Brittle.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -77,9 +79,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\src;..\include;..\..\Caramel\include;..\..\CandyJar\include;..\..\Cocos2d-x3\external\glfw3\include\win32;..\..\Cocos2d-x3\external\win32-specific\gles\include\OGLES;..\..\Cocos2d-x3\cocos\editor-support;..\..\Cocos2d-x3\cocos\math\kazmath;..\..\Cocos2d-x3\cocos\physics;..\..\Cocos2d-x3\cocos\2d\platform\win32;..\..\Cocos2d-x3\cocos\2d;..\..\Cocos2d-x3\cocos\base;..\..\Cocos2d-x3\cocos</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
       <PrecompiledHeaderFile>BrittlePch.h</PrecompiledHeaderFile>
+      <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -98,9 +101,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\src;..\include;..\..\Caramel\include;..\..\CandyJar\include;..\..\Cocos2d-x3\external\glfw3\include\win32;..\..\Cocos2d-x3\external\win32-specific\gles\include\OGLES;..\..\Cocos2d-x3\cocos\editor-support;..\..\Cocos2d-x3\cocos\math\kazmath;..\..\Cocos2d-x3\cocos\physics;..\..\Cocos2d-x3\cocos\2d\platform\win32;..\..\Cocos2d-x3\cocos\2d;..\..\Cocos2d-x3\cocos\base;..\..\Cocos2d-x3\cocos</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
       <PrecompiledHeaderFile>BrittlePch.h</PrecompiledHeaderFile>
+      <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
