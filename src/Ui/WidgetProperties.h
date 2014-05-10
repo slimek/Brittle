@@ -48,7 +48,7 @@ struct WidgetProperties
 
     void Parse( const JsonValue& json );
 
-    Point position;
+    Vector2 position;
 
     StretchMethod stretchMethod;
 
