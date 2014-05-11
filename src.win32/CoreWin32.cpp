@@ -34,8 +34,8 @@ void GameApp::InitPlatform()
 
     const DesktopSettings& ds = m_settings.desktop;
 
-    auto glview = GLView::create( ds.frameTitle );
-    glview->setFrameSize( ds.frameWidth, ds.frameHeight );
+    auto glview = GLView::createWithRect(
+        ds.frameTitle, Rect( 0, 0, ds.frameWidth, ds.frameHeight ));
 
     auto director = Director::getInstance();
     CARAMEL_ASSERT( nullptr == director->getOpenGLView() );

@@ -5,6 +5,7 @@
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
+#include <math/CCGeometry.h>
 
 
 namespace Brittle
