@@ -173,7 +173,7 @@ void WidgetBuilder::ReadNameAndType()
         CARAMEL_THROW( "Widget %s has no \"type\" attribute", m_path );
     }
 
-    // 讀取 name 和 type 之後，更新 JsonValue 的 tag，使錯誤訊息更清楚。
+    // After read name and type, update JsonValue's tag to make clearer tracing message.
     m_json.SetTag( m_type + " " + m_path );
 }
 
@@ -183,6 +183,7 @@ enum WidgetType
     WT_IMAGE_VIEW,
     WT_TEXT,
     WT_TEXT_BMFONT,
+    WT_PANEL,
 };
 
 
@@ -191,7 +192,8 @@ void WidgetBuilder::BuildWidgetByType()
     static const auto uiTypes = LookupTable< WidgetType >
         ( WT_IMAGE_VIEW,  "ImageView", "Image" )
         ( WT_TEXT,        "Text", "Label" )
-        ( WT_TEXT_BMFONT, "TextBMFont", "LabelFont" );
+        ( WT_TEXT_BMFONT, "TextBMFont", "LabelFont" )
+        ( WT_PANEL,       "Panel" );
 
     WidgetType type;
     if ( ! uiTypes.FindValueByName( m_type, type ))
@@ -211,6 +213,10 @@ void WidgetBuilder::BuildWidgetByType()
 
     case WT_TEXT_BMFONT:
         this->BuildTextBMFont();
+        break;
+
+    case WT_PANEL:
+        this->BuildPanel();
         break;
 
     default:
@@ -305,6 +311,12 @@ void WidgetBuilder::BuildTextBMFont()
 
     // Assign to m_widget only when built successfully.
     m_widget = text;
+}
+
+
+void WidgetBuilder::BuildPanel()
+{
+    CARAMEL_TRACE_INFO( "Hello Panel!" );
 }
 
 
