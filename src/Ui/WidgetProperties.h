@@ -47,6 +47,7 @@ struct WidgetProperties
     void Parse( const JsonValue& json );
 
     Vector2 position;
+    Size size;
     Uint32 flags;
     StretchMethod stretchMethod;
 

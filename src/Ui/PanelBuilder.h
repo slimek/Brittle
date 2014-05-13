@@ -22,6 +22,7 @@ class PanelBuilder
 public:
 
     explicit PanelBuilder( const std::string& layoutPath );
+    explicit PanelBuilder( const JsonValue& json );
 
     Panel* GetPanel() const { return m_panel; }
 

@@ -96,6 +96,27 @@ PanelBuilder::PanelBuilder( const std::string& layoutPath )
 }
 
 
+PanelBuilder::PanelBuilder( const JsonValue& layoutJson )
+    : m_layoutJson( layoutJson )
+    , m_panel( nullptr )
+{
+    m_panel = new Panel;
+    m_panel->autorelease();
+    m_panel->m_layoutJson = m_layoutJson;
+
+    std::string name;
+    m_layoutJson.GetString( "name", name );
+    m_panel->setName( name.c_str() );
+
+    // Read the properties of the panel itself 
+    WidgetProperties props;
+    props.Parse( m_layoutJson );
+    m_panel->m_selfResizer = std::make_shared< WidgetResizer >( m_panel, props );
+
+    this->BuildWidgets();   
+}
+
+
 void PanelBuilder::LoadJsonRoot()
 {
     auto fileUtils = FileUtils::getInstance();
@@ -316,7 +337,8 @@ void WidgetBuilder::BuildTextBMFont()
 
 void WidgetBuilder::BuildPanel()
 {
-    CARAMEL_TRACE_INFO( "Hello Panel!" );
+    PanelBuilder builder( m_json );
+    m_widget = builder.GetPanel();
 }
 
 
@@ -334,9 +356,6 @@ WidgetResizer::WidgetResizer( ui::Widget* widget, const WidgetProperties& props 
 
 void WidgetResizer::Resize( const Rect& area )
 {
-    const Size size = area.size;
-    const Vector2 origin = area.origin;
-
     if ( WP_FLAG_USE_STRETCH_METHOD & m_props.flags )
     {
         this->Stretch( area );
@@ -344,6 +363,7 @@ void WidgetResizer::Resize( const Rect& area )
     else
     {
         m_widget->setPosition( m_props.position );
+        m_widget->setSize( m_props.size );
     }
 }
 
@@ -402,6 +422,8 @@ void WidgetProperties::Parse( const JsonValue& json )
 
     json.GetFloat( "x", this->position.x );
     json.GetFloat( "y", this->position.y );
+    json.GetFloat( "width", this->size.width );
+    json.GetFloat( "height", this->size.height );
 }
 
 
