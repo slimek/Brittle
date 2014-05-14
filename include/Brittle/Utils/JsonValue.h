@@ -51,6 +51,7 @@ public:
     //   alerts then returns false.
     //
 
+    Bool GetBool  ( const std::string& name, Bool& value ) const;
     Bool GetInt   ( const std::string& name, Int& value ) const;
     Bool GetFloat ( const std::string& name, Float& value ) const;
     Bool GetString( const std::string& name, std::string& value ) const;

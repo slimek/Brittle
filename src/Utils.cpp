@@ -37,6 +37,23 @@ void JsonValue::SetTag( const std::string& tag )
 // Get Value
 //
 
+Bool JsonValue::GetBool( const std::string& name, Bool& value ) const
+{
+    if ( ! m_json.isMember( name )) { return false; }
+
+    const auto& ref = m_json[ name ];
+
+    if ( ! ref.isConvertibleTo( Json::booleanValue ))
+    {
+        CARAMEL_ALERT( "%s : \"%s\" is not convertible to boolean", m_tag, name );
+        return false;
+    }
+
+    value = ref.asBool();
+    return true;
+}
+
+
 Bool JsonValue::GetInt( const std::string& name, Int& value ) const
 {
     if ( ! m_json.isMember( name )) { return false; }
