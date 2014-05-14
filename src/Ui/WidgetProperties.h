@@ -28,6 +28,8 @@ enum StretchMethod
 enum WidgetPropertiesFlags : Uint32
 {
     WP_FLAG_USE_STRETCH_METHOD  = 0x01,
+    WP_FLAG_USE_WIDTH           = 0x02,
+    WP_FLAG_USE_HEIGHT          = 0x04,
 };
 
 
@@ -40,15 +42,21 @@ enum WidgetPropertiesFlags : Uint32
 struct WidgetProperties
 {
     WidgetProperties()
-        : stretchMethod( STRETCH_NONE )
-        , flags( 0 )
+        : flags( 0 )
+        , visible( true )
+        , stretchMethod( STRETCH_NONE )
     {}
 
     void Parse( const JsonValue& json );
 
+    Uint32 flags;
+    Bool visible;
+
+    
+    /// Properties for Resize ///
+
     Vector2 position;
     Size size;
-    Uint32 flags;
     StretchMethod stretchMethod;
 
 private:

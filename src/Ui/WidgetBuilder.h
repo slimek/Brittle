@@ -35,7 +35,7 @@ private:
     void ReadNameAndType();
     void BuildWidgetByType();
     
-    void FillWidgetName( ui::Widget* widget );
+    void FillWidgetProperties( ui::Widget* widget );
 
     void BuildImageView();
     void BuildText();

@@ -42,7 +42,9 @@ private:
 
     JsonValue m_layoutJson;
 
+    // The root panel needs to resize itself.
     WidgetResizerPtr m_selfResizer;
+
     std::deque< WidgetResizerPtr > m_resizers;
 };
 

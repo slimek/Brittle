@@ -23,16 +23,37 @@ public:
     WidgetResizer( ui::Widget* widget, const WidgetProperties& props );
     virtual ~WidgetResizer() {}
 
-    void Resize( const Rect& area );
+    virtual void Resize( const Rect& area );
 
-private:
+protected:
 
-    void Stretch( const Rect& area );
+    void StretchWithScale( const Rect& area );
+    void StretchWithSize( const Rect& area );
+
+    void ResizeWithScale();
+    void ResizeWithSize();
 
     ui::Widget* m_widget;
     WidgetProperties m_props;
 };
 
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Panel Resizer
+//
+
+class PanelResizer : public WidgetResizer
+{
+public:
+    PanelResizer( Panel* panel, const WidgetProperties& props );
+
+    void Resize( const Rect& area ) override;
+
+private:
+
+    Panel* m_panel;
+};
 
 ///////////////////////////////////////////////////////////////////////////////
 

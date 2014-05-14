@@ -26,6 +26,7 @@ namespace Brittle
 //   PanelBuilder
 //   WidgetBuilder
 //   WidgetResizer
+//   PanelResizer
 //   WidgetProperties
 //
 
@@ -36,7 +37,7 @@ namespace Brittle
 
 Panel* Panel::Create( const std::string& layoutPath )
 {
-    PanelBuilder builder( layoutPath );
+    PanelBuilder builder( layoutPath, true );
     return builder.GetPanel();
 }
 
@@ -60,7 +61,10 @@ void Panel::setParent( Node* parent )
 
     if ( nullptr == parent ) { return; }
 
-    m_selfResizer->Resize( MakeRect( parent->getContentSize() ));
+    if ( m_selfResizer )
+    {
+        m_selfResizer->Resize( MakeRect( parent->getContentSize() ));
+    }
 
     for ( const auto& resizer : m_resizers )
     {
@@ -74,7 +78,7 @@ void Panel::setParent( Node* parent )
 // Panel Builder
 //
 
-PanelBuilder::PanelBuilder( const std::string& layoutPath )
+PanelBuilder::PanelBuilder( const std::string& layoutPath, Bool isRoot )
     : m_layoutPath( layoutPath )
     , m_panel( nullptr )
 {
@@ -87,10 +91,13 @@ PanelBuilder::PanelBuilder( const std::string& layoutPath )
     Path path( layoutPath );
     m_panel->setName( path.Stem().ToString().c_str() );
 
-    // Read the properties of the panel itself 
-    WidgetProperties props;
-    props.Parse( m_layoutJson );
-    m_panel->m_selfResizer = std::make_shared< WidgetResizer >( m_panel, props );
+    if ( isRoot )
+    {
+        // Read the properties of the panel itself 
+        WidgetProperties props;
+        props.Parse( m_layoutJson );
+        m_panel->m_selfResizer = std::make_shared< WidgetResizer >( m_panel, props );
+    }
 
     this->BuildWidgets();   
 }
@@ -107,11 +114,6 @@ PanelBuilder::PanelBuilder( const JsonValue& layoutJson )
     std::string name;
     m_layoutJson.GetString( "name", name );
     m_panel->setName( name.c_str() );
-
-    // Read the properties of the panel itself 
-    WidgetProperties props;
-    props.Parse( m_layoutJson );
-    m_panel->m_selfResizer = std::make_shared< WidgetResizer >( m_panel, props );
 
     this->BuildWidgets();   
 }
@@ -160,8 +162,17 @@ void PanelBuilder::BuildWidgets()
         {
             m_panel->addChild( widget );
 
-            m_panel->m_resizers.push_back(
-                std::make_shared< WidgetResizer >( widget, builder.GetProperties() ));
+            Panel* subPanel = dynamic_cast< Panel* >( widget );
+            if ( subPanel )
+            {
+                m_panel->m_resizers.push_back(
+                    std::make_shared< PanelResizer >( subPanel, builder.GetProperties() ));
+            }
+            else
+            {
+                m_panel->m_resizers.push_back(
+                    std::make_shared< WidgetResizer >( widget, builder.GetProperties() ));
+            }
         }
     }
 }
@@ -246,12 +257,14 @@ void WidgetBuilder::BuildWidgetByType()
 }
 
 
-void WidgetBuilder::FillWidgetName( ui::Widget* widget )
+void WidgetBuilder::FillWidgetProperties( ui::Widget* widget )
 {
     if ( m_name )
     {
         widget->setName( m_name.get().c_str() );
     }
+
+    widget->setVisible( m_props.visible );
 }
 
 
@@ -274,7 +287,7 @@ void WidgetBuilder::BuildImageView()
 
     m_props.Parse( m_json );
 
-    this->FillWidgetName( image );
+    this->FillWidgetProperties( image );
 
     // Assign to m_widget only when built successfully.
     m_widget = image;
@@ -298,7 +311,7 @@ void WidgetBuilder::BuildText()
     }
 
     m_props.Parse( m_json );
-    this->FillWidgetName( text );
+    this->FillWidgetProperties( text );
 
     // Assign to m_widget only when built successfully.
     m_widget = text;
@@ -328,7 +341,7 @@ void WidgetBuilder::BuildTextBMFont()
     }
 
     m_props.Parse( m_json );
-    this->FillWidgetName( text );
+    this->FillWidgetProperties( text );
 
     // Assign to m_widget only when built successfully.
     m_widget = text;
@@ -338,7 +351,13 @@ void WidgetBuilder::BuildTextBMFont()
 void WidgetBuilder::BuildPanel()
 {
     PanelBuilder builder( m_json );
-    m_widget = builder.GetPanel();
+    auto panel = builder.GetPanel();
+
+    m_props.Parse( m_json );
+    this->FillWidgetProperties( panel );
+
+    // Assign to m_widget only when built successfully.
+    m_widget = panel;
 }
 
 
@@ -356,28 +375,39 @@ WidgetResizer::WidgetResizer( ui::Widget* widget, const WidgetProperties& props 
 
 void WidgetResizer::Resize( const Rect& area )
 {
+    CARAMEL_TRACE_INFO( "Resize: %s", m_widget->getName() );
+
+    const Bool ignoreSize = m_widget->isIgnoreContentAdaptWithSize();
+
     if ( WP_FLAG_USE_STRETCH_METHOD & m_props.flags )
     {
-        this->Stretch( area );
+        if ( ignoreSize )
+        {
+            this->StretchWithScale( area );
+        }
+        else
+        {
+            this->StretchWithSize( area );
+        }
     }
     else
     {
-        m_widget->setPosition( m_props.position );
-        m_widget->setSize( m_props.size );
+        if ( ignoreSize )
+        {
+            this->ResizeWithScale();
+        }
+        else
+        {
+            this->ResizeWithSize();
+        }
     }
 }
 
 
-void WidgetResizer::Stretch( const Rect& area )
+void WidgetResizer::StretchWithScale( const Rect& area )
 {
     m_widget->setAnchorPoint( Vector2( 0.5, 0.5 ));
     m_widget->setPosition( GetCenter( area ));
-
-    if ( ! m_widget->isIgnoreContentAdaptWithSize() )
-    {
-        m_widget->setSize( area.size );
-        return;
-    }
 
     const Size size = m_widget->getSize();
 
@@ -411,6 +441,64 @@ void WidgetResizer::Stretch( const Rect& area )
 }
 
 
+void WidgetResizer::StretchWithSize( const Rect& area )
+{
+    // All stretch method has the same result.
+
+    m_widget->setPosition( area.origin );
+    m_widget->setSize( area.size );
+}
+
+
+void WidgetResizer::ResizeWithScale()
+{
+    m_widget->setPosition( m_props.position );
+
+    const Size size = m_widget->getSize();
+
+    if ( WP_FLAG_USE_WIDTH & m_props.flags )
+    {
+        const Float ratioX = m_props.size.width / size.width;
+        m_widget->setScaleX( ratioX );
+    }
+
+    if ( WP_FLAG_USE_HEIGHT & m_props.flags )
+    {
+        const Float ratioY = m_props.size.height / size.height;
+        m_widget->setScaleY( ratioY );
+    }
+}
+
+
+void WidgetResizer::ResizeWithSize()
+{
+    m_widget->setPosition( m_props.position );
+    m_widget->setSize( m_props.size );
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Panel Resizer
+//
+
+PanelResizer::PanelResizer( Panel* panel, const WidgetProperties& props )
+    : WidgetResizer( panel, props )
+    , m_panel( panel )
+{
+}
+
+
+void PanelResizer::Resize( const Rect& area )
+{
+    this->WidgetResizer::Resize( area );
+
+    for ( const auto& resizer : m_panel->m_resizers )
+    {
+        resizer->Resize( MakeRect( m_panel->getContentSize() ));
+    }
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Widget Properties
@@ -420,10 +508,20 @@ void WidgetProperties::Parse( const JsonValue& json )
 {
     this->ParseRect( json );
 
+    json.GetBool( "visible", this->visible );
+
     json.GetFloat( "x", this->position.x );
     json.GetFloat( "y", this->position.y );
-    json.GetFloat( "width", this->size.width );
-    json.GetFloat( "height", this->size.height );
+    
+    if ( json.GetFloat( "width", this->size.width ))
+    {
+        flags |= WP_FLAG_USE_WIDTH;
+    }
+
+    if ( json.GetFloat( "height", this->size.height ))
+    {
+        flags |= WP_FLAG_USE_HEIGHT;
+    }
 }
 
 
