@@ -26,6 +26,7 @@
 #pragma warning( push )
 #pragma warning( disable: 4996 )
 #include <cocos2d.h>
+#include <ui/CocosGUI.h>
 #pragma warning( pop )
 
 // Caramel Headres
