@@ -406,7 +406,7 @@ void WidgetResizer::Resize( const Rect& area )
 
 void WidgetResizer::StretchWithScale( const Rect& area )
 {
-    m_widget->setAnchorPoint( Vec2( 0.5, 0.5 ));
+    m_widget->setAnchorPoint( Vec2::ANCHOR_MIDDLE );
     m_widget->setPosition( GetCenter( area ));
 
     const Size size = m_widget->getSize();
@@ -445,6 +445,7 @@ void WidgetResizer::StretchWithSize( const Rect& area )
 {
     // All stretch method has the same result.
 
+    m_widget->setAnchorPoint( Vec2::ZERO );
     m_widget->setPosition( area.origin );
     m_widget->setSize( area.size );
 }
@@ -452,6 +453,7 @@ void WidgetResizer::StretchWithSize( const Rect& area )
 
 void WidgetResizer::ResizeWithScale()
 {
+    m_widget->setAnchorPoint( Vec2::ANCHOR_MIDDLE );
     m_widget->setPosition( m_props.position );
 
     const Size size = m_widget->getSize();
@@ -472,6 +474,7 @@ void WidgetResizer::ResizeWithScale()
 
 void WidgetResizer::ResizeWithSize()
 {
+    m_widget->setAnchorPoint( Vec2::ZERO );
     m_widget->setPosition( m_props.position );
     m_widget->setSize( m_props.size );
 }
