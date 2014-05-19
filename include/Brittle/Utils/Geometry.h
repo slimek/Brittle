@@ -50,6 +50,7 @@ inline Vec2 GetCenter( const Rect& rect )
 namespace Caramel
 {
 
+std::string ToString( const cocos2d::Vec2& vec );
 std::string ToString( const cocos2d::Size& size );
 
 
