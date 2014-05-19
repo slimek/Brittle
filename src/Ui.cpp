@@ -11,9 +11,6 @@
 #include <Caramel/Data/LookupTable.h>
 #include <Caramel/FileSystem/Path.h>
 #include <JsonCpp/reader.h>
-#include <ui/UIImageView.h>
-#include <ui/UIText.h>
-#include <ui/UITextBMFont.h>
 
 
 namespace Brittle
@@ -215,6 +212,7 @@ enum WidgetType
     WT_IMAGE_VIEW,
     WT_TEXT,
     WT_TEXT_BMFONT,
+    WT_BUTTON,
     WT_PANEL,
 };
 
@@ -225,6 +223,7 @@ void WidgetBuilder::BuildWidgetByType()
         ( WT_IMAGE_VIEW,  "ImageView", "Image" )
         ( WT_TEXT,        "Text", "Label" )
         ( WT_TEXT_BMFONT, "TextBMFont", "LabelFont" )
+        ( WT_BUTTON,      "Button" )
         ( WT_PANEL,       "Panel" );
 
     WidgetType type;
@@ -245,6 +244,10 @@ void WidgetBuilder::BuildWidgetByType()
 
     case WT_TEXT_BMFONT:
         this->BuildTextBMFont();
+        break;
+
+    case WT_BUTTON:
+        this->BuildButton();
         break;
 
     case WT_PANEL:
@@ -329,6 +332,7 @@ void WidgetBuilder::BuildTextBMFont()
         {
             CARAMEL_ALERT( "BMFont %s - fontPath %s not found",
                            m_path, fontPath );
+            return;
         }
 
         text->setFntFile( fontPath );
@@ -345,6 +349,31 @@ void WidgetBuilder::BuildTextBMFont()
 
     // Assign to m_widget only when built successfully.
     m_widget = text;
+}
+
+
+void WidgetBuilder::BuildButton()
+{
+    auto button = ui::Button::create();
+
+    std::string normalPath;
+    if ( m_json.GetString( "normalPath", normalPath ))
+    {
+        if ( ! FileUtils::getInstance()->isFileExist( normalPath ))
+        {
+            CARAMEL_ALERT( "Button %s - normalPath %s not found",
+                           m_path, normalPath );
+            return;
+        }
+
+        button->loadTextureNormal( normalPath );
+    }
+
+    m_props.Parse( m_json );
+    this->FillWidgetProperties( button );
+
+    // Assign to m_widget only when built successfully.
+    m_widget = button;
 }
 
 
