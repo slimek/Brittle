@@ -22,6 +22,7 @@ public:
     /// Node Events ///
 
     void onEnter() override;
+    void onExit()  override;
 
 
 private:
@@ -29,6 +30,7 @@ private:
     /// Game Scene Events ///
 
     virtual void OnEnterScene() {}
+    virtual void OnExitScene()  {}
 };
 
 

@@ -92,6 +92,14 @@ void GameScene::onEnter()
 }
 
 
+void GameScene::onExit()
+{
+    this->Scene::onExit();
+
+    this->OnExitScene();
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 
 } // namespace Brittle
