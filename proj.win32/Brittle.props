@@ -5,7 +5,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\Caramel\include;..\..\CandyJar\include;..\..\Cocos2d-x3\external\win32-specific\gles\include\OGLES;..\..\Cocos2d-x3\external\glfw3\include\win32;..\..\Cocos2d-x3\cocos\editor-support;..\..\Cocos2d-x3\cocos\2d\platform\win32;..\..\Cocos2d-x3\cocos\2d\platform\desktop;..\..\Cocos2d-x3\cocos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Caramel\include;..\..\CandyJar\include;..\..\Cocos2d-x3\external\win32-specific\gles\include\OGLES;..\..\Cocos2d-x3\external\glfw3\include\win32;..\..\Cocos2d-x3\cocos\editor-support;..\..\Cocos2d-x3\cocos\platform\win32;..\..\Cocos2d-x3\cocos\platform\desktop;..\..\Cocos2d-x3\cocos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />

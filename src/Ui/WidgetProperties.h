@@ -55,7 +55,7 @@ struct WidgetProperties
     
     /// Properties for Resize ///
 
-    Vector2 position;
+    Vec2 position;
     Size size;
     StretchMethod stretchMethod;
 

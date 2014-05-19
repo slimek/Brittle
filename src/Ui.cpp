@@ -301,7 +301,7 @@ void WidgetBuilder::BuildText()
     std::string textData;
     if ( m_json.GetString( "text", textData ))
     {
-        text->setText( textData );
+        text->setString( textData );
     }
 
     Int fontSize = text->getFontSize();
@@ -337,7 +337,7 @@ void WidgetBuilder::BuildTextBMFont()
     std::string textData;
     if ( m_json.GetString( "text", textData ))
     {
-        text->setText( textData );
+        text->setString( textData );
     }
 
     m_props.Parse( m_json );
@@ -406,7 +406,7 @@ void WidgetResizer::Resize( const Rect& area )
 
 void WidgetResizer::StretchWithScale( const Rect& area )
 {
-    m_widget->setAnchorPoint( Vector2( 0.5, 0.5 ));
+    m_widget->setAnchorPoint( Vec2( 0.5, 0.5 ));
     m_widget->setPosition( GetCenter( area ));
 
     const Size size = m_widget->getSize();

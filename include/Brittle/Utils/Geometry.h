@@ -16,7 +16,7 @@ namespace Brittle
 // Rect Helpers
 //
 
-inline Rect MakeRect( const Vector2& origin, const Size& size )
+inline Rect MakeRect( const Vec2& origin, const Size& size )
 {
     Rect r;
     r.origin = origin;
@@ -33,9 +33,9 @@ inline Rect MakeRect( const Size& size )
 }
 
 
-inline Vector2 GetCenter( const Rect& rect )
+inline Vec2 GetCenter( const Rect& rect )
 {
-    return Vector2( rect.getMidX(), rect.getMidY() );
+    return Vec2( rect.getMidX(), rect.getMidY() );
 }
 
 
