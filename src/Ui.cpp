@@ -279,7 +279,7 @@ enum WidgetType
 
 void WidgetBuilder::BuildWidgetByType()
 {
-    static const auto uiTypes = LookupTable< WidgetType >
+    static const auto uiTypes = MakeLookupTable
         ( WT_IMAGE_VIEW,    "ImageView", "Image" )
         ( WT_TEXT,          "Text", "Label" )
         ( WT_TEXT_BMFONT,   "TextBMFont", "LabelFont" )
