@@ -71,6 +71,9 @@
     <ClInclude Include="..\include\Brittle\Utils\Geometry.h">
       <Filter>1. Public Headers\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Ui\SimpleButton.h">
+      <Filter>1. Public Headers\Ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">

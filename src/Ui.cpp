@@ -7,6 +7,7 @@
 #include "Ui/WidgetProperties.h"
 #include "Ui/WidgetResizer.h"
 #include <Brittle/Ui/Panel.h>
+#include <Brittle/Ui/SimpleButton.h>
 #include <Brittle/Utils/Geometry.h>
 #include <Caramel/Data/LookupTable.h>
 #include <Caramel/FileSystem/Path.h>
@@ -19,6 +20,7 @@ namespace Brittle
 //
 // Content
 //
+//   SimpleButton
 //   Panel
 //   PanelBuilder
 //   WidgetBuilder
@@ -26,6 +28,51 @@ namespace Brittle
 //   PanelResizer
 //   WidgetProperties
 //
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Simple Button
+//
+
+SimpleButton::SimpleButton()
+{
+    namespace sp = std::placeholders;
+
+    this->addTouchEventListener(
+        std::bind( &SimpleButton::OnTouchEvent, this, sp::_1, sp::_2 )
+    );
+}
+
+
+SimpleButton* SimpleButton::Create()
+{
+    SimpleButton* button = new SimpleButton;
+    if ( button->init() )
+    {
+        button->autorelease();
+        return button;
+    }
+    CC_SAFE_DELETE( button );
+    return nullptr;
+}
+
+
+void SimpleButton::SetClickHandler( ClickHandler&& handler )
+{
+    m_clickHandler = handler;
+}   
+
+
+void SimpleButton::OnTouchEvent( Ref* sender, TouchEventType type )
+{
+    switch ( type )
+    {
+    case TouchEventType::ENDED:
+        m_clickHandler( this );
+        break;
+    }
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -67,6 +114,19 @@ void Panel::setParent( Node* parent )
     {
         resizer->Resize( MakeRect( this->getContentSize() ));
     }
+}
+
+
+void Panel::SetClickHandler( const std::string& name, ClickHandler&& handler )
+{
+    auto clickable = dynamic_cast< Clickable* >( this->GetChild( name ));
+    if ( ! clickable )
+    {
+        CARAMEL_ALERT( "Widget %s is not clickable", name );
+        return;
+    }
+
+    clickable->SetClickHandler( std::move( handler ));
 }
 
 
@@ -354,7 +414,7 @@ void WidgetBuilder::BuildTextBMFont()
 
 void WidgetBuilder::BuildButton()
 {
-    auto button = ui::Button::create();
+    auto button = SimpleButton::Create();
 
     std::string normalPath;
     if ( m_json.GetString( "normalPath", normalPath ))

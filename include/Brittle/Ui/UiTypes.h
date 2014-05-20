@@ -18,6 +18,11 @@ namespace Brittle
 // UI Components
 
 class Panel;
+class SimpleButton;
+
+
+// UI Event Handlers
+typedef std::function< void( Ref* ) > ClickHandler;
 
 
 // UI Internal Utilities
@@ -25,6 +30,22 @@ class Panel;
 class WidgetResizer;
 typedef std::shared_ptr< WidgetResizer > WidgetResizerPtr;
 
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Brittle UI Interfaces
+//
+
+struct Clickable
+{
+    virtual ~Clickable() {}
+
+    virtual void SetClickHandler( ClickHandler&& handler ) = 0;
+};
+
+
+
+///////////////////////////////////////////////////////////////////////////////
 
 } // namespace Brittle
 
