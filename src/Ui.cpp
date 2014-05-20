@@ -272,7 +272,7 @@ enum WidgetType
     WT_IMAGE_VIEW,
     WT_TEXT,
     WT_TEXT_BMFONT,
-    WT_BUTTON,
+    WT_SIMPLE_BUTTON,
     WT_PANEL,
 };
 
@@ -280,11 +280,11 @@ enum WidgetType
 void WidgetBuilder::BuildWidgetByType()
 {
     static const auto uiTypes = LookupTable< WidgetType >
-        ( WT_IMAGE_VIEW,  "ImageView", "Image" )
-        ( WT_TEXT,        "Text", "Label" )
-        ( WT_TEXT_BMFONT, "TextBMFont", "LabelFont" )
-        ( WT_BUTTON,      "Button" )
-        ( WT_PANEL,       "Panel" );
+        ( WT_IMAGE_VIEW,    "ImageView", "Image" )
+        ( WT_TEXT,          "Text", "Label" )
+        ( WT_TEXT_BMFONT,   "TextBMFont", "LabelFont" )
+        ( WT_SIMPLE_BUTTON, "SimpleButton", "Button" )
+        ( WT_PANEL,         "Panel" );
 
     WidgetType type;
     if ( ! uiTypes.FindValueByName( m_type, type ))
@@ -306,8 +306,8 @@ void WidgetBuilder::BuildWidgetByType()
         this->BuildTextBMFont();
         break;
 
-    case WT_BUTTON:
-        this->BuildButton();
+    case WT_SIMPLE_BUTTON:
+        this->BuildSimpleButton();
         break;
 
     case WT_PANEL:
@@ -412,7 +412,7 @@ void WidgetBuilder::BuildTextBMFont()
 }
 
 
-void WidgetBuilder::BuildButton()
+void WidgetBuilder::BuildSimpleButton()
 {
     auto button = SimpleButton::Create();
 

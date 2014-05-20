@@ -40,7 +40,7 @@ private:
     void BuildImageView();
     void BuildText();
     void BuildTextBMFont();
-    void BuildButton();
+    void BuildSimpleButton();
     void BuildPanel();
 
     JsonValue m_json;
