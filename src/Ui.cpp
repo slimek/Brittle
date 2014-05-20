@@ -506,6 +506,7 @@ void WidgetResizer::StretchWithScale( const Rect& area )
     switch ( m_props.stretchMethod )
     {
     case STRETCH_STRETCH:
+    case STRETCH_AUTO:
     {
         m_widget->setScaleX( ratioX );
         m_widget->setScaleY( ratioY );
@@ -524,6 +525,13 @@ void WidgetResizer::StretchWithScale( const Rect& area )
         return;
     }
 
+    case STRETCH_NONE:
+    {
+        // Keep the current size.
+        m_widget->setScale( 1 );
+        return;
+    }
+
     default:
         CARAMEL_NOT_REACHED();
     }
@@ -532,11 +540,18 @@ void WidgetResizer::StretchWithScale( const Rect& area )
 
 void WidgetResizer::StretchWithSize( const Rect& area )
 {
-    // All stretch method has the same result.
-
     m_widget->setAnchorPoint( Vec2::ZERO );
     m_widget->setPosition( area.origin );
-    m_widget->setSize( area.size );
+
+    if ( STRETCH_NONE == m_props.stretchMethod )
+    {
+        // Keep the current size.
+    }
+    else
+    {
+        // All other stretch method has the same result.
+        m_widget->setSize( area.size );
+    }
 }
 
 
@@ -623,9 +638,11 @@ void WidgetProperties::ParseRect( const JsonValue& json )
     if ( ! json.GetString( "rect", rect )) { return; }
 
     static const auto stretchMethods = MakeLookupTable
+        ( STRETCH_NONE,    "none" )
         ( STRETCH_FIT,     "fit" )
         ( STRETCH_FILL,    "fill" )
-        ( STRETCH_STRETCH, "stretch" );
+        ( STRETCH_STRETCH, "stretch" )
+        ( STRETCH_AUTO,    "auto" );
 
     if ( stretchMethods.FindValueByText( rect, this->stretchMethod ))
     {
