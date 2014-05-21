@@ -46,8 +46,23 @@ SimpleButton::SimpleButton()
 
 SimpleButton* SimpleButton::Create()
 {
-    SimpleButton* button = new SimpleButton;
+    auto button = new SimpleButton;
     if ( button->init() )
+    {
+        button->autorelease();
+        return button;
+    }
+    CC_SAFE_DELETE( button );
+    return nullptr;
+}
+
+
+SimpleButton* SimpleButton::Create(
+    const std::string& normalImage, const std::string& selectedImage,
+    const std::string& disabledImage, TextureResType texType )
+{
+    auto button = new SimpleButton;
+    if ( button->init( normalImage, selectedImage, disabledImage, texType ))
     {
         button->autorelease();
         return button;
