@@ -1,4 +1,4 @@
-// Brittle C++ Library - UI - Simple SimpleButton Header
+// Brittle C++ Library - UI - Simple Button Header
 
 #ifndef __BRITTLE_UI_SIMPLE_BUTTON_H
 #define __BRITTLE_UI_SIMPLE_BUTTON_H
@@ -14,7 +14,7 @@ namespace Brittle
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Simple SimpleButton
+// Simple Button
 // - A button widget which has only a click event.
 //
 
@@ -28,7 +28,7 @@ public:
 
     //
     // Creating Functions
-    // - Imitate the behavior of ui::SimpleButton.
+    // - Imitate the behavior of ui::Button.
     //
 
     static SimpleButton* Create();
