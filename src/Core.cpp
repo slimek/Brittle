@@ -22,6 +22,16 @@ namespace Brittle
 // Game Application
 //
 
+GameApp* GameApp::Instance()
+{
+    return static_cast< GameApp* >( Application::getInstance() );
+}
+
+
+//
+// Application Event Handling
+//
+
 Bool GameApp::applicationDidFinishLaunching()
 {
     CARAMEL_TRACE_INFO( "Application Did Finish Launching" );
@@ -77,9 +87,25 @@ Int GameApp::Run( const GameAppSettings& settings )
 }
 
 
+//
+// Scene Management
+//
+
+void GameApp::ReplaceScene( Int sceneId )
+{
+    auto newScene = this->CreateScene( sceneId );
+    newScene->autorelease();
+    Director::getInstance()->replaceScene( newScene );
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Game Scene
+//
+
+//
+// Node Event Handling
 //
 
 void GameScene::onEnter()
@@ -97,6 +123,16 @@ void GameScene::onExit()
     this->Scene::onExit();
 
     this->OnExitScene();
+}
+
+
+//
+// Scene Management
+//
+
+void GameScene::ReplaceScene( Int sceneId )
+{
+    GameApp::Instance()->ReplaceScene( sceneId );
 }
 
 

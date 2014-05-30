@@ -20,6 +20,10 @@ class GameApp : public Application
 {
 public:
 
+    /// Accessors ///
+
+    static GameApp* Instance();
+
     
     /// Run / Launch ///
 
@@ -41,6 +45,11 @@ public:
     Bool applicationDidFinishLaunching() override;
     void applicationDidEnterBackground() override;
     void applicationWillEnterForeground() override;
+
+
+    /// Scene Management ///
+
+    void ReplaceScene( Int sceneId );
 
 
 private:

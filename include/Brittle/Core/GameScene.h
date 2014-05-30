@@ -25,6 +25,11 @@ public:
     void onExit()  override;
 
 
+    /// Scene Management ///
+
+    static void ReplaceScene( Int sceneId );
+
+
 private:
 
     /// Game Scene Events ///
