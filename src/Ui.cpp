@@ -152,12 +152,31 @@ ui::Widget* Panel::GetChild( const std::string& name ) const
 {
     // TODO: In v3.0 ui::Widget::getChildByName() is non-const ...
 
-    auto widget = const_cast< Panel* >( this )->getChildByName( name.c_str() );
+    auto widget = const_cast< Panel* >( this )->getChildByName( name );
     if ( ! widget )
     {
         CARAMEL_THROW( "Panel %s child %s not found", this->getName(), name );
     }
     return widget;
+}
+
+
+ui::Widget* Panel::GetDescendant( const std::string& name ) const
+{
+    auto widget = const_cast< Panel* >( this )->getChildByName( name );
+    if ( widget ) { return widget; }
+
+    for ( auto node : this->getChildren() )
+    {
+        auto panel = dynamic_cast< Panel* >( node );
+        if ( panel )
+        {
+            widget = panel->GetDescendant( name );
+            if ( widget ) { return widget; }
+        }
+    }
+
+    CARAMEL_THROW( "Panel %s descendant %s not found", this->getName(), name );
 }
 
 
@@ -181,7 +200,7 @@ void Panel::setParent( Node* parent )
 
 void Panel::SetClickHandler( const std::string& name, ClickHandler&& handler )
 {
-    auto clickable = dynamic_cast< Clickable* >( this->GetChild( name ));
+    auto clickable = dynamic_cast< Clickable* >( this->GetDescendant( name ));
     if ( ! clickable )
     {
         CARAMEL_ALERT( "Widget %s is not clickable", name );
