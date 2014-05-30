@@ -40,6 +40,7 @@ private:
     void BuildImageView();
     void BuildText();
     void BuildTextBMFont();
+    void BuildLabelButton();
     void BuildSimpleButton();
     void BuildPanel();
 

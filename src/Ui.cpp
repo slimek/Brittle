@@ -6,6 +6,7 @@
 #include "Ui/WidgetBuilder.h"
 #include "Ui/WidgetProperties.h"
 #include "Ui/WidgetResizer.h"
+#include <Brittle/Ui/LabelButton.h>
 #include <Brittle/Ui/Panel.h>
 #include <Brittle/Ui/SimpleButton.h>
 #include <Brittle/Utils/Geometry.h>
@@ -20,6 +21,7 @@ namespace Brittle
 //
 // Content
 //
+//   LabelButton
 //   SimpleButton
 //   Panel
 //   PanelBuilder
@@ -28,6 +30,51 @@ namespace Brittle
 //   PanelResizer
 //   WidgetProperties
 //
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Label Button
+//
+
+LabelButton::LabelButton()
+{
+    namespace sp = std::placeholders;
+
+    this->addTouchEventListener(
+        std::bind( &LabelButton::OnTouchEvent, this, sp::_1, sp::_2 )
+    );
+}
+
+
+LabelButton* LabelButton::Create()
+{
+    auto button = new LabelButton;
+    if ( button->init() )
+    {
+        button->autorelease();
+        return button;
+    }
+    CC_SAFE_DELETE( button );
+    return nullptr;
+}
+
+
+void LabelButton::SetClickHandler( ClickHandler&& handler )
+{
+    m_clickHandler = handler;
+}   
+
+
+void LabelButton::OnTouchEvent( Ref* sender, TouchEventType type )
+{
+    switch ( type )
+    {
+    case TouchEventType::ENDED:
+        m_clickHandler( this );
+        break;
+    }
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -287,6 +334,7 @@ enum WidgetType
     WT_IMAGE_VIEW,
     WT_TEXT,
     WT_TEXT_BMFONT,
+    WT_LABEL_BUTTON,
     WT_SIMPLE_BUTTON,
     WT_PANEL,
 };
@@ -298,6 +346,7 @@ void WidgetBuilder::BuildWidgetByType()
         ( WT_IMAGE_VIEW,    "ImageView", "Image" )
         ( WT_TEXT,          "Text", "Label" )
         ( WT_TEXT_BMFONT,   "TextBMFont", "LabelFont" )
+        ( WT_LABEL_BUTTON,  "LabelButton" )
         ( WT_SIMPLE_BUTTON, "SimpleButton", "Button" )
         ( WT_PANEL,         "Panel" );
 
@@ -319,6 +368,10 @@ void WidgetBuilder::BuildWidgetByType()
 
     case WT_TEXT_BMFONT:
         this->BuildTextBMFont();
+        break;
+
+    case WT_LABEL_BUTTON:
+        this->BuildLabelButton();
         break;
 
     case WT_SIMPLE_BUTTON:
@@ -424,6 +477,30 @@ void WidgetBuilder::BuildTextBMFont()
 
     // Assign to m_widget only when built successfully.
     m_widget = text;
+}
+
+
+void WidgetBuilder::BuildLabelButton()
+{
+    auto button = LabelButton::Create();
+
+    std::string textData;
+    if ( m_json.GetString( "text", textData ))
+    {
+        button->setString( textData );
+    }
+
+    Int fontSize = button->getFontSize();
+    if ( m_json.GetInt( "fontSize", fontSize ))
+    {
+        button->setFontSize( fontSize );
+    }
+
+    m_props.Parse( m_json );
+    this->FillWidgetProperties( button );
+
+    // Assign to m_widget only when built successfully.
+    m_widget = button;
 }
 
 
@@ -620,6 +697,7 @@ void PanelResizer::Resize( const Rect& area )
         resizer->Resize( MakeRect( m_panel->getContentSize() ));
     }
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //
