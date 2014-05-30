@@ -45,6 +45,7 @@ struct WidgetProperties
     WidgetProperties()
         : flags( 0 )
         , visible( true )
+        , anchor( Vec2::ANCHOR_MIDDLE )
         , stretchMethod( STRETCH_NONE )
     {}
 
@@ -57,6 +58,7 @@ struct WidgetProperties
     /// Properties for Resize ///
 
     Vec2 position;
+    Vec2 anchor;
     Size size;
     StretchMethod stretchMethod;
 
@@ -77,6 +79,7 @@ private:
 //     "fit"
 //     "fill"
 //     "stretch"
+//     "auto"
 //
 
 ///////////////////////////////////////////////////////////////////////////////

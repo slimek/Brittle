@@ -649,7 +649,7 @@ void WidgetResizer::StretchWithSize( const Rect& area )
 
 void WidgetResizer::ResizeWithScale()
 {
-    m_widget->setAnchorPoint( Vec2::ANCHOR_MIDDLE );
+    m_widget->setAnchorPoint( m_props.anchor );
     m_widget->setPosition( m_props.position );
 
     const Size size = m_widget->getSize();
@@ -721,6 +721,12 @@ void WidgetProperties::Parse( const JsonValue& json )
     if ( json.GetFloat( "height", this->size.height ))
     {
         flags |= WP_FLAG_USE_HEIGHT;
+    }
+
+    // left > x
+    if ( json.GetFloat( "left", this->position.x ))
+    {
+        this->anchor.x = 0;
     }
 }
 
