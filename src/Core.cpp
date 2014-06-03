@@ -4,6 +4,7 @@
 
 #include <Brittle/Core/GameApp.h>
 #include <Brittle/Core/GameScene.h>
+#include <Brittle/Core/Model.h>
 #include <Caramel/Error/CatchException.h>
 
 
@@ -15,6 +16,7 @@ namespace Brittle
 //
 //   GameApp
 //   GameScene
+//   Model
 //
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -133,6 +135,17 @@ void GameScene::onExit()
 void GameScene::ReplaceScene( Int sceneId )
 {
     GameApp::Instance()->ReplaceScene( sceneId );
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Model
+//
+
+void Model::LinkEventTarget( AnyEventTarget& target )
+{
+    m_dispatcher.LinkTarget( target );
 }
 
 
