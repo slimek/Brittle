@@ -14,7 +14,7 @@
     <ClInclude Include="..\include\Brittle\Core\GameApp.h" />
     <ClInclude Include="..\include\Brittle\Core\GameAppSettings.h" />
     <ClInclude Include="..\include\Brittle\Core\GameScene.h" />
-    <ClInclude Include="..\include\Brittle\Core\Model.h" />
+    <ClInclude Include="..\include\Brittle\Mv\Model.h" />
     <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h" />
     <ClInclude Include="..\include\Brittle\Ui\LabelButton.h" />
     <ClInclude Include="..\include\Brittle\Ui\SimpleButton.h" />
@@ -35,6 +35,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\src\Core.cpp" />
+    <ClCompile Include="..\src\Mv.cpp" />
     <ClCompile Include="..\src\Ui.cpp" />
     <ClCompile Include="..\src\Utils.cpp" />
   </ItemGroup>
