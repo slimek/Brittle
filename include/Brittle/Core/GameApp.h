@@ -42,9 +42,9 @@ public:
 
     /// Application Protocol Events ///
 
-    Bool applicationDidFinishLaunching() override;
-    void applicationDidEnterBackground() override;
-    void applicationWillEnterForeground() override;
+    Bool applicationDidFinishLaunching() final override;
+    void applicationDidEnterBackground() final override;
+    void applicationWillEnterForeground() final override;
 
 
     /// Scene Management ///
