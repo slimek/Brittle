@@ -47,6 +47,13 @@ public:
     void applicationWillEnterForeground() final override;
 
 
+    /// Scheduling ///
+
+    // Schedule per frame update
+    // - This function would be called by CCScheduler
+    void update( Float delta );
+
+
     /// Scene Management ///
 
     void ReplaceScene( Int sceneId );
@@ -71,7 +78,7 @@ private:
     void InitPlatform();
     void ExitPlatform();
 
-
+    
     /// Data Members ///
 
     GameAppSettings m_settings;

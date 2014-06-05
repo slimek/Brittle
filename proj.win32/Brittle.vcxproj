@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\Brittle\Core\Async.h" />
     <ClInclude Include="..\include\Brittle\Core\GameApp.h" />
     <ClInclude Include="..\include\Brittle\Core\GameAppSettings.h" />
     <ClInclude Include="..\include\Brittle\Core\GameScene.h" />
@@ -23,6 +24,7 @@
     <ClInclude Include="..\include\Brittle\Utils\Geometry.h" />
     <ClInclude Include="..\include\Brittle\Utils\JsonValue.h" />
     <ClInclude Include="..\src\BrittlePch.h" />
+    <ClInclude Include="..\src\Core\AsyncCenter.h" />
     <ClInclude Include="..\src\Ui\PanelBuilder.h" />
     <ClInclude Include="..\src\Ui\WidgetProperties.h" />
     <ClInclude Include="..\src\Ui\WidgetBuilder.h" />

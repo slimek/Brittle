@@ -33,6 +33,9 @@
     <Filter Include="1. Public Headers\Mv">
       <UniqueIdentifier>{b5a7147d-d284-4728-8b81-c66bb0d6430e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="2. Source Files\Core">
+      <UniqueIdentifier>{6be8fc26-7557-4c3d-99bd-fe37503f9ff9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Core\Async.h">
       <Filter>1. Public Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\AsyncCenter.h">
+      <Filter>2. Source Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

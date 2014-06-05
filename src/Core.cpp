@@ -2,9 +2,10 @@
 
 #include "BrittlePch.h"
 
+#include "Core/AsyncCenter.h"
+#include <Brittle/Core/Async.h>
 #include <Brittle/Core/GameApp.h>
 #include <Brittle/Core/GameScene.h>
-#include <Brittle/Core/Model.h>
 #include <Caramel/Error/CatchException.h>
 
 
@@ -16,7 +17,8 @@ namespace Brittle
 //
 //   GameApp
 //   GameScene
-//   Model
+//   AsyncCenter
+//   Async
 //
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -40,9 +42,16 @@ Bool GameApp::applicationDidFinishLaunching()
 
     this->OnLaunch();
 
+    auto director = Director::getInstance();
+
     auto initialScene = this->CreateScene( m_settings.initialSceneId );
     initialScene->autorelease();
-    Director::getInstance()->pushScene( initialScene );
+    director->pushScene( initialScene );
+
+
+    /// Scheduler ///
+    
+    director->getScheduler()->scheduleUpdate( this, -1, false );
 
 
     /// Specify Default Search Path ///
@@ -63,6 +72,12 @@ void GameApp::applicationDidEnterBackground()
 void GameApp::applicationWillEnterForeground()
 {
     this->OnEnterForeground();
+}
+
+
+void GameApp::update( Float delta )
+{
+    AsyncCenter::Instance()->RenderUpdate();
 }
 
 
@@ -140,12 +155,35 @@ void GameScene::ReplaceScene( Int sceneId )
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Model
+// Asynchronous Center
 //
 
-void Model::LinkEventTarget( AnyEventTarget& target )
+AsyncCenter::AsyncCenter()
+    : m_renderPoller( new TaskPoller )
 {
-    m_dispatcher.LinkTarget( target );
+}
+
+
+void AsyncCenter::RenderUpdate()
+{
+    m_renderPoller->PollFor( Ticks( 10 ));
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Asynchronous
+//
+
+TaskExecutor& Async::RenderExecutor()
+{
+    return AsyncCenter::Instance()->RenderExecutor();
+}
+
+
+void Async::RenderUpdate()
+{
+    AsyncCenter::Instance()->RenderUpdate();
 }
 
 
