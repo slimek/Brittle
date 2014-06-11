@@ -4,7 +4,7 @@
 
 #include "Core/AsyncCenter.h"
 #include <Brittle/Core/Async.h>
-#include <Brittle/Core/GameApp.h>
+#include <Brittle/Core/SimpleApp.h>
 #include <Brittle/Core/GameScene.h>
 #include <Caramel/Error/CatchException.h>
 
@@ -15,7 +15,7 @@ namespace Brittle
 //
 // [Contents]
 //
-//   GameApp
+//   SimpleApp
 //   GameScene
 //   AsyncCenter
 //   Async
@@ -26,9 +26,9 @@ namespace Brittle
 // Game Application
 //
 
-GameApp* GameApp::Instance()
+SimpleApp* SimpleApp::Instance()
 {
-    return static_cast< GameApp* >( Application::getInstance() );
+    return static_cast< SimpleApp* >( Application::getInstance() );
 }
 
 
@@ -36,7 +36,7 @@ GameApp* GameApp::Instance()
 // Application Event Handling
 //
 
-Bool GameApp::applicationDidFinishLaunching()
+Bool SimpleApp::applicationDidFinishLaunching()
 {
     CARAMEL_TRACE_INFO( "Application Did Finish Launching" );
 
@@ -63,19 +63,19 @@ Bool GameApp::applicationDidFinishLaunching()
 }
 
 
-void GameApp::applicationDidEnterBackground()
+void SimpleApp::applicationDidEnterBackground()
 {
     this->OnEnterBackground();
 }
 
 
-void GameApp::applicationWillEnterForeground()
+void SimpleApp::applicationWillEnterForeground()
 {
     this->OnEnterForeground();
 }
 
 
-void GameApp::update( Float delta )
+void SimpleApp::update( Float delta )
 {
     AsyncCenter::Instance()->RenderUpdate();
 }
@@ -85,7 +85,7 @@ void GameApp::update( Float delta )
 // Entry from Platform Dependent Scope
 //
 
-Int GameApp::Run( const GameAppSettings& settings )
+Int SimpleApp::Run( const GameAppSettings& settings )
 {
     m_settings = settings;
 
@@ -108,7 +108,7 @@ Int GameApp::Run( const GameAppSettings& settings )
 // Scene Management
 //
 
-void GameApp::ReplaceScene( Int sceneId )
+void SimpleApp::ReplaceScene( Int sceneId )
 {
     auto newScene = this->CreateScene( sceneId );
     newScene->autorelease();
@@ -149,7 +149,7 @@ void GameScene::onExit()
 
 void GameScene::ReplaceScene( Int sceneId )
 {
-    GameApp::Instance()->ReplaceScene( sceneId );
+    SimpleApp::Instance()->ReplaceScene( sceneId );
 }
 
 

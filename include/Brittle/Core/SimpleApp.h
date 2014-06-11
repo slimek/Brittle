@@ -1,7 +1,7 @@
-// Brittle C++ Library - Core - Game Application Header
+// Brittle C++ Library - Core - Simple Application Header
 
-#ifndef __BRITTLE_CORE_GAME_APP_H
-#define __BRITTLE_CORE_GAME_APP_H
+#ifndef __BRITTLE_CORE_SIMPLE_APP_H
+#define __BRITTLE_CORE_SIMPLE_APP_H
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
@@ -13,16 +13,16 @@ namespace Brittle
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Game Application
+// Simple Application
 //
 
-class GameApp : public Application
+class SimpleApp : public Application
 {
 public:
 
     /// Accessors ///
 
-    static GameApp* Instance();
+    static SimpleApp* Instance();
 
     
     /// Run / Launch ///
@@ -89,4 +89,4 @@ private:
 
 } // namespace Brittle
 
-#endif // __BRITTLE_CORE_GAME_APP_H
+#endif // __BRITTLE_CORE_SIMPLE_APP_H

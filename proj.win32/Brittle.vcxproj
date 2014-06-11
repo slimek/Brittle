@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Brittle\Core\Async.h" />
-    <ClInclude Include="..\include\Brittle\Core\GameApp.h" />
+    <ClInclude Include="..\include\Brittle\Core\SimpleApp.h" />
     <ClInclude Include="..\include\Brittle\Core\GameAppSettings.h" />
     <ClInclude Include="..\include\Brittle\Core\GameScene.h" />
     <ClInclude Include="..\include\Brittle\Mv\Model.h" />

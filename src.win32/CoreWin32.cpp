@@ -2,7 +2,7 @@
 
 #include "BrittlePch.h"
 
-#include <Brittle/Core/GameApp.h>
+#include <Brittle/Core/SimpleApp.h>
 #include <Caramel/Windows/DebuggerTraceAdapter.h>
 #include <cocostudio/ObjectFactory.h>
 
@@ -13,15 +13,15 @@ namespace Brittle
 //
 // Contents
 //
-//   GameApp
+//   SimpleApp
 //
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Game App
+// Simple Application
 //
 
-void GameApp::InitPlatform()
+void SimpleApp::InitPlatform()
 {
     /// Redirect Caramel Trace to Win32 Debugger ///
 
@@ -61,7 +61,7 @@ void GameApp::InitPlatform()
 }
 
 
-void GameApp::ExitPlatform()
+void SimpleApp::ExitPlatform()
 {
     cocostudio::ObjectFactory::destroyInstance();
 }

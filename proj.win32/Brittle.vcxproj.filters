@@ -41,9 +41,6 @@
     <ClInclude Include="..\src\BrittlePch.h">
       <Filter>4. Precompiled Header</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Brittle\Core\GameApp.h">
-      <Filter>1. Public Headers\Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Brittle\Core\GameAppSettings.h">
       <Filter>1. Public Headers\Core</Filter>
     </ClInclude>
@@ -91,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="..\src\Core\AsyncCenter.h">
       <Filter>2. Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Core\SimpleApp.h">
+      <Filter>1. Public Headers\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
