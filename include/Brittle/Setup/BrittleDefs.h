@@ -28,8 +28,13 @@ typedef Caramel::Float Float;
 // Forward Declarations
 //
 
+// Core Components
 class SimpleApp;
 class SimpleScene;
+
+// Application Settings
+struct AppSettings;
+struct DesktopSettings;
 
 
 } // namespace Brittle

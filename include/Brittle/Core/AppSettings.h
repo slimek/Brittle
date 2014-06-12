@@ -1,7 +1,7 @@
-// Brittle C++ Library - Core - Game Application Settings Header
+// Brittle C++ Library - Core - Application Settings Header
 
-#ifndef __BRITTLE_CORE_GAME_APP_SETTINGS_H
-#define __BRITTLE_CORE_GAME_APP_SETTINGS_H
+#ifndef __BRITTLE_CORE_APP_SETTINGS_H
+#define __BRITTLE_CORE_APP_SETTINGS_H
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
@@ -31,12 +31,12 @@ struct DesktopSettings
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Game Application Settings - Integrated
+// Application Settings - Integrated
 //
 
-struct GameAppSettings
+struct AppSettings
 {
-    GameAppSettings()
+    AppSettings()
         : initialSceneId( 0 )
     {}
 
@@ -50,4 +50,4 @@ struct GameAppSettings
 
 } // namespace Brittle
 
-#endif // __BRITTLE_CORE_GAME_APP_SETTINGS_H
+#endif // __BRITTLE_CORE_APP_SETTINGS_H

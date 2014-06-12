@@ -85,7 +85,7 @@ void SimpleApp::update( Float delta )
 // Entry from Platform Dependent Scope
 //
 
-Int SimpleApp::Run( const GameAppSettings& settings )
+Int SimpleApp::Run( const AppSettings& settings )
 {
     m_settings = settings;
 

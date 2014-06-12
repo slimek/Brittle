@@ -5,7 +5,7 @@
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
-#include <Brittle/Core/GameAppSettings.h>
+#include <Brittle/Core/AppSettings.h>
 
 
 namespace Brittle
@@ -29,13 +29,13 @@ public:
 
     #if defined( CARAMEL_SYSTEM_IS_WINDOWS )
 
-    Int Run( const GameAppSettings& s );
+    Int Run( const AppSettings& s );
 
     #endif
 
     #if defined( CARAMEL_SYSTEM_IS_IOS ) || defined( CARAMEL_SYSTEM_IS_ANDROID )
 
-    Bool Launch( const GameAppSettings& s );
+    Bool Launch( const AppSettings& s );
 
     #endif
 
@@ -81,7 +81,7 @@ private:
     
     /// Data Members ///
 
-    GameAppSettings m_settings;
+    AppSettings m_settings;
 };
 
 
