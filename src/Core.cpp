@@ -5,7 +5,7 @@
 #include "Core/AsyncCenter.h"
 #include <Brittle/Core/Async.h>
 #include <Brittle/Core/SimpleApp.h>
-#include <Brittle/Core/GameScene.h>
+#include <Brittle/Core/SimpleScene.h>
 #include <Caramel/Error/CatchException.h>
 
 
@@ -16,14 +16,14 @@ namespace Brittle
 // [Contents]
 //
 //   SimpleApp
-//   GameScene
+//   SimpleScene
 //   AsyncCenter
 //   Async
 //
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Game Application
+// Simple Application
 //
 
 SimpleApp* SimpleApp::Instance()
@@ -125,7 +125,7 @@ void SimpleApp::ReplaceScene( Int sceneId )
 // Node Event Handling
 //
 
-void GameScene::onEnter()
+void SimpleScene::onEnter()
 {
     this->Scene::onEnter();
 
@@ -135,7 +135,7 @@ void GameScene::onEnter()
 }
 
 
-void GameScene::onExit()
+void SimpleScene::onExit()
 {
     this->Scene::onExit();
 
@@ -147,7 +147,7 @@ void GameScene::onExit()
 // Scene Management
 //
 
-void GameScene::ReplaceScene( Int sceneId )
+void SimpleScene::ReplaceScene( Int sceneId )
 {
     SimpleApp::Instance()->ReplaceScene( sceneId );
 }

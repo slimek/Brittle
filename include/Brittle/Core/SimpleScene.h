@@ -1,7 +1,7 @@
-// Brittle C++ Library - Core - Game Scene Header
+// Brittle C++ Library - Core - Simple Scene Header
 
-#ifndef __BRITTLE_CORE_GAME_SCENE_H
-#define __BRITTLE_CORE_GAME_SCENE_H
+#ifndef __BRITTLE_CORE_SIMPLE_SCENE_H
+#define __BRITTLE_CORE_SIMPLE_SCENE_H
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
@@ -12,10 +12,10 @@ namespace Brittle
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Game Scene
+// Simple Scene
 //
 
-class GameScene : public Scene
+class SimpleScene : public Scene
 {
 public:
 
@@ -44,4 +44,4 @@ private:
 
 } // namespace Brittle
 
-#endif // __BRITTLE_CORE_GAME_SCENE_H
+#endif // __BRITTLE_CORE_SIMPLE_SCENE_H

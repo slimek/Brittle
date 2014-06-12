@@ -47,9 +47,6 @@
     <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h">
       <Filter>1. Public Headers\Setup</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Brittle\Core\GameScene.h">
-      <Filter>1. Public Headers\Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Brittle\Ui\UiTypes.h">
       <Filter>1. Public Headers\Ui</Filter>
     </ClInclude>
@@ -90,6 +87,9 @@
       <Filter>2. Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Core\SimpleApp.h">
+      <Filter>1. Public Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Core\SimpleScene.h">
       <Filter>1. Public Headers\Core</Filter>
     </ClInclude>
   </ItemGroup>

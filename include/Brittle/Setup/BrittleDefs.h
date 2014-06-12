@@ -28,8 +28,8 @@ typedef Caramel::Float Float;
 // Forward Declarations
 //
 
-class GameApp;
-class GameScene;
+class SimpleApp;
+class SimpleScene;
 
 
 } // namespace Brittle

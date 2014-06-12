@@ -70,7 +70,7 @@ private:
 
     /// Scene Management ///
 
-    virtual GameScene* CreateScene( Int sceneId ) = 0;
+    virtual SimpleScene* CreateScene( Int sceneId ) = 0;
 
 
     /// Platform Dependent ///
