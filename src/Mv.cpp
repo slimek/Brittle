@@ -3,6 +3,7 @@
 #include "BrittlePch.h"
 
 #include <Brittle/Core/Async.h>
+#include <Brittle/Mv/Machine.h>
 #include <Brittle/Mv/Model.h>
 
 
@@ -13,18 +14,13 @@ namespace Brittle
 // [Contents]
 //
 //   Model
+//   Machine
 //
 
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Model
 //
-
-Model::Model( std::string modelName )
-    : m_machine( std::move( modelName ), Async::RenderExecutor() )
-{
-}
-
 
 Model::~Model()
 {
@@ -34,6 +30,17 @@ Model::~Model()
 void Model::LinkEventTarget( AnyEventTarget& target )
 {
     m_dispatcher.LinkTarget( target );
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Machine
+//
+
+Machine::Machine( const std::string& machineName )
+    : m_machine( machineName, Async::RenderExecutor() )
+{
 }
 
 

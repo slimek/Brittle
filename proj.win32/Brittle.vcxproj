@@ -15,6 +15,7 @@
     <ClInclude Include="..\include\Brittle\Core\SimpleApp.h" />
     <ClInclude Include="..\include\Brittle\Core\AppSettings.h" />
     <ClInclude Include="..\include\Brittle\Core\SimpleScene.h" />
+    <ClInclude Include="..\include\Brittle\Mv\Machine.h" />
     <ClInclude Include="..\include\Brittle\Mv\Model.h" />
     <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h" />
     <ClInclude Include="..\include\Brittle\Ui\LabelButton.h" />

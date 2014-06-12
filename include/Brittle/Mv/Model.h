@@ -6,7 +6,6 @@
 
 #include <Brittle/Setup/BrittleDefs.h>
 #include <Caramel/Async/AnyEventDispatcher.h>
-#include <Caramel/Statechart/StateMachine.h>
 
 
 namespace Brittle
@@ -21,7 +20,6 @@ class Model
 {
 public:
 
-    explicit Model( std::string modelName );
     virtual ~Model();
 
     void LinkEventTarget( AnyEventTarget& target );
@@ -30,8 +28,6 @@ public:
 protected:
 
     AnyEventDispatcher m_dispatcher;
-
-    Statechart::StateMachine m_machine;
 };
 
 

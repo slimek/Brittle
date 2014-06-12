@@ -92,6 +92,9 @@
     <ClInclude Include="..\include\Brittle\Core\AppSettings.h">
       <Filter>1. Public Headers\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Mv\Machine.h">
+      <Filter>1. Public Headers\Mv</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">
