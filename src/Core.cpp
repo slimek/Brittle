@@ -4,6 +4,7 @@
 
 #include "Core/AsyncCenter.h"
 #include <Brittle/Core/Async.h>
+#include <Brittle/Core/FrameClock.h>
 #include <Brittle/Core/SimpleApp.h>
 #include <Brittle/Core/SimpleScene.h>
 #include <Caramel/Error/CatchException.h>
@@ -17,6 +18,7 @@ namespace Brittle
 //
 //   SimpleApp
 //   SimpleScene
+//   FrameClock
 //   AsyncCenter
 //   Async
 //
@@ -77,6 +79,8 @@ void SimpleApp::applicationWillEnterForeground()
 
 void SimpleApp::update( Float delta )
 {
+    FrameClock::Advance( delta );
+
     AsyncCenter::Instance()->RenderUpdate();
 }
 
@@ -118,7 +122,7 @@ void SimpleApp::ReplaceScene( Int sceneId )
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Game Scene
+// Simple Scene
 //
 
 //
@@ -150,6 +154,36 @@ void SimpleScene::onExit()
 void SimpleScene::ReplaceScene( Int sceneId )
 {
     SimpleApp::Instance()->ReplaceScene( sceneId );
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Frame Clock
+//
+
+Seconds FrameClock::m_sinceEpoch;
+
+FrameTime FrameClock::Now()
+{
+    return FrameTime( m_sinceEpoch );
+}
+
+
+void FrameClock::Advance( Float delta )
+{
+    m_sinceEpoch += Seconds( delta );
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Frame Time
+//
+
+FrameTime::FrameTime( const Seconds& sinceEpoch )
+    : Inherited( sinceEpoch )
+{
 }
 
 

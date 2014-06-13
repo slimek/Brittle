@@ -20,8 +20,9 @@ using namespace Caramel;
 // Typedefs
 //
 
-typedef Caramel::Bool  Bool;
-typedef Caramel::Float Float;
+typedef Caramel::Bool   Bool;
+typedef Caramel::Float  Float;
+typedef Caramel::Double Double;
 
 
 //
