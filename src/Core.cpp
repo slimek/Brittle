@@ -145,6 +145,8 @@ void SimpleScene::onEnter()
 
     this->setContentSize( Director::getInstance()->getVisibleSize() );
 
+    this->scheduleUpdate();
+
     this->OnEnterScene();
 }
 
@@ -153,7 +155,15 @@ void SimpleScene::onExit()
 {
     this->Scene::onExit();
 
+    this->unscheduleUpdate();
+
     this->OnExitScene();
+}
+
+
+void SimpleScene::update( Float delta )
+{
+    this->OnUpdate();
 }
 
 

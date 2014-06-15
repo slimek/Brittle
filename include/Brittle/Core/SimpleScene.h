@@ -23,6 +23,7 @@ public:
 
     void onEnter() override;
     void onExit()  override;
+    void update( Float delta ) override;
 
 
     /// Scene Management ///
@@ -32,10 +33,11 @@ public:
 
 private:
 
-    /// Game Scene Events ///
+    /// Scene Events ///
 
     virtual void OnEnterScene() {}
     virtual void OnExitScene()  {}
+    virtual void OnUpdate() {}
 };
 
 
