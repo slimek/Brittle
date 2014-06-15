@@ -46,6 +46,8 @@ Bool SimpleApp::applicationDidFinishLaunching()
 
     auto director = Director::getInstance();
 
+    director->startAnimation();
+
     auto initialScene = this->CreateScene( m_settings.initialSceneId );
     initialScene->autorelease();
     director->pushScene( initialScene );
@@ -67,12 +69,20 @@ Bool SimpleApp::applicationDidFinishLaunching()
 
 void SimpleApp::applicationDidEnterBackground()
 {
+    CARAMEL_TRACE_INFO( "App enter background" );
+
+    Director::getInstance()->stopAnimation();
+
     this->OnEnterBackground();
 }
 
 
 void SimpleApp::applicationWillEnterForeground()
 {
+    CARAMEL_TRACE_INFO( "App enter foreground" );
+
+    Director::getInstance()->startAnimation();
+
     this->OnEnterForeground();
 }
 
