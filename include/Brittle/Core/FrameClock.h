@@ -29,12 +29,18 @@ public:
 
     static FrameTime Now();
 
+    static void Pause();
+    static void Resume();
+
+    static Bool IsPaused() { return m_paused; }
+
 private:
 
     friend class SimpleApp;
     static void Advance( Float delta );
 
     static Seconds m_sinceEpoch;
+    static Bool m_paused;
 };
 
 

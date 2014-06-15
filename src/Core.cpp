@@ -183,6 +183,20 @@ void SimpleScene::ReplaceScene( Int sceneId )
 //
 
 Seconds FrameClock::m_sinceEpoch;
+Bool FrameClock::m_paused = false;
+
+
+void FrameClock::Pause()
+{
+    m_paused = true;
+}
+
+
+void FrameClock::Resume()
+{
+    m_paused = false;
+}
+
 
 FrameTime FrameClock::Now()
 {
@@ -192,6 +206,11 @@ FrameTime FrameClock::Now()
 
 void FrameClock::Advance( Float delta )
 {
+    if ( m_paused )
+    {
+        return;
+    }
+
     m_sinceEpoch += Seconds( delta );
 }
 
