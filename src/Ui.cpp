@@ -138,7 +138,10 @@ void SimpleButton::OnTouchEvent( Ref* sender, TouchEventType type )
     switch ( type )
     {
     case TouchEventType::ENDED:
-        m_clickHandler( this );
+        if ( m_clickHandler )
+        {
+            m_clickHandler( this );
+        }
         break;
     }
 }
