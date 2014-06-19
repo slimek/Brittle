@@ -33,6 +33,30 @@ void Model::LinkEventTarget( AnyEventTarget& target )
 }
 
 
+void Model::Dispatch( const AnyEvent& event )
+{
+    m_dispatcher.Dispatch( event );
+}
+
+
+void Model::DispatchEvent( Int eventId )
+{
+    m_dispatcher.Dispatch( AnyEvent( eventId ));
+}
+
+
+void Model::DispatchEvent( Int eventId, const Any& value )
+{
+    m_dispatcher.Dispatch( AnyEvent( eventId, value ));
+}
+
+
+void Model::DispatchEvent( Int eventId, Any&& value )
+{
+    m_dispatcher.Dispatch( AnyEvent( eventId, std::move( value )));
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Machine
