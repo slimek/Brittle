@@ -36,6 +36,9 @@
     <Filter Include="2. Source Files\Core">
       <UniqueIdentifier>{6be8fc26-7557-4c3d-99bd-fe37503f9ff9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="1. Public Headers\Actions">
+      <UniqueIdentifier>{7d72bece-f1e2-40b6-a965-4c4be503d34f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
@@ -98,6 +101,12 @@
     <ClInclude Include="..\include\Brittle\Core\FrameClock.h">
       <Filter>1. Public Headers\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Actions\IntervalActions.h">
+      <Filter>1. Public Headers\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Actions\ActionBuilder.h">
+      <Filter>1. Public Headers\Actions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">
@@ -116,6 +125,9 @@
       <Filter>2. Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Mv.cpp">
+      <Filter>2. Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Actions.cpp">
       <Filter>2. Source Files</Filter>
     </ClCompile>
   </ItemGroup>
