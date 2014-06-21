@@ -7,6 +7,7 @@
 #include <Brittle/Core/FrameClock.h>
 #include <Brittle/Core/SimpleApp.h>
 #include <Brittle/Core/SimpleScene.h>
+#include <Caramel/Chrono/ClockProxy.h>
 #include <Caramel/Error/CatchException.h>
 
 
@@ -232,7 +233,7 @@ FrameTime::FrameTime( const Seconds& sinceEpoch )
 //
 
 AsyncCenter::AsyncCenter()
-    : m_renderPoller( new TaskPoller )
+    : m_renderPoller( new TaskPoller( ClockProxy( FrameClock() )))
 {
 }
 
