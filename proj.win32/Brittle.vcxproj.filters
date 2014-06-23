@@ -30,9 +30,6 @@
     <Filter Include="1. Public Headers\Utils">
       <UniqueIdentifier>{1f2a7e4e-5713-4f79-9ca3-cb009d52cc14}</UniqueIdentifier>
     </Filter>
-    <Filter Include="1. Public Headers\Mv">
-      <UniqueIdentifier>{b5a7147d-d284-4728-8b81-c66bb0d6430e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="2. Source Files\Core">
       <UniqueIdentifier>{6be8fc26-7557-4c3d-99bd-fe37503f9ff9}</UniqueIdentifier>
     </Filter>
@@ -77,9 +74,6 @@
     <ClInclude Include="..\include\Brittle\Ui\LabelButton.h">
       <Filter>1. Public Headers\Ui</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Brittle\Mv\Model.h">
-      <Filter>1. Public Headers\Mv</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Brittle\Core\Async.h">
       <Filter>1. Public Headers\Core</Filter>
     </ClInclude>
@@ -94,9 +88,6 @@
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Core\AppSettings.h">
       <Filter>1. Public Headers\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Brittle\Mv\Machine.h">
-      <Filter>1. Public Headers\Mv</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Core\FrameClock.h">
       <Filter>1. Public Headers\Core</Filter>
@@ -122,9 +113,6 @@
       <Filter>2. Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utils.cpp">
-      <Filter>2. Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Mv.cpp">
       <Filter>2. Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Actions.cpp">
