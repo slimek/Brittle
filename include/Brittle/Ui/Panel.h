@@ -30,8 +30,8 @@ public:
     /// Accessors ///
 
     // Throws if the child not found.
-    ui::Widget* GetChild( const std::string& name ) const; 
-    ui::Widget* GetDescendant( const std::string& name ) const;
+    Node* GetChild( const std::string& name ) const; 
+    Node* GetDescendant( const std::string& name ) const;
 
     template< typename WidgetType >
     void GetChild( const std::string& name, WidgetType*& widget ) const;

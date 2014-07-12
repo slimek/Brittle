@@ -159,11 +159,9 @@ Panel* Panel::Create( const std::string& layoutPath )
 }
 
 
-ui::Widget* Panel::GetChild( const std::string& name ) const
+Node* Panel::GetChild( const std::string& name ) const
 {
-    // TODO: In v3.0 ui::Widget::getChildByName() is non-const ...
-
-    auto widget = const_cast< Panel* >( this )->getChildByName( name );
+    auto widget = this->getChildByName( name );
     if ( ! widget )
     {
         CARAMEL_THROW( "Panel %s child %s not found", this->getName(), name );
@@ -172,9 +170,9 @@ ui::Widget* Panel::GetChild( const std::string& name ) const
 }
 
 
-ui::Widget* Panel::GetDescendant( const std::string& name ) const
+Node* Panel::GetDescendant( const std::string& name ) const
 {
-    auto widget = const_cast< Panel* >( this )->getChildByName( name );
+    auto widget = this->getChildByName( name );
     if ( widget ) { return widget; }
 
     for ( auto node : this->getChildren() )
@@ -620,7 +618,7 @@ void WidgetResizer::StretchWithScale( const Rect& area )
     m_widget->setAnchorPoint( Vec2::ANCHOR_MIDDLE );
     m_widget->setPosition( GetCenter( area ));
 
-    const Size size = m_widget->getSize();
+    const Size size = m_widget->getContentSize();
 
     const Float ratioX = area.size.width / size.width;
     const Float ratioY = area.size.height / size.height;
@@ -672,7 +670,7 @@ void WidgetResizer::StretchWithSize( const Rect& area )
     else
     {
         // All other stretch method has the same result.
-        m_widget->setSize( area.size );
+        m_widget->setContentSize( area.size );
     }
 }
 
@@ -682,7 +680,7 @@ void WidgetResizer::ResizeWithScale()
     m_widget->setAnchorPoint( m_props.anchor );
     m_widget->setPosition( m_props.position );
 
-    const Size size = m_widget->getSize();
+    const Size size = m_widget->getContentSize();
 
     if ( WP_FLAG_USE_WIDTH & m_props.flags )
     {
@@ -702,7 +700,7 @@ void WidgetResizer::ResizeWithSize()
 {
     m_widget->setAnchorPoint( Vec2::ZERO );
     m_widget->setPosition( m_props.position );
-    m_widget->setSize( m_props.size );
+    m_widget->setContentSize( m_props.size );
 }
 
 

@@ -4,7 +4,7 @@
 
 #include <Brittle/Core/SimpleApp.h>
 #include <Caramel/Windows/DebuggerTraceAdapter.h>
-#include <cocostudio/ObjectFactory.h>
+#include <base/ObjectFactory.h>
 
 
 namespace Brittle
@@ -63,7 +63,7 @@ void SimpleApp::InitPlatform()
 
 void SimpleApp::ExitPlatform()
 {
-    cocostudio::ObjectFactory::destroyInstance();
+    ObjectFactory::destroyInstance();
 }
 
 
