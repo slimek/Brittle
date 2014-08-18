@@ -16,14 +16,6 @@ namespace Brittle
 using namespace cocos2d;
 using namespace Caramel;
 
-//
-// Typedefs
-//
-
-typedef Caramel::Bool   Bool;
-typedef Caramel::Float  Float;
-typedef Caramel::Double Double;
-
 
 //
 // Forward Declarations
