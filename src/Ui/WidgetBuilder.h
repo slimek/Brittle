@@ -24,7 +24,7 @@ class WidgetBuilder
 {
 public:
 
-    WidgetBuilder( const Json::Value& json, const std::string& path );
+    WidgetBuilder( const JsonValue& json, const std::string& path );
 
     ui::Widget*      GetWidget()     const { return m_widget; }
     WidgetProperties GetProperties() const { return m_props; }

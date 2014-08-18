@@ -19,6 +19,7 @@
     <ClInclude Include="..\include\Brittle\Core\AppSettings.h" />
     <ClInclude Include="..\include\Brittle\Core\SimpleScene.h" />
     <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h" />
+    <ClInclude Include="..\include\Brittle\Sprites\Stretch.h" />
     <ClInclude Include="..\include\Brittle\Ui\LabelButton.h" />
     <ClInclude Include="..\include\Brittle\Ui\SimpleButton.h" />
     <ClInclude Include="..\include\Brittle\Ui\Panel.h" />
@@ -31,6 +32,7 @@
     <ClInclude Include="..\src\Ui\WidgetProperties.h" />
     <ClInclude Include="..\src\Ui\WidgetBuilder.h" />
     <ClInclude Include="..\src\Ui\WidgetResizer.h" />
+    <ClInclude Include="..\src\Utils\JsonValueImpl.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src.win32\CoreWin32.cpp" />

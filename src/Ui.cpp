@@ -10,9 +10,9 @@
 #include <Brittle/Ui/Panel.h>
 #include <Brittle/Ui/SimpleButton.h>
 #include <Brittle/Utils/Geometry.h>
+#include <Macaron/RapidJson/JsonReader.h>
 #include <Caramel/Data/LookupTable.h>
 #include <Caramel/FileSystem/Path.h>
-#include <JsonCpp/reader.h>
 
 
 namespace Brittle
@@ -277,30 +277,30 @@ void PanelBuilder::LoadJsonRoot()
 
     std::string layoutContent = fileUtils->getStringFromFile( m_layoutPath );
 
-    Json::Value json;
-    Json::Reader reader;
-    if ( ! reader.parse( layoutContent, json ))
+    Macaron::RapidJson::JsonReader reader;
+    if ( ! reader.Parse( layoutContent, m_layoutJson ))
     {
         CARAMEL_THROW( "Panel %s : layout parse failed :\n%s",
-                       m_layoutPath, reader.getFormatedErrorMessages() );
+                       m_layoutPath, reader.GetErrorMessage() );
     }
 
-    m_layoutJson = JsonValue( json, "Panel " + m_layoutPath );
+    m_layoutJson.SetTag( "Panel" + m_layoutPath );
 }
 
 
 void PanelBuilder::BuildWidgets()
 {
-    Json::Value widgets;
-    if ( ! m_layoutJson.GetArray( "widgets", widgets ))
+    JsonArray jwidgets;
+    if ( ! m_layoutJson.GetArray( "widgets", jwidgets ))
     {
         CARAMEL_TRACE_WARN( "Panel layout %s has no \"widgets\" attribute", m_layoutPath );
         return;
     }
 
-    for ( Uint i = 0; i < widgets.size(); ++ i )
+    for ( Uint i = 0; i < jwidgets.Size(); ++ i )
     {
-        WidgetBuilder builder( widgets[i], Format( "{0}[{1}]", m_layoutPath, i ));
+        const JsonValue& jwig = jwidgets[i];
+        WidgetBuilder builder( jwidgets[i], Format( "{0}[{1}]", jwig.GetTag(), i ));
 
         ui::Widget* widget = builder.GetWidget();
 
@@ -330,8 +330,8 @@ void PanelBuilder::BuildWidgets()
 // Widget Builder
 //
 
-WidgetBuilder::WidgetBuilder( const Json::Value& json, const std::string& path )
-    : m_json( json, "Widget " + path )
+WidgetBuilder::WidgetBuilder( const JsonValue& json, const std::string& path )
+    : m_json( json )
     , m_path( path )
     , m_widget( nullptr )
 {
@@ -342,7 +342,8 @@ WidgetBuilder::WidgetBuilder( const Json::Value& json, const std::string& path )
 
 void WidgetBuilder::ReadNameAndType()
 {
-    if ( m_json.GetString( "name", m_name ))
+    m_name = m_json.GetString( "name" );
+    if ( m_name )
     {
         m_path += Format( "\"{0}\"", m_name.get() );
     }
@@ -424,6 +425,7 @@ void WidgetBuilder::FillWidgetProperties( ui::Widget* widget )
     }
 
     widget->setVisible( m_props.visible );
+    widget->setLocalZOrder( m_props.zOrder );
 }
 
 
@@ -737,6 +739,7 @@ void WidgetProperties::Parse( const JsonValue& json )
     this->ParseRect( json );
 
     json.GetBool( "visible", this->visible );
+    json.GetInt( "zOrder", this->zOrder );
 
     json.GetFloat( "x", this->position.x );
     json.GetFloat( "y", this->position.y );

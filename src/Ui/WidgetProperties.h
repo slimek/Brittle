@@ -45,6 +45,7 @@ struct WidgetProperties
     WidgetProperties()
         : flags( 0 )
         , visible( true )
+        , zOrder( 0 )
         , anchor( Vec2::ANCHOR_MIDDLE )
         , stretchMethod( STRETCH_NONE )
     {}
@@ -53,6 +54,7 @@ struct WidgetProperties
 
     Uint32 flags;
     Bool visible;
+    Int zOrder;
 
     
     /// Properties for Resize ///
