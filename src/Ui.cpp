@@ -59,9 +59,9 @@ LabelButton* LabelButton::Create()
 }
 
 
-void LabelButton::SetClickHandler( ClickHandler&& handler )
+void LabelButton::SetClickHandler( ClickHandler handler )
 {
-    m_clickHandler = handler;
+    m_clickHandler = std::move( handler );
 }   
 
 
@@ -127,9 +127,9 @@ SimpleButton* SimpleButton::Create(
 }
 
 
-void SimpleButton::SetClickHandler( ClickHandler&& handler )
+void SimpleButton::SetClickHandler( ClickHandler handler )
 {
-    m_clickHandler = handler;
+    m_clickHandler = std::move( handler );
 }   
 
 

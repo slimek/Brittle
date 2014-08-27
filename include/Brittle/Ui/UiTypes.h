@@ -40,7 +40,7 @@ struct Clickable
 {
     virtual ~Clickable() {}
 
-    virtual void SetClickHandler( ClickHandler&& handler ) = 0;
+    virtual void SetClickHandler( ClickHandler handler ) = 0;
 };
 
 

@@ -35,7 +35,7 @@ public:
 
     /// Event Handling ///
 
-    void SetClickHandler( ClickHandler&& handler ) override;
+    void SetClickHandler( ClickHandler handler ) override;
 
 
 private:
