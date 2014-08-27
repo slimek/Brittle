@@ -40,6 +40,8 @@ LabelButton::LabelButton()
 {
     namespace sp = std::placeholders;
 
+    this->setTouchEnabled( true );
+
     this->addTouchEventListener(
         std::bind( &LabelButton::OnTouchEvent, this, sp::_1, sp::_2 )
     );
