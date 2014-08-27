@@ -39,9 +39,6 @@
     <Filter Include="1. Public Headers\Sprites">
       <UniqueIdentifier>{17c36ebb-d68c-4cfb-9f40-1eaae543cdb8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="2. Source Files\Utils">
-      <UniqueIdentifier>{87c7b49a-7cbc-4716-beee-e8899220cfb2}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
@@ -106,9 +103,6 @@
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Sprites\Stretch.h">
       <Filter>1. Public Headers\Sprites</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Utils\JsonValueImpl.h">
-      <Filter>2. Source Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -32,7 +32,6 @@
     <ClInclude Include="..\src\Ui\WidgetProperties.h" />
     <ClInclude Include="..\src\Ui\WidgetBuilder.h" />
     <ClInclude Include="..\src\Ui\WidgetResizer.h" />
-    <ClInclude Include="..\src\Utils\JsonValueImpl.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src.win32\CoreWin32.cpp" />
