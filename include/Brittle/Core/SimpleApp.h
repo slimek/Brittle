@@ -27,13 +27,13 @@ public:
     
     /// Run / Launch ///
 
-    #if defined( CARAMEL_SYSTEM_IS_WINDOWS )
+    #if defined( BRITTLE_SYSTEM_IS_DESKTOP )
 
     Int Run( const AppSettings& s );
 
     #endif
 
-    #if defined( CARAMEL_SYSTEM_IS_IOS ) || defined( CARAMEL_SYSTEM_IS_ANDROID )
+    #if defined( BRITTLE_SYSTEM_IS_MOBILE )
 
     Bool Launch( const AppSettings& s );
 

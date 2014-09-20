@@ -100,6 +100,8 @@ void SimpleApp::update( Float delta )
 // Entry from Platform Dependent Scope
 //
 
+#if defined( BRITTLE_SYSTEM_IS_DESKTOP )
+
 Int SimpleApp::Run( const AppSettings& settings )
 {
     m_settings = settings;
@@ -117,6 +119,8 @@ Int SimpleApp::Run( const AppSettings& settings )
 
     return xc.Result();
 }
+
+#endif  // BRITTLE_SYSTEM_IS_DESKTOP
 
 
 //
