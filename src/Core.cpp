@@ -120,7 +120,17 @@ Int SimpleApp::Run( const AppSettings& settings )
     return xc.Result();
 }
 
-#endif  // BRITTLE_SYSTEM_IS_DESKTOP
+#elif defined( BRITTLE_SYSTEM_IS_MOBILE )
+
+void SimpleApp::Launch( const AppSettings& settings )
+{
+    m_settings = settings;
+
+    this->InitPlatform();
+}
+
+#endif  // BRITTLE_SYSTEM
+
 
 
 //

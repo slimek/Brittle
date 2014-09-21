@@ -1,0 +1,29 @@
+// Brittle C++ Library - Core Android Dependent Implementation
+
+#include "BrittlePch.h"
+
+#include <Brittle/Core/SimpleApp.h>
+
+
+namespace Brittle
+{
+
+//
+// Contents
+//
+//   SimpleApp
+//
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Simple Application
+//
+
+void SimpleApp::InitPlatform()
+{
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+} // namespace Brittle

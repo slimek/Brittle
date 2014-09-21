@@ -23,7 +23,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildArguments</key>
-					<value>NDK_DEBUG=1 -j 3</value>
+					<value>-j 3</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildCommand</key>
@@ -99,6 +99,11 @@
 			<name>include</name>
 			<type>2</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/include</locationURI>
+		</link>
+		<link>
+			<name>src.android</name>
+			<type>2</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/src.android</locationURI>
 		</link>
 		<link>
 			<name>src.cpp</name>

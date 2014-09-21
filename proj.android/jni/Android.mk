@@ -12,7 +12,9 @@ LOCAL_SRC_FILES := \
 	$(BRT_SRC)/Actions.cpp \
 	$(BRT_SRC)/Core.cpp \
 	$(BRT_SRC)/Ui.cpp \
-	$(BRT_SRC)/Utils.cpp
+	$(BRT_SRC)/Utils.cpp \
+	$(BRT_SRC).android/CoreAndroid.cpp
+	
 	
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/../../src \
@@ -22,5 +24,6 @@ LOCAL_C_INCLUDES := \
 	$(GIT_ROOT)/CandyJar/include \
 	$(GIT_ROOT)/Cocos2d-x3/cocos/platform/android \
 	$(GIT_ROOT)/Cocos2d-x3/cocos
+
 
 include $(BUILD_STATIC_LIBRARY)

@@ -1,9 +1,9 @@
 APP_PLATFORM := android-15
-APP_ABI := x86 armeabi
+APP_ABI := x86
 APP_STL := gnustl_static
 
 APP_CFLAGS := -fexceptions
-APP_CPPFLAGS := -std=c++11 -frtti
+APP_CPPFLAGS := -std=c++11 -frtti -DCC_ENABLE_CHIPMUNK_INTEGRATION=1
 
 ifeq ($(NDEBUG),1)
 

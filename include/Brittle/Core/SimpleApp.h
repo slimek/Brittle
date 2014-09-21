@@ -35,7 +35,7 @@ public:
 
     #if defined( BRITTLE_SYSTEM_IS_MOBILE )
 
-    Bool Launch( const AppSettings& s );
+    void Launch( const AppSettings& s );
 
     #endif
 

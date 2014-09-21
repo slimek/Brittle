@@ -5,5 +5,8 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry exported="true" kind="var" path="GIT_ROOT/Cocos2d-x3/lib/Android.Java/libcocos2dx.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Macaron"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Caramel"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
