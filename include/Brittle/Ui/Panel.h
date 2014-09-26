@@ -46,7 +46,7 @@ public:
 
     /// Children UI Event Handling ///
 
-    void SetClickHandler( const std::string& name, ClickHandler&& handler ); 
+    void SetClickHandler( const std::string& name, ClickHandler handler ); 
 
     template< typename Function, typename T >
     void SetClickHandler( const std::string& name, const Function& handler, T* receiver );

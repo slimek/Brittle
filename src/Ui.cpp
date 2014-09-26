@@ -209,7 +209,7 @@ void Panel::setParent( Node* parent )
 }
 
 
-void Panel::SetClickHandler( const std::string& name, ClickHandler&& handler )
+void Panel::SetClickHandler( const std::string& name, ClickHandler handler )
 {
     auto clickable = dynamic_cast< Clickable* >( this->GetDescendant( name ));
     if ( ! clickable )
