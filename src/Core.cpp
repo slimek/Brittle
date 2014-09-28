@@ -162,6 +162,11 @@ void SimpleScene::onEnter()
 
     this->scheduleUpdate();
 
+    m_keyboardListener = EventListenerKeyboard::create();
+    m_keyboardListener->onKeyPressed = CC_CALLBACK_2( SimpleScene::OnKeyPressed, this );
+
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority( m_keyboardListener, this );
+
     this->OnEnterScene();
 }
 
@@ -169,6 +174,8 @@ void SimpleScene::onEnter()
 void SimpleScene::onExit()
 {
     this->Scene::onExit();
+
+    this->getEventDispatcher()->removeAllEventListeners();
 
     this->unscheduleUpdate();
 
@@ -189,6 +196,19 @@ void SimpleScene::update( Float delta )
 void SimpleScene::ReplaceScene( Int sceneId )
 {
     SimpleApp::Instance()->ReplaceScene( sceneId );
+}
+
+
+//
+// Keyboard Events
+//
+
+void SimpleScene::OnKeyPressed( EventKeyboard::KeyCode key, Event* event )
+{
+    if ( key == EventKeyboard::KeyCode::KEY_BACK )
+    {
+        this->OnBackPressed();
+    }
 }
 
 

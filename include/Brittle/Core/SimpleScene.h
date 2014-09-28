@@ -38,6 +38,18 @@ private:
     virtual void OnEnterScene() {}
     virtual void OnExitScene()  {}
     virtual void OnUpdate() {}
+
+
+    /// Keyboard Events ///
+
+    virtual void OnKeyPressed( EventKeyboard::KeyCode key, Event* event );
+    
+    virtual void OnBackPressed() {}
+
+
+    /// Members ///
+
+    EventListenerKeyboard* m_keyboardListener { nullptr };
 };
 
 
