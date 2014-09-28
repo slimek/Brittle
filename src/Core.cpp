@@ -164,7 +164,6 @@ void SimpleScene::onEnter()
 
     m_keyboardListener = EventListenerKeyboard::create();
     m_keyboardListener->onKeyPressed = CC_CALLBACK_2( SimpleScene::OnKeyPressed, this );
-
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority( m_keyboardListener, this );
 
     this->OnEnterScene();
@@ -175,7 +174,7 @@ void SimpleScene::onExit()
 {
     this->OnExitScene();
 
-    this->getEventDispatcher()->removeEventListener( m_keyboardListener );
+    // NOTES: Event listeners will auto-release when the scene destroyed.
 
     this->unscheduleUpdate();
 
