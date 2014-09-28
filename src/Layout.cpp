@@ -44,10 +44,31 @@ void LocateCharm::Apply()
     const auto parent = m_target->getParent();
     const auto parentSize = parent->getContentSize();
 
-    m_target->setPosition( Vec2(
-        m_location.x * parentSize.width,
-        m_location.y * parentSize.height
-    ));
+    if ( m_uses & USE_X_NORM )
+    {
+        m_target->setPositionX( m_paramX * parentSize.width );
+    }
+    else if ( m_uses & USE_X_FROM_LEFT )
+    {
+        m_target->setPositionX( m_paramX );
+    }
+    else if ( m_uses & USE_X_FROM_RIGHT )
+    {
+        m_target->setPositionX( parentSize.width - m_paramX );
+    }
+
+    if ( m_uses & USE_Y_NORM )
+    {
+        m_target->setPositionY( m_paramY * parentSize.height );
+    }
+    else if ( m_uses & USE_Y_FROM_TOP )
+    {
+        m_target->setPositionY( parentSize.height - m_paramY );
+    }
+    else if ( m_uses & USE_Y_FROM_BOTTOM )
+    {
+        m_target->setPositionY( m_paramY );
+    }
 }
 
 
