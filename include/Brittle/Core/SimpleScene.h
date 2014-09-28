@@ -44,7 +44,11 @@ private:
 
     virtual void OnKeyPressed( EventKeyboard::KeyCode key, Event* event );
     
-    virtual void OnBackPressed() {}
+    // The "Back button" is pressed.
+    // - Desktop : ESC key
+    //   Android : Back button
+    //   iOS     : (none)
+    virtual void OnBackKeyPressed() {}
 
 
     /// Members ///

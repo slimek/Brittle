@@ -207,7 +207,7 @@ void SimpleScene::OnKeyPressed( EventKeyboard::KeyCode key, Event* event )
 {
     if ( key == EventKeyboard::KeyCode::KEY_BACK )
     {
-        this->OnBackPressed();
+        this->OnBackKeyPressed();
     }
 }
 
