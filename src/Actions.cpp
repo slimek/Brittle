@@ -28,11 +28,30 @@ ActionBuilder::ActionBuilder( FiniteTimeAction* action )
 }
 
 
+ActionBuilder ActionBuilder::Clone() const
+{
+    ActionBuilder builder( m_lastAction->clone() );
+
+    for ( auto a : m_actions )
+    {
+        builder.m_actions.pushBack( a->clone() );
+    }
+
+    return builder;
+}
+
+
 ActionBuilder::operator Sequence*()
 {
     m_actions.pushBack( m_lastAction );
     return Sequence::create( m_actions );
 }
+
+
+//ActionBuilder& ActionBuilder::operator+( ActionBuilder& peer )
+//{
+//    return *this;
+//}
 
 
 ActionBuilder& ActionBuilder::operator>>( ActionBuilder& next )

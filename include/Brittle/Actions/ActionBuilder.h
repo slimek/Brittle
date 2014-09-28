@@ -25,15 +25,19 @@ public:
 
     explicit ActionBuilder( FiniteTimeAction* action );
 
+    ActionBuilder Clone() const;
+
     operator Sequence*();
 
     ActionBuilder& operator>>( ActionBuilder& next );
+    //ActionBuilder& operator+ ( ActionBuilder& peer );
 
     ActionBuilder& Target( Node* target );
 
 private:
 
     Vector< FiniteTimeAction* > m_actions;
+    //Vector< FiniteTimeAction* > m_peers;
     FiniteTimeAction* m_lastAction { nullptr };
 };
 
