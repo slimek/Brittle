@@ -5,6 +5,7 @@
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
+#include <Brittle/Layout/Stretch.h>
 #include <Brittle/Utils/JsonValue.h>
 
 
@@ -15,16 +16,6 @@ namespace Brittle
 //
 // Enumerations
 //
-
-enum StretchMethod
-{
-    STRETCH_NONE    = 0,  // Keep original size
-    STRETCH_FIT     = 1,  // Keep ratio, fit the inside, may has border
-    STRETCH_FILL    = 2,  // Keep ratio, fill the all screen, may be cropped
-    STRETCH_STRETCH = 3,  // Stretch both dimensions to fit content area
-    STRETCH_AUTO    = 4,  // Expand as large as possible, depends on the Panel's type.
-};
-
 
 enum WidgetPropertiesFlags : Uint32
 {

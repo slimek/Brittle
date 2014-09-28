@@ -18,6 +18,8 @@
     <ClInclude Include="..\include\Brittle\Core\SimpleApp.h" />
     <ClInclude Include="..\include\Brittle\Core\AppSettings.h" />
     <ClInclude Include="..\include\Brittle\Core\SimpleScene.h" />
+    <ClInclude Include="..\include\Brittle\Layout\Alignment.h" />
+    <ClInclude Include="..\include\Brittle\Layout\Stretch.h" />
     <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h" />
     <ClInclude Include="..\include\Brittle\Sprites\Stretch.h" />
     <ClInclude Include="..\include\Brittle\Ui\LabelButton.h" />
@@ -41,6 +43,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\src\Core.cpp" />
+    <ClCompile Include="..\src\Layout.cpp" />
     <ClCompile Include="..\src\Ui.cpp" />
     <ClCompile Include="..\src\Utils.cpp" />
   </ItemGroup>

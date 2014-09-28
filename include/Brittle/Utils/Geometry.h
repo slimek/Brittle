@@ -39,6 +39,28 @@ inline Vec2 GetCenter( const Rect& rect )
 }
 
 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Size Helpers
+//
+
+inline Vec2 GetCenter( const Size& size )
+{
+    return size / 2.0;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Node Helpers
+//
+
+inline Vec2 GetCenter( const Node* node )
+{
+    return GetCenter( node->getContentSize() );
+}
+
+
 } // namespace Brittle
 
 
