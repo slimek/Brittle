@@ -22,6 +22,20 @@ inline ActionBuilder MoveTo( Float duration, Float x, Float y )
 }
 
 
+inline ActionBuilder RotateBy( Float duration, Float deltaAngle )
+{
+    auto rotateBy = RotateBy::create( duration, deltaAngle );
+    return ActionBuilder( rotateBy );
+}
+
+
+inline ActionBuilder ScaleTo( Float duration, Float scale )
+{
+    auto scaleTo = ScaleTo::create( duration, scale );
+    return ActionBuilder( scaleTo );
+}
+
+
 } // namespace Actions
 
 namespace Bta = Actions;
