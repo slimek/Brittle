@@ -11,6 +11,7 @@ BRT_SRC := ../../src
 LOCAL_SRC_FILES := \
 	$(BRT_SRC)/Actions.cpp \
 	$(BRT_SRC)/Core.cpp \
+	$(BRT_SRC)/Layout.cpp \
 	$(BRT_SRC)/Ui.cpp \
 	$(BRT_SRC)/Utils.cpp \
 	$(BRT_SRC).android/CoreAndroid.cpp
