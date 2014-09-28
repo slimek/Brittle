@@ -2,6 +2,7 @@
 
 #include "BrittlePch.h"
 
+#include <Brittle/Layout/Locate.h>
 #include <Brittle/Layout/Stretch.h>
 #include <Brittle/Utils/Geometry.h>
 
@@ -12,8 +13,43 @@ namespace Brittle
 //
 // [Contents]
 //
+//   LocateCharm
 //   StretchCharm
 //
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Locate Charm
+//
+
+LocateCharm::LocateCharm( Node* target )
+    : m_target( target )
+{
+    CARAMEL_ASSERT( target );
+    CARAMEL_ASSERT( target->getParent() );
+}
+
+
+LocateCharm::~LocateCharm()
+{
+    this->Apply();
+}
+
+
+void LocateCharm::Apply()
+{
+    if ( m_applied ) { return; }
+    m_applied = true;
+
+    const auto parent = m_target->getParent();
+    const auto parentSize = parent->getContentSize();
+
+    m_target->setPosition( Vec2(
+        m_location.x * parentSize.width,
+        m_location.y * parentSize.height
+    ));
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //

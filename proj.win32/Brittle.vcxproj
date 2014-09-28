@@ -19,6 +19,7 @@
     <ClInclude Include="..\include\Brittle\Core\AppSettings.h" />
     <ClInclude Include="..\include\Brittle\Core\SimpleScene.h" />
     <ClInclude Include="..\include\Brittle\Layout\Alignment.h" />
+    <ClInclude Include="..\include\Brittle\Layout\Locate.h" />
     <ClInclude Include="..\include\Brittle\Layout\Stretch.h" />
     <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h" />
     <ClInclude Include="..\include\Brittle\Sprites\Stretch.h" />

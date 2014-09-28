@@ -15,7 +15,7 @@ namespace Brittle
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Stretch Method enum
+// Stretch Method
 //
 
 enum StretchMethod
@@ -39,7 +39,7 @@ class StretchCharm : public AlignmentCharm< StretchCharm >
 {
 public:
     explicit StretchCharm( Node* target );
-    ~StretchCharm();
+    virtual ~StretchCharm();
 
     virtual void Apply();
 

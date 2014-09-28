@@ -113,6 +113,9 @@
     <ClInclude Include="..\include\Brittle\Layout\Alignment.h">
       <Filter>1. Public Headers\Layout</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Layout\Locate.h">
+      <Filter>1. Public Headers\Layout</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">
