@@ -25,13 +25,29 @@ namespace Actions
 ActionBuilder::ActionBuilder( FiniteTimeAction* action )
     : m_lastAction( action )
 {
-    m_actions.pushBack( action );
 }
 
 
-ActionBuilder::operator Sequence*() const
+ActionBuilder::operator Sequence*()
 {
+    m_actions.pushBack( m_lastAction );
     return Sequence::create( m_actions );
+}
+
+
+ActionBuilder& ActionBuilder::operator>>( ActionBuilder& next )
+{
+    m_actions.pushBack( m_lastAction );
+    m_actions.pushBack( next.m_actions );
+    m_lastAction = next.m_lastAction;
+    return *this;
+}
+
+
+ActionBuilder& ActionBuilder::Target( Node* target )
+{
+    m_lastAction = TargetedAction::create( target, m_lastAction );
+    return *this;
 }
 
 

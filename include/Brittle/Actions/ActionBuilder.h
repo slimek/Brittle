@@ -14,20 +14,31 @@ namespace Brittle
 namespace Actions
 {
 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Action Builder
+//
+
 class ActionBuilder
 {
 public:
 
     explicit ActionBuilder( FiniteTimeAction* action );
 
-    operator Sequence*() const;
+    operator Sequence*();
+
+    ActionBuilder& operator>>( ActionBuilder& next );
+
+    ActionBuilder& Target( Node* target );
 
 private:
 
     Vector< FiniteTimeAction* > m_actions;
-    FiniteTimeAction* m_lastAction;
+    FiniteTimeAction* m_lastAction { nullptr };
 };
 
+
+///////////////////////////////////////////////////////////////////////////////
 
 } // namespace Actions
 
