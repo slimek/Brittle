@@ -173,13 +173,13 @@ void SimpleScene::onEnter()
 
 void SimpleScene::onExit()
 {
-    this->Scene::onExit();
+    this->OnExitScene();
 
-    this->getEventDispatcher()->removeAllEventListeners();
+    this->getEventDispatcher()->removeEventListener( m_keyboardListener );
 
     this->unscheduleUpdate();
 
-    this->OnExitScene();
+    this->Scene::onExit();
 }
 
 
