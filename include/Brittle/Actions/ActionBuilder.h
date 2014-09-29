@@ -25,20 +25,43 @@ public:
 
     explicit ActionBuilder( FiniteTimeAction* action );
 
-    ActionBuilder Clone() const;
+    //
+    // Clone / Retrieve
+    //
+    // - When calling these functions, a building spawn or sequence would
+    //   compact into a single action.
+    //
 
-    operator Sequence*();
+    ActionBuilder Clone();
+    operator FiniteTimeAction*();
+
+
+    /// Combination ///
 
     ActionBuilder& operator>>( ActionBuilder& next );
-    //ActionBuilder& operator+ ( ActionBuilder& peer );
+    ActionBuilder& operator+ ( ActionBuilder& peer );
+
+
+    /// Decorators ///
 
     ActionBuilder& Target( Node* target );
 
 private:
 
+    // Change a building spawn or sequence into a single action.
+    void Compact();
+
+    enum BuildingType
+    {
+        BUILDING_ACTION,
+        BUILDING_SPAWN,
+        BUILDING_SEQUENCE,
+    };
+    
+    BuildingType m_type { BUILDING_ACTION };
+
+    FiniteTimeAction* m_currAction { nullptr };
     Vector< FiniteTimeAction* > m_actions;
-    //Vector< FiniteTimeAction* > m_peers;
-    FiniteTimeAction* m_lastAction { nullptr };
 };
 
 
