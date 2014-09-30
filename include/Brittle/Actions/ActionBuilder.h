@@ -41,6 +41,9 @@ public:
     ActionBuilder& operator>>( ActionBuilder& next );
     ActionBuilder& operator+ ( ActionBuilder& peer );
 
+    ActionBuilder& operator>>( ActionBuilder&& next );
+    ActionBuilder& operator+ ( ActionBuilder&& peer );
+
 
     /// Decorators ///
 

@@ -43,6 +43,10 @@ ActionBuilder::operator FiniteTimeAction*()
 }
 
 
+//
+// Combinations
+//
+
 ActionBuilder& ActionBuilder::operator+( ActionBuilder& peer )
 {
     switch ( m_type )
@@ -95,6 +99,22 @@ ActionBuilder& ActionBuilder::operator>>( ActionBuilder& next )
 }
 
 
+ActionBuilder& ActionBuilder::operator+( ActionBuilder&& peer )
+{
+    return this->operator+( peer );
+}
+
+
+ActionBuilder& ActionBuilder::operator>>( ActionBuilder&& next )
+{
+    return this->operator>>( next );
+}
+
+
+//
+// Decorators
+//
+
 ActionBuilder& ActionBuilder::Target( Node* target )
 {
     this->Compact();
@@ -102,6 +122,10 @@ ActionBuilder& ActionBuilder::Target( Node* target )
     return *this;
 }
 
+
+//
+// Internal Functions
+//
 
 void ActionBuilder::Compact()
 {
