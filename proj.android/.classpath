@@ -6,7 +6,6 @@
 	<classpathentry exported="true" kind="var" path="GIT_ROOT/Cocos2d-x3/lib/Android.Java/libcocos2dx.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Macaron"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Caramel"/>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
