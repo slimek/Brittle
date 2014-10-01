@@ -39,6 +39,9 @@
     <Filter Include="1. Public Headers\Layout">
       <UniqueIdentifier>{67be8ea6-4d76-4349-aef7-9ed227e04e78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="1. Public Headers\Nodes">
+      <UniqueIdentifier>{20053b28-b666-41c5-b6d8-3e8cbc45b199}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
@@ -110,6 +113,9 @@
     <ClInclude Include="..\include\Brittle\Layout\Locate.h">
       <Filter>1. Public Headers\Layout</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Nodes\EllipseTouchable.h">
+      <Filter>1. Public Headers\Nodes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">
@@ -131,6 +137,9 @@
       <Filter>2. Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Layout.cpp">
+      <Filter>2. Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Nodes.cpp">
       <Filter>2. Source Files</Filter>
     </ClCompile>
   </ItemGroup>
