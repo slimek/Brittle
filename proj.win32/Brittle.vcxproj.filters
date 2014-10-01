@@ -36,9 +36,6 @@
     <Filter Include="1. Public Headers\Actions">
       <UniqueIdentifier>{7d72bece-f1e2-40b6-a965-4c4be503d34f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="1. Public Headers\Sprites">
-      <UniqueIdentifier>{17c36ebb-d68c-4cfb-9f40-1eaae543cdb8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="1. Public Headers\Layout">
       <UniqueIdentifier>{67be8ea6-4d76-4349-aef7-9ed227e04e78}</UniqueIdentifier>
     </Filter>
@@ -103,9 +100,6 @@
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Actions\ActionBuilder.h">
       <Filter>1. Public Headers\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Brittle\Sprites\Stretch.h">
-      <Filter>1. Public Headers\Sprites</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Layout\Stretch.h">
       <Filter>1. Public Headers\Layout</Filter>

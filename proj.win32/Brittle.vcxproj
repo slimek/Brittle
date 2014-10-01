@@ -22,7 +22,6 @@
     <ClInclude Include="..\include\Brittle\Layout\Locate.h" />
     <ClInclude Include="..\include\Brittle\Layout\Stretch.h" />
     <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h" />
-    <ClInclude Include="..\include\Brittle\Sprites\Stretch.h" />
     <ClInclude Include="..\include\Brittle\Ui\LabelButton.h" />
     <ClInclude Include="..\include\Brittle\Ui\SimpleButton.h" />
     <ClInclude Include="..\include\Brittle\Ui\Panel.h" />
