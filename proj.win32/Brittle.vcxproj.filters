@@ -113,8 +113,17 @@
     <ClInclude Include="..\include\Brittle\Layout\Locate.h">
       <Filter>1. Public Headers\Layout</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Actions\ActionWrappers.h">
+      <Filter>1. Public Headers\Actions</Filter>
+    </ClInclude>
     <ClInclude Include="..\include\Brittle\Nodes\EllipseTouchable.h">
       <Filter>1. Public Headers\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Actions\SkippableSequence.h">
+      <Filter>1. Public Headers\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Actions\EmptyAction.h">
+      <Filter>1. Public Headers\Actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

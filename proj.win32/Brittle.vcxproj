@@ -12,7 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Brittle\Actions\ActionBuilder.h" />
+    <ClInclude Include="..\include\Brittle\Actions\ActionWrappers.h" />
+    <ClInclude Include="..\include\Brittle\Actions\EmptyAction.h" />
     <ClInclude Include="..\include\Brittle\Actions\IntervalActions.h" />
+    <ClInclude Include="..\include\Brittle\Actions\SkippableSequence.h" />
     <ClInclude Include="..\include\Brittle\Core\Async.h" />
     <ClInclude Include="..\include\Brittle\Core\FrameClock.h" />
     <ClInclude Include="..\include\Brittle\Core\SimpleApp.h" />

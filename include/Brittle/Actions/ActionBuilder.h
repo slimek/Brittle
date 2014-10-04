@@ -6,6 +6,7 @@
 
 #include <Brittle/Setup/BrittleDefs.h>
 #include <base/CCVector.h>
+#include <functional>
 
 
 namespace Brittle
@@ -48,6 +49,8 @@ public:
     /// Decorators ///
 
     ActionBuilder& Target( Node* target );
+    
+    ActionBuilder& CompleteIf( std::function< Bool() > condition );
 
 private:
 
