@@ -30,10 +30,15 @@ public:
 
     LocateCharm& Center();
 
-    LocateCharm& FromLeft  ( Float width );
-    LocateCharm& FromRight ( Float width );
-    LocateCharm& FromTop   ( Float height );
-    LocateCharm& FromBottom( Float height );
+    LocateCharm& FromLeft  ( Float x );
+    LocateCharm& FromRight ( Float x );
+    LocateCharm& FromTop   ( Float y );
+    LocateCharm& FromBottom( Float y );
+
+    LocateCharm& FromLeftTop    ( Float x, Float y );
+    LocateCharm& FromRightTop   ( Float x, Float y );
+    LocateCharm& FromLeftBottom ( Float x, Float y );
+    LocateCharm& FromRightBottom( Float x, Float y );
 
 
 private:
@@ -79,35 +84,59 @@ inline LocateCharm& LocateCharm::Center()
 }
 
 
-inline LocateCharm& LocateCharm::FromLeft( Float width )
+inline LocateCharm& LocateCharm::FromLeft( Float x )
 {   
     m_uses |= USE_X_FROM_LEFT;
-    m_paramX = width;
+    m_paramX = x;
     return *this;
 }
 
 
-inline LocateCharm& LocateCharm::FromRight( Float width )
+inline LocateCharm& LocateCharm::FromRight( Float x )
 {   
     m_uses |= USE_X_FROM_RIGHT;
-    m_paramX = width;
+    m_paramX = x;
     return *this;
 }
 
 
-inline LocateCharm& LocateCharm::FromTop( Float height )
+inline LocateCharm& LocateCharm::FromTop( Float y )
 {
     m_uses |= USE_Y_FROM_TOP;
-    m_paramY = height;
+    m_paramY = y;
     return *this;
 }
 
 
-inline LocateCharm& LocateCharm::FromBottom( Float height )
+inline LocateCharm& LocateCharm::FromBottom( Float y )
 {
     m_uses |= USE_Y_FROM_BOTTOM;
-    m_paramY = height;
+    m_paramY = y;
     return *this;
+}
+
+
+inline LocateCharm& LocateCharm::FromLeftTop( Float x, Float y )
+{
+    return this->FromLeft( x ).FromTop( y );
+}
+
+
+inline LocateCharm& LocateCharm::FromRightTop( Float x, Float y )
+{
+    return this->FromRight( x ).FromTop( y );
+}
+
+
+inline LocateCharm& LocateCharm::FromLeftBottom( Float x, Float y )
+{
+    return this->FromLeft( x ).FromBottom( y );
+}
+
+
+inline LocateCharm& LocateCharm::FromRightBottom( Float x, Float y )
+{
+    return this->FromRight( x ).FromBottom( y );
 }
 
 
