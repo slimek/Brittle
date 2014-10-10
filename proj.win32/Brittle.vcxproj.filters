@@ -42,6 +42,9 @@
     <Filter Include="1. Public Headers\Nodes">
       <UniqueIdentifier>{20053b28-b666-41c5-b6d8-3e8cbc45b199}</UniqueIdentifier>
     </Filter>
+    <Filter Include="2. Source Files\Layout">
+      <UniqueIdentifier>{31770e44-c292-4af0-9f0a-7e6887dc6f7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
@@ -124,6 +127,15 @@
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Actions\EmptyAction.h">
       <Filter>1. Public Headers\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Layout\LayoutJson.h">
+      <Filter>1. Public Headers\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layout\LayoutJsonImpl.h">
+      <Filter>2. Source Files\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layout\SpriteBuilder.h">
+      <Filter>2. Source Files\Layout</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

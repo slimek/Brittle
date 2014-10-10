@@ -5,6 +5,7 @@
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
+#include <Brittle/Utils/JsonValue.h>
 #include <Caramel/Error/Assert.h>
 #include <2d/CCNode.h>
 
@@ -26,7 +27,7 @@ public:
     void Apply();
 
 
-    /// Position ///
+    /// Add Attributes ///
 
     LocateCharm& Center();
 
@@ -39,6 +40,9 @@ public:
     LocateCharm& FromRightTop   ( Float x, Float y );
     LocateCharm& FromLeftBottom ( Float x, Float y );
     LocateCharm& FromRightBottom( Float x, Float y );
+
+    // Read attributes from a JSON (which should be an Array)
+    LocateCharm& Json( const JsonValue& json );
 
 
 private:

@@ -22,6 +22,7 @@
     <ClInclude Include="..\include\Brittle\Core\AppSettings.h" />
     <ClInclude Include="..\include\Brittle\Core\SimpleScene.h" />
     <ClInclude Include="..\include\Brittle\Layout\Alignment.h" />
+    <ClInclude Include="..\include\Brittle\Layout\LayoutJson.h" />
     <ClInclude Include="..\include\Brittle\Layout\Locate.h" />
     <ClInclude Include="..\include\Brittle\Layout\Stretch.h" />
     <ClInclude Include="..\include\Brittle\Nodes\EllipseTouchable.h" />
@@ -34,6 +35,8 @@
     <ClInclude Include="..\include\Brittle\Utils\JsonValue.h" />
     <ClInclude Include="..\src\BrittlePch.h" />
     <ClInclude Include="..\src\Core\AsyncCenter.h" />
+    <ClInclude Include="..\src\Layout\LayoutJsonImpl.h" />
+    <ClInclude Include="..\src\Layout\SpriteBuilder.h" />
     <ClInclude Include="..\src\Ui\PanelBuilder.h" />
     <ClInclude Include="..\src\Ui\WidgetProperties.h" />
     <ClInclude Include="..\src\Ui\WidgetBuilder.h" />
