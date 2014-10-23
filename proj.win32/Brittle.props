@@ -6,9 +6,11 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\Brittle\include;..\..\Macaron\include;..\..\Caramel\include;..\..\CandyJar\include;..\..\Cocos2d-x3\external\win32-specific\gles\include\OGLES;..\..\Cocos2d-x3\external\glfw3\include\win32;..\..\Cocos2d-x3\cocos\editor-support;..\..\Cocos2d-x3\cocos\platform\win32;..\..\Cocos2d-x3\cocos\platform\desktop;..\..\Cocos2d-x3\cocos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CC_STATIC;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\..\CandyJar\lib\$(Platform).vc$(PlatformToolsetVersion).$(Configuration);$(OutDir)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libchipmunk.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
