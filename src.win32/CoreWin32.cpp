@@ -34,7 +34,7 @@ void SimpleApp::InitPlatform()
 
     const DesktopSettings& ds = m_settings.desktop;
 
-    auto glview = GLView::createWithRect(
+    auto glview = GLViewImpl::createWithRect(
         ds.frameTitle, Rect( 0, 0, ds.frameWidth, ds.frameHeight ));
 
     auto director = Director::getInstance();
