@@ -80,21 +80,6 @@ LOCAL_MODULE := cocos_webp_static
 LOCAL_SRC_FILES := $(COCOS_LIB)/libwebp.a
 include $(PREBUILT_STATIC_LIBRARY)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE := Caramel
-LOCAL_SRC_FILES := $(GIT_ROOT)/Caramel/proj.android/obj/$(BRITTLE_CONFIG)/local/$(TARGET_ARCH_ABI)/libCaramel.a
-include $(PREBUILT_STATIC_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := Macaron
-LOCAL_SRC_FILES := $(GIT_ROOT)/Macaron/proj.android/obj/$(BRITTLE_CONFIG)/local/$(TARGET_ARCH_ABI)/libMacaron.a
-include $(PREBUILT_STATIC_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := Brittle
-LOCAL_SRC_FILES := $(GIT_ROOT)/Brittle/proj.android/obj/$(BRITTLE_CONFIG)/local/$(TARGET_ARCH_ABI)/libBrittle.a
-include $(PREBUILT_STATIC_LIBRARY)
-
 
 #
 # Variables used by App make
