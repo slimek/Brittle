@@ -30,6 +30,8 @@ public:
     /// Add Attributes ///
 
     LocateCharm& Center();
+    LocateCharm& CenterX();
+    LocateCharm& CenterY();
 
     LocateCharm& FromLeft  ( Float x );
     LocateCharm& FromRight ( Float x );
@@ -81,8 +83,24 @@ inline LocateCharm Locate( Node* target )
 
 inline LocateCharm& LocateCharm::Center()
 {
-    m_uses = USE_X_NORM | USE_Y_NORM;
+    m_uses |= USE_X_NORM | USE_Y_NORM;
     m_paramX = 0.5;
+    m_paramY = 0.5;
+    return *this;
+}
+
+
+inline LocateCharm& LocateCharm::CenterX()
+{
+    m_uses |= USE_X_NORM;
+    m_paramX = 0.5;
+    return *this;
+}
+
+
+inline LocateCharm& LocateCharm::CenterY()
+{
+    m_uses |= USE_Y_NORM;
     m_paramY = 0.5;
     return *this;
 }
