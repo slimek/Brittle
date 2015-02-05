@@ -51,6 +51,9 @@ void LocateCharm::Apply()
     const auto parent = m_target->getParent();
     const auto parentSize = parent->getContentSize();
 
+    
+    /// Determine X location ///
+
     if ( m_uses & USE_X_NORM )
     {
         m_target->setPositionX( m_paramX * parentSize.width );
@@ -63,6 +66,9 @@ void LocateCharm::Apply()
     {
         m_target->setPositionX( parentSize.width - m_paramX );
     }
+
+
+    /// Determine Y location ///
 
     if ( m_uses & USE_Y_NORM )
     {
