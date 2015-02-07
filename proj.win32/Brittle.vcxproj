@@ -16,6 +16,7 @@
     <ClInclude Include="..\include\Brittle\Actions\EmptyAction.h" />
     <ClInclude Include="..\include\Brittle\Actions\IntervalActions.h" />
     <ClInclude Include="..\include\Brittle\Actions\SkippableSequence.h" />
+    <ClInclude Include="..\include\Brittle\Animation\FlipbookAnimation.h" />
     <ClInclude Include="..\include\Brittle\Core\Async.h" />
     <ClInclude Include="..\include\Brittle\Core\FrameClock.h" />
     <ClInclude Include="..\include\Brittle\Core\SimpleApp.h" />
@@ -45,6 +46,7 @@
   <ItemGroup>
     <ClCompile Include="..\src.win32\CoreWin32.cpp" />
     <ClCompile Include="..\src\Actions.cpp" />
+    <ClCompile Include="..\src\Animation.cpp" />
     <ClCompile Include="..\src\BrittlePch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
