@@ -50,7 +50,6 @@ Bool SimpleApp::applicationDidFinishLaunching()
     director->startAnimation();
 
     auto initialScene = this->CreateScene( m_settings.initialSceneId );
-    initialScene->autorelease();
     director->pushScene( initialScene );
 
 
@@ -140,7 +139,6 @@ void SimpleApp::Launch( const AppSettings& settings )
 void SimpleApp::ReplaceScene( Int sceneId )
 {
     auto newScene = this->CreateScene( sceneId );
-    newScene->autorelease();
     Director::getInstance()->replaceScene( newScene );
 }
 

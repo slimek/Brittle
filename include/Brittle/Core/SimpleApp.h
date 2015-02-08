@@ -70,6 +70,9 @@ private:
 
     /// Scene Management ///
 
+    // Returns a SimpleScene according to the ID.
+    // - This scene can be created by SimpleScene::Create< T >() or similar functions.
+    //   It should have been autoreleased.
     virtual SimpleScene* CreateScene( Int sceneId ) = 0;
 
 
