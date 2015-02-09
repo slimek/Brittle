@@ -6,6 +6,7 @@
 
 #include <Brittle/Setup/BrittleDefs.h>
 #include <math/CCGeometry.h>
+#include <algorithm>
 
 
 namespace Brittle
@@ -58,6 +59,19 @@ inline Vec2 GetCenter( const Size& size )
 inline Vec2 GetCenter( const Node* node )
 {
     return GetCenter( node->getContentSize() );
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Circle Radius Helper
+// - For building circle physics bodies.
+//
+
+// Get the radius of circle which can be put into the box.
+inline Float InnerRadius( const Rect& box )
+{
+    return std::min( box.size.width, box.size.height ) / 2.0f;
 }
 
 
