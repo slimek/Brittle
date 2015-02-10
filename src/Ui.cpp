@@ -629,7 +629,6 @@ void WidgetResizer::StretchWithScale( const Rect& area )
 
     switch ( m_props.stretchMethod )
     {
-    case STRETCH_STRETCH:
     case STRETCH_AUTO:
     {
         m_widget->setScaleX( ratioX );
@@ -770,11 +769,10 @@ void WidgetProperties::ParseRect( const JsonValue& json )
     if ( ! json.GetString( "rect", rect )) { return; }
 
     static const auto stretchMethods = MakeLookupTable
-        ( STRETCH_NONE,    "none" )
-        ( STRETCH_FIT,     "fit" )
-        ( STRETCH_FILL,    "fill" )
-        ( STRETCH_STRETCH, "stretch" )
-        ( STRETCH_AUTO,    "auto" );
+        ( STRETCH_NONE, "none" )
+        ( STRETCH_FIT,  "fit" )
+        ( STRETCH_FILL, "fill" )
+        ( STRETCH_AUTO, "auto" );
 
     if ( stretchMethods.FindValueByText( rect, this->stretchMethod ))
     {

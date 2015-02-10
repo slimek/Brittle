@@ -25,8 +25,11 @@ enum StretchMethod
     STRETCH_NONE    = 0,  // Keep original size
     STRETCH_FIT     = 1,  // Keep ratio, fit the inside, may has border
     STRETCH_FILL    = 2,  // Keep ratio, fill the all screen, may be cropped
-    STRETCH_STRETCH = 3,  // Stretch both dimensions to fit content area
-    STRETCH_AUTO    = 4,  // Expand as large as possible, depends on the Panel's type.
+    STRETCH_AUTO    = 3,  // Stretch both dimensions to fit content area, may distort the ratio
+
+    // Available for Sprites
+
+    STRETCH_REPEAT  = 4,  // Repeat the sprite's texture to fill the content area
 };
 
 
@@ -39,17 +42,30 @@ class StretchCharm : public AlignmentCharm< StretchCharm >
 {
 public:
     explicit StretchCharm( Node* target );
-    virtual ~StretchCharm();
+    ~StretchCharm();
 
-    virtual void Apply();
+    void Apply();
 
-    /// Stretch Mothod ///
+    /// Stretch Mothod - General ///
 
     StretchCharm& Fill();
     StretchCharm& Fit();
+    StretchCharm& Auto();
+
+    // Stretch for Sprites
+    // - Throws if the target is not a sprite
+    StretchCharm& Repeat();
 
 
 protected:
+
+    /// Stretch Methods ///
+
+    void ApplyAuto();
+    void ApplyRepeat();
+
+
+    /// Data Members ///
 
     Node* m_target { nullptr };
     Bool  m_applied { false };
@@ -61,21 +77,6 @@ inline StretchCharm Stretch( Node* target )
 {
     return StretchCharm( target );
 }
-
-
-//class StretchWidgetCharm : public StretchCharm
-//{
-//public:
-//    StretchWidgetCharm( ui::Widget* target );
-//
-//    void Apply() override;
-//
-//
-//private:
-//    
-//    ui::Widget* m_target { nullptr };
-//
-//};
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -95,6 +96,14 @@ inline StretchCharm& StretchCharm::Fit()
 {
     CARAMEL_ASSERT( m_stretchMethod == STRETCH_UNDEF );    
     m_stretchMethod = STRETCH_FIT;
+    return *this;
+}
+
+
+inline StretchCharm& StretchCharm::Repeat()
+{
+    CARAMEL_ASSERT( m_stretchMethod == STRETCH_UNDEF );
+    m_stretchMethod = STRETCH_REPEAT;
     return *this;
 }
 

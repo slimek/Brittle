@@ -156,6 +156,12 @@ void StretchCharm::Apply()
     m_applied = true;
 
     const auto parent = m_target->getParent();
+    if ( ! parent )
+    {
+        CARAMEL_ALERT( "You must set parent before using Stretch()" );
+        return;
+    }
+
     const auto parentSize = parent->getContentSize();
     auto targetSize = m_target->getContentSize();
     
@@ -178,6 +184,25 @@ void StretchCharm::Apply()
         m_target->setScale( std::min( scalingX, scalingY ));
         break;
     }
+
+    case STRETCH_AUTO:
+    {
+        m_target->setScaleX( scalingX );
+        m_target->setScaleY( scalingY );
+        break;
+    }
+
+    case STRETCH_REPEAT:
+    {
+        this->ApplyRepeat();
+        break;
+    }
+
+    case STRETCH_NONE:
+    {
+        // Do nothing, keep the original size.
+        return;
+    }
     
     default:
         CARAMEL_THROW( "Unknown stretch method: %d", m_stretchMethod );
@@ -187,6 +212,39 @@ void StretchCharm::Apply()
 
     const auto center = GetCenter( parent->getContentSize() );
     m_target->setPosition( center );
+}
+
+
+void StretchCharm::ApplyRepeat()
+{
+    // NOTES: The target has been already stretched to the parent's content area in Apply().
+
+    auto sprite = dynamic_cast< Sprite* >( m_target );
+    if ( ! sprite )
+    {
+        CARAMEL_ALERT( "The target is not a sprite" );
+        return;
+    }
+
+    auto texture = sprite->getTexture();
+    if ( ! texture )
+    {
+        CARAMEL_ALERT( "The target sprite doesn't have a texture" );
+        return;
+    }
+
+    const Texture2D::TexParams texp{ GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT };
+    texture->setTexParameters( texp );
+
+    // Let the repeating starts from the center of the parent.             X | X
+    // I.e. at the parent center, the texture coord is ( 0, 0 ).           --+--
+    // And the distance of texture coords equal to parent's dimensions.    X | X
+
+    const auto parSize = m_target->getParent()->getContentSize();
+    const auto w = parSize.width;
+    const auto h = parSize.height;
+
+    sprite->setTextureRect( { - w / 2, - h / 2, w, h } );
 }
 
 
