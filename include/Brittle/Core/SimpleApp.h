@@ -45,6 +45,7 @@ public:
     Bool applicationDidFinishLaunching() final override;
     void applicationDidEnterBackground() final override;
     void applicationWillEnterForeground() final override;
+    void applicationWillTerminate() final override;  // Desktop only
 
 
     /// Scheduling ///
@@ -66,6 +67,7 @@ private:
     virtual void OnLaunch() {}
     virtual void OnEnterBackground() {}
     virtual void OnEnterForeground() {}
+    virtual void OnTerminate() {}  // Desktop only
 
 
     /// Scene Management ///

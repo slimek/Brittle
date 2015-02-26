@@ -87,6 +87,15 @@ void SimpleApp::applicationWillEnterForeground()
 }
 
 
+void SimpleApp::applicationWillTerminate()
+{
+    // Only desktop app will receive this event.
+    CARAMEL_TRACE_INFO( "App will terminate" );
+
+    this->OnTerminate();
+}
+
+
 void SimpleApp::update( Float delta )
 {
     FrameClock::Advance( delta );
