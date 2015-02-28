@@ -36,6 +36,12 @@ enum AlignmentValue
     /// Combination Flags ///
 
     ALIGNMENT_MIDDLE_CENTER = ALIGNMENT_MIDDLE | ALIGNMENT_CENTER,
+
+
+    /// Masks ///
+
+    ALIGNMENT_MASK_VERTICAL   = 0x0F,
+    ALIGNMENT_MASK_HORIZONTAL = 0xF0,
 };
 
 
@@ -52,6 +58,11 @@ public:
 
     operator AlignmentValue() const { return m_value; }
 
+    // Partial values
+
+    AlignmentValue Vertical()   const;
+    AlignmentValue Horizontal() const;
+
 private:
     AlignmentValue m_value { ALIGNMENT_NONE };
 };
@@ -59,20 +70,36 @@ private:
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Alignment Charm
+// Align Charm
 //
 
-template< typename Derived >
-class AlignmentCharm
+class AlignCharm
 {
 public:
+    explicit AlignCharm( Node* target );
+    ~AlignCharm();
 
-    Derived& MiddleCenter();
+    void Apply();
+
+
+    /// Align Method - Alignment ///
+
+    AlignCharm& MiddleCenter();
+
 
 protected:
     
-    Alignment m_alignment;
+    Node* m_target { nullptr };
+    Bool  m_applied { false };
+
+    Alignment m_alignment { ALIGNMENT_NONE };
 };
+
+
+inline AlignCharm Align( Node* target )
+{
+    return AlignCharm( target );
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -80,12 +107,31 @@ protected:
 // Implementation
 //
 
-template< typename Derived >
-inline Derived& AlignmentCharm< Derived >::MiddleCenter()
+//
+// Alignment
+//
+
+inline AlignmentValue Alignment::Vertical() const
+{
+    return static_cast< AlignmentValue >( m_value & ALIGNMENT_MASK_VERTICAL );
+}
+
+
+inline AlignmentValue Alignment::Horizontal() const
+{
+    return static_cast< AlignmentValue >( m_value & ALIGNMENT_MASK_HORIZONTAL );
+}
+
+
+//
+// Align Charm
+//
+
+inline AlignCharm& AlignCharm::MiddleCenter()
 {
     CARAMEL_ASSERT( m_alignment == ALIGNMENT_NONE );
     m_alignment = ALIGNMENT_MIDDLE_CENTER;
-    return static_cast< Derived& >( *this );
+    return *this;
 }
 
 

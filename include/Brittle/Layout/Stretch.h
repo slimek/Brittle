@@ -36,9 +36,10 @@ enum StretchMethod
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Stretch Charm
+// - Stretch a node the fill its parent with specified method.
 //
 
-class StretchCharm : public AlignmentCharm< StretchCharm >
+class StretchCharm
 {
 public:
     explicit StretchCharm( Node* target );

@@ -4,11 +4,13 @@
 
 #include "Layout/LayoutJsonImpl.h"
 #include "Layout/SpriteBuilder.h"
+#include <Brittle/Layout/Alignment.h>
 #include <Brittle/Layout/Locate.h>
 #include <Brittle/Layout/Stretch.h>
 #include <Brittle/Utils/Geometry.h>
 #include <Macaron/RapidJson/JsonBelt.h>
 #include <Macaron/RapidJson/JsonReader.h>
+#include <Caramel/Functional/ScopeExit.h>
 #include <Caramel/String/Algorithm.h>
 
 
@@ -18,11 +20,84 @@ namespace Brittle
 //
 // [Contents]
 //
+//   AlignCharm
 //   LocateCharm
 //   StretchCharm
 //   LayoutJson
 //   SpriteBuilder
 //
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Align Charm
+//
+
+AlignCharm::AlignCharm( Node* target )
+    : m_target( target )
+{
+    CARAMEL_ASSERT( target );
+    CARAMEL_ASSERT( target->getParent() );
+}
+
+
+AlignCharm::~AlignCharm()
+{
+    this->Apply();
+}
+
+
+void AlignCharm::Apply()
+{
+    if ( m_applied ) { return; }
+    m_applied = true;
+
+    const auto psize = m_target->getParent()->getContentSize();
+    const auto tsize = m_target->getContentSize();
+
+    // To Align X
+    {
+        const auto pw = psize.width;
+        const auto tsw = m_target->getScaleX() * tsize.width;
+        const auto tax = m_target->getAnchorPoint().x;
+
+        switch ( m_alignment.Horizontal() )
+        {
+        case ALIGNMENT_LEFT:
+            m_target->setPositionX( tax * tsw );
+            break;
+
+        case ALIGNMENT_CENTER:
+            m_target->setPositionX( pw / 2 + ( tax - 0.5f ) * tsw );
+            break;
+
+        case ALIGNMENT_RIGHT:
+            m_target->setPositionX( pw + ( tax - 1 ) * tsw );
+            break;
+        }
+    }
+
+    // To Align Y
+    {
+        const auto ph = psize.height;
+        const auto tsh = m_target->getScaleY() * tsize.height;
+        const auto tay = m_target->getAnchorPoint().y;
+
+        switch ( m_alignment.Vertical() )
+        {
+        case ALIGNMENT_TOP:
+            m_target->setPositionY( tay * tsh );
+            break;
+
+        case ALIGNMENT_MIDDLE:
+            m_target->setPositionY( ph / 2 + ( tay - 0.5f ) * tsh );
+            break;
+
+        case ALIGNMENT_BOTTOM:
+            m_target->setPositionY( ph + ( tay - 1 ) * tsh );
+        }
+    }
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -155,20 +230,15 @@ void StretchCharm::Apply()
     if ( m_applied ) { return; }
     m_applied = true;
 
-    const auto parent = m_target->getParent();
-    if ( ! parent )
-    {
-        CARAMEL_ALERT( "You must set parent before using Stretch()" );
-        return;
-    }
+    // Prepare streching information
 
-    const auto parentSize = parent->getContentSize();
+    const auto parentSize = m_target->getParent()->getContentSize();
     auto targetSize = m_target->getContentSize();
     
     const Float scalingX = parentSize.width / targetSize.width;
     const Float scalingY = parentSize.height / targetSize.height;
 
-    /// Stretch ///
+    /// Stretch by Method ///
 
     switch ( m_stretchMethod )
     {
@@ -201,17 +271,15 @@ void StretchCharm::Apply()
     case STRETCH_NONE:
     {
         // Do nothing, keep the original size.
-        return;
+        break;
     }
     
     default:
         CARAMEL_THROW( "Unknown stretch method: {0}", m_stretchMethod );
     }
 
-    /// Align ///
-
-    const auto center = GetCenter( parent->getContentSize() );
-    m_target->setPosition( center );
+    // Put target to the center
+    Align( m_target ).MiddleCenter();
 }
 
 

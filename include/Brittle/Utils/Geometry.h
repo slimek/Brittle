@@ -14,6 +14,36 @@ namespace Brittle
 
 ///////////////////////////////////////////////////////////////////////////////
 //
+// Geometry Types Comparison Operators
+// - NOTES: Vec2 supports comparison by itself.
+//
+
+inline Bool operator==( const Size& lhs, const Size& rhs )
+{
+    return lhs.width == rhs.width && lhs.height == rhs.height;
+}
+
+
+inline Bool operator!=( const Size& lhs, const Size& rhs )
+{
+    return ! operator==( lhs, rhs );
+}
+
+
+inline Bool operator==( const Rect& lhs, const Rect& rhs )
+{
+    return lhs.origin == rhs.origin && lhs.size == rhs.size;
+}
+
+
+inline Bool operator!=( const Rect& lhs, const Rect& rhs )
+{
+    return ! operator==( lhs, rhs );
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
 // Rect Helpers
 //
 
