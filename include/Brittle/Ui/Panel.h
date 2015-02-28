@@ -78,7 +78,7 @@ inline void Panel::GetChild( const std::string& name, WidgetType*& widget ) cons
     widget = dynamic_cast< WidgetType* >( this->GetChild( name ));
     if ( ! widget )
     {
-        CARAMEL_THROW( "Panel %s child %s convert failed",
+        CARAMEL_THROW( "Panel {0} child {1} convert failed",
                        this->getName(), name );
     }
 }

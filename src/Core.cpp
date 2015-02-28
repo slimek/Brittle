@@ -119,7 +119,7 @@ Int SimpleApp::Run( const AppSettings& settings )
     auto xc = CatchException( [=] ()-> Int { return this->run(); } );
     if ( xc )
     {
-        CARAMEL_ALERT( "Application::run() throws:\n%s", xc.TracingMessage() );
+        CARAMEL_ALERT( "Application::run() throws:\n{0}", xc.TracingMessage() );
         return EXIT_FAILURE;
     }
 

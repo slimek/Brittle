@@ -166,7 +166,7 @@ Node* Panel::GetChild( const std::string& name ) const
     auto widget = this->getChildByName( name );
     if ( ! widget )
     {
-        CARAMEL_THROW( "Panel %s child %s not found", this->getName(), name );
+        CARAMEL_THROW( "Panel \"{0}\" child \"{1}\" not found", this->getName(), name );
     }
     return widget;
 }
@@ -187,7 +187,7 @@ Node* Panel::GetDescendant( const std::string& name ) const
         }
     }
 
-    CARAMEL_THROW( "Panel %s descendant %s not found", this->getName(), name );
+    CARAMEL_THROW( "Panel \"{0}\" descendant \"{1}\" not found", this->getName(), name );
 }
 
 
@@ -214,7 +214,7 @@ void Panel::SetClickHandler( const std::string& name, ClickHandler handler )
     auto clickable = dynamic_cast< Clickable* >( this->GetDescendant( name ));
     if ( ! clickable )
     {
-        CARAMEL_ALERT( "Widget %s is not clickable", name );
+        CARAMEL_ALERT( "Widget \"{0}\" is not clickable", name );
         return;
     }
 
@@ -274,7 +274,7 @@ void PanelBuilder::LoadJsonRoot()
 
     if ( ! fileUtils->isFileExist( m_layoutPath ))
     {
-        CARAMEL_THROW( "Panel %s : layout file not found", m_layoutPath );
+        CARAMEL_THROW( "Panel \"{0}\" : layout file not found", m_layoutPath );
     }
 
     std::string layoutContent = fileUtils->getStringFromFile( m_layoutPath );
@@ -282,7 +282,7 @@ void PanelBuilder::LoadJsonRoot()
     Macaron::RapidJson::JsonReader reader;
     if ( ! reader.Parse( layoutContent, m_layoutJson ))
     {
-        CARAMEL_THROW( "Panel %s : layout parse failed :\n%s",
+        CARAMEL_THROW( "Panel \"{0}\" : layout parse failed :\n{1}",
                        m_layoutPath, reader.GetErrorMessage() );
     }
 
@@ -295,7 +295,7 @@ void PanelBuilder::BuildWidgets()
     JsonArray jwidgets;
     if ( ! m_layoutJson.GetArray( "widgets", jwidgets ))
     {
-        CARAMEL_TRACE_WARN( "Panel layout %s has no \"widgets\" attribute", m_layoutPath );
+        CARAMEL_TRACE_WARN( "Panel layout \"{0}\" has no \"widgets\" attribute", m_layoutPath );
         return;
     }
 
@@ -352,7 +352,7 @@ void WidgetBuilder::ReadNameAndType()
 
     if ( ! m_json.GetString( "type", m_type ))
     {
-        CARAMEL_THROW( "Widget %s has no \"type\" attribute", m_path );
+        CARAMEL_THROW( "Widget \"{0}\" has no \"type\" attribute", m_path );
     }
 
     // After read name and type, update JsonValue's tag to make clearer tracing message.
@@ -384,7 +384,7 @@ void WidgetBuilder::BuildWidgetByType()
     WidgetType type;
     if ( ! uiTypes.FindValueByName( m_type, type ))
     {
-        CARAMEL_THROW( "Widget %s has invalid type: %s", m_path, m_type );
+        CARAMEL_THROW( "Widget \"{0}\" has invalid type: {1}", m_path, m_type );
     }
 
     switch ( type )
@@ -440,7 +440,7 @@ void WidgetBuilder::BuildImageView()
     {
         if ( ! FileUtils::getInstance()->isFileExist( imagePath ))
         {
-            CARAMEL_ALERT( "Image %s - imagePath %s not found",
+            CARAMEL_ALERT( "Image \"{0}\" - imagePath \"{1}\" not found",
                            m_path, imagePath );
             return;
         }
@@ -490,7 +490,7 @@ void WidgetBuilder::BuildTextBMFont()
     {
         if ( ! FileUtils::getInstance()->isFileExist( fontPath ))
         {
-            CARAMEL_ALERT( "BMFont %s - fontPath %s not found",
+            CARAMEL_ALERT( "BMFont \"{0}\" - fontPath \"{1}\" not found",
                            m_path, fontPath );
             return;
         }
@@ -545,7 +545,7 @@ void WidgetBuilder::BuildSimpleButton()
     {
         if ( ! FileUtils::getInstance()->isFileExist( normalPath ))
         {
-            CARAMEL_ALERT( "Button %s - normalPath %s not found",
+            CARAMEL_ALERT( "Button \"{0}\" - normalPath \"{1}\" not found",
                            m_path, normalPath );
             return;
         }
@@ -588,7 +588,7 @@ WidgetResizer::WidgetResizer( ui::Widget* widget, const WidgetProperties& props 
 
 void WidgetResizer::Resize( const Rect& area )
 {
-    CARAMEL_TRACE_INFO( "Resize: %s", m_widget->getName() );
+    CARAMEL_TRACE_INFO( "Resize: \"{0}\"", m_widget->getName() );
 
     const Bool ignoreSize = m_widget->isIgnoreContentAdaptWithSize();
 

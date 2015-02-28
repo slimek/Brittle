@@ -117,13 +117,13 @@ LocateCharm& LocateCharm::Json( const JsonValue& json )
                 ATTR( "fromBottom",         FromBottom( (Float)jb )                 )
                 else
                 {
-                    CARAMEL_ALERT( "Unknown Locate attribute: %s", attr );
+                    CARAMEL_ALERT( "Unknown Locate attribute: {0}", attr );
                 }
             }
         }
         catch ( ... )
         {
-            CARAMEL_ALERT( "Parse Locate in \"%s\" attribute", attr );
+            CARAMEL_ALERT( "Parse Locate in \"{0}\" attribute", attr );
         }
     }
 
@@ -205,7 +205,7 @@ void StretchCharm::Apply()
     }
     
     default:
-        CARAMEL_THROW( "Unknown stretch method: %d", m_stretchMethod );
+        CARAMEL_THROW( "Unknown stretch method: {0}", m_stretchMethod );
     }
 
     /// Align ///
@@ -259,7 +259,7 @@ LayoutJson::LayoutJson( const std::string& filePath )
     
     if ( ! fileUtils->isFileExist( filePath ))
     {
-        CARAMEL_THROW( "Layout file \"%s\" not found", filePath );
+        CARAMEL_THROW( "Layout file \"{0}\" not found", filePath );
     }
 
     const std::string jsonText = fileUtils->getStringFromFile( filePath );
@@ -269,7 +269,7 @@ LayoutJson::LayoutJson( const std::string& filePath )
 
     if ( ! reader.Parse( jsonText, json ))
     {
-        CARAMEL_THROW( "%s is not a valid JSON", filePath );
+        CARAMEL_THROW( "{0} is not a valid JSON", filePath );
     }
 
     m_impl.reset( new LayoutJsonImpl( filePath, json ));
@@ -283,7 +283,7 @@ LayoutJson::LayoutJson( const std::string& name, const std::string& jsonText )
 
     if ( ! reader.Parse( jsonText, json ))
     {
-        CARAMEL_THROW( "%s embedded layout is not a valid JSON", name );
+        CARAMEL_THROW( "{0} embedded layout is not a valid JSON", name );
     }
 
     m_impl.reset( new LayoutJsonImpl( name, json ));
@@ -295,20 +295,20 @@ Sprite* LayoutJson::AddSprite( Node* node, const std::string& name )
     JsonValue json;
     if ( ! m_impl->GetItem( name, json ))
     {
-        CARAMEL_THROW( "In layout \"%s\" the \"%s\" not found", m_impl->GetName(), name );
+        CARAMEL_THROW( "In layout \"{0}\" the \"{1}\" not found", m_impl->GetName(), name );
     }
 
     std::string imagePath;
     if ( ! json.GetString( "image", imagePath ))
     {
-        CARAMEL_THROW( "In layout \"%s\" the \"s\" has no image, can't create a Sprite",
+        CARAMEL_THROW( "In layout \"{0}\" the \"{1}\" has no image, can't create a Sprite",
                        m_impl->GetName(), name );
     }
 
     SpriteBuilder builder( node, imagePath );
     if ( ! builder.Parse( json ))
     {
-        CARAMEL_THROW( "In layout \"s\" the \"s\" create sprite failed",
+        CARAMEL_THROW( "In layout \"{0}\" the \"{1}\" create sprite failed",
                        m_impl->GetName(), name );
     }
     return builder.GetSprite();
