@@ -22,7 +22,9 @@
     <ClInclude Include="..\include\Brittle\Core\SimpleApp.h" />
     <ClInclude Include="..\include\Brittle\Core\AppSettings.h" />
     <ClInclude Include="..\include\Brittle\Core\SimpleScene.h" />
-    <ClInclude Include="..\include\Brittle\Layout\Alignment.h" />
+    <ClInclude Include="..\include\Brittle\Enums\Alignment.h" />
+    <ClInclude Include="..\include\Brittle\Enums\Orientation.h" />
+    <ClInclude Include="..\include\Brittle\Layout\Align.h" />
     <ClInclude Include="..\include\Brittle\Layout\LayoutJson.h" />
     <ClInclude Include="..\include\Brittle\Layout\Locate.h" />
     <ClInclude Include="..\include\Brittle\Layout\Stretch.h" />

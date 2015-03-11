@@ -48,6 +48,9 @@
     <Filter Include="1. Public Headers\Animation">
       <UniqueIdentifier>{786dbb24-3c18-4ac9-9f3b-02c0413a71c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="1. Public Headers\Enums">
+      <UniqueIdentifier>{3fef1094-b9df-489b-a122-d8c95df31eeb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
@@ -113,9 +116,6 @@
     <ClInclude Include="..\include\Brittle\Layout\Stretch.h">
       <Filter>1. Public Headers\Layout</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Brittle\Layout\Alignment.h">
-      <Filter>1. Public Headers\Layout</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Brittle\Layout\Locate.h">
       <Filter>1. Public Headers\Layout</Filter>
     </ClInclude>
@@ -142,6 +142,15 @@
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Animation\FlipbookAnimation.h">
       <Filter>1. Public Headers\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Enums\Alignment.h">
+      <Filter>1. Public Headers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Layout\Align.h">
+      <Filter>1. Public Headers\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Enums\Orientation.h">
+      <Filter>1. Public Headers\Enums</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

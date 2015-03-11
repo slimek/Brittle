@@ -5,7 +5,6 @@
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
-#include <Brittle/Layout/Alignment.h>
 #include <Caramel/Error/Assert.h>
 #include <2d/CCNode.h>
 

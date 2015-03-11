@@ -1,12 +1,10 @@
-// Brittle C++ Library - Layout - Alignment Header
+// Brittle C++ Library - Enums - Alignment Header
 
-#ifndef __BRITTLE_LAYOUT_ALIGNMENT_H
-#define __BRITTLE_LAYOUT_ALIGNMENT_H
+#ifndef __BRITTLE_ENUMS_ALIGNMENT_H
+#define __BRITTLE_ENUMS_ALIGNMENT_H
 #pragma once
 
 #include <Brittle/Setup/BrittleDefs.h>
-#include <Caramel/Error/Assert.h>
-#include <base/ccTypes.h>
 
 
 namespace Brittle
@@ -70,45 +68,7 @@ private:
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Align Charm
-//
-
-class AlignCharm
-{
-public:
-    explicit AlignCharm( Node* target );
-    ~AlignCharm();
-
-    void Apply();
-
-
-    /// Align Method - Alignment ///
-
-    AlignCharm& MiddleCenter();
-
-
-protected:
-    
-    Node* m_target { nullptr };
-    Bool  m_applied { false };
-
-    Alignment m_alignment { ALIGNMENT_NONE };
-};
-
-
-inline AlignCharm Align( Node* target )
-{
-    return AlignCharm( target );
-}
-
-
-///////////////////////////////////////////////////////////////////////////////
-//
 // Implementation
-//
-
-//
-// Alignment
 //
 
 inline AlignmentValue Alignment::Vertical() const
@@ -123,20 +83,8 @@ inline AlignmentValue Alignment::Horizontal() const
 }
 
 
-//
-// Align Charm
-//
-
-inline AlignCharm& AlignCharm::MiddleCenter()
-{
-    CARAMEL_ASSERT( m_alignment == ALIGNMENT_NONE );
-    m_alignment = ALIGNMENT_MIDDLE_CENTER;
-    return *this;
-}
-
-
 ///////////////////////////////////////////////////////////////////////////////
 
 } // namespace Brittle
 
-#endif // __BRITTLE_LAYOUT_ALIGNMENT_H
+#endif // __BRITTLE_ENUMS_ALIGNMENT_H
