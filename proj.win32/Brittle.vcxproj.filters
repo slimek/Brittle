@@ -152,6 +152,12 @@
     <ClInclude Include="..\include\Brittle\Enums\Orientation.h">
       <Filter>1. Public Headers\Enums</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Nodes\HorizontalScrolling.h">
+      <Filter>1. Public Headers\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Nodes\NodeExtensions.h">
+      <Filter>1. Public Headers\Nodes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">
