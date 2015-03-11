@@ -4,7 +4,7 @@
 
 #include "Layout/LayoutJsonImpl.h"
 #include "Layout/SpriteBuilder.h"
-#include <Brittle/Layout/Alignment.h>
+#include <Brittle/Layout/Align.h>
 #include <Brittle/Layout/Locate.h>
 #include <Brittle/Layout/Stretch.h>
 #include <Brittle/Utils/Geometry.h>
@@ -133,6 +133,10 @@ void LocateCharm::Apply()
     {
         m_target->setPositionX( m_paramX * parentSize.width );
     }
+    else if ( m_uses & USE_X_AT )
+    {
+        m_target->setPositionX( m_paramX );
+    }
     else if ( m_uses & USE_X_FROM_LEFT )
     {
         m_target->setPositionX( m_paramX );
@@ -148,6 +152,10 @@ void LocateCharm::Apply()
     if ( m_uses & USE_Y_NORM )
     {
         m_target->setPositionY( m_paramY * parentSize.height );
+    }
+    else if ( m_uses & USE_Y_AT )
+    {
+        m_target->setPositionX( m_paramY );
     }
     else if ( m_uses & USE_Y_FROM_TOP )
     {

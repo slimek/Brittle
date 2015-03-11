@@ -33,6 +33,9 @@ public:
     LocateCharm& CenterX();
     LocateCharm& CenterY();
 
+    LocateCharm& X( Float x );
+    LocateCharm& Y( Float y );
+
     LocateCharm& FromLeft  ( Float x );
     LocateCharm& FromRight ( Float x );
     LocateCharm& FromTop   ( Float y );
@@ -55,12 +58,14 @@ private:
     enum UseFlag
     {
         USE_X_NORM          = 0x01,  // 0.0 - 1.0
-        USE_X_FROM_LEFT     = 0x02,
-        USE_X_FROM_RIGHT    = 0x04,
+        USE_X_AT            = 0x02,
+        USE_X_FROM_LEFT     = 0x04,
+        USE_X_FROM_RIGHT    = 0x08,
 
         USE_Y_NORM          = 0x10,  // 0.0 - 1.0
-        USE_Y_FROM_TOP      = 0x20,
-        USE_Y_FROM_BOTTOM   = 0x40,
+        USE_Y_AT            = 0x20,
+        USE_Y_FROM_TOP      = 0x40,
+        USE_Y_FROM_BOTTOM   = 0x80,
     };
 
     Uint32 m_uses { 0 };
@@ -102,6 +107,22 @@ inline LocateCharm& LocateCharm::CenterY()
 {
     m_uses |= USE_Y_NORM;
     m_paramY = 0.5;
+    return *this;
+}
+
+
+inline LocateCharm& LocateCharm::X( Float x )
+{
+    m_uses |= USE_X_AT;
+    m_paramX = x;
+    return *this;
+}
+
+
+inline LocateCharm& LocateCharm::Y( Float y )
+{
+    m_uses |= USE_Y_AT;
+    m_paramY = y;
     return *this;
 }
 
