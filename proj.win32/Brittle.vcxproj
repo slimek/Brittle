@@ -48,7 +48,7 @@
     <ClInclude Include="..\src\Ui\WidgetResizer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src.win32\CoreWin32.cpp" />
+    <ClCompile Include="..\src.win32\Core_win32.cpp" />
     <ClCompile Include="..\src\Actions.cpp" />
     <ClCompile Include="..\src\Animation.cpp" />
     <ClCompile Include="..\src\BrittlePch.cpp">
