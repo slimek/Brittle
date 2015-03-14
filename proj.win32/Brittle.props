@@ -10,7 +10,8 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\..\CandyJar\lib\$(Platform).vc$(PlatformToolsetVersion).$(Configuration);$(OutDir)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libchipmunk.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;opengl32.lib;glew32.lib;glfw3.lib;freetype250.lib;libchipmunk.lib;libjpeg.lib;libpng.lib;libzlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
