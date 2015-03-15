@@ -588,8 +588,6 @@ WidgetResizer::WidgetResizer( ui::Widget* widget, const WidgetProperties& props 
 
 void WidgetResizer::Resize( const Rect& area )
 {
-    CARAMEL_TRACE_INFO( "Resize: \"{0}\"", m_widget->getName() );
-
     const Bool ignoreSize = m_widget->isIgnoreContentAdaptWithSize();
 
     if ( WP_FLAG_USE_STRETCH_METHOD & m_props.flags )
