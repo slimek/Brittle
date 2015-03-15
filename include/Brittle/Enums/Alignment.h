@@ -38,8 +38,8 @@ enum AlignmentValue
 
     /// Masks ///
 
-    ALIGNMENT_MASK_VERTICAL   = 0x0F,
-    ALIGNMENT_MASK_HORIZONTAL = 0xF0,
+    ALIGNMENT_MASK_HORIZONTAL = 0x0F,
+    ALIGNMENT_MASK_VERTICAL   = 0xF0,
 };
 
 
