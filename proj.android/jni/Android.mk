@@ -9,12 +9,15 @@ BRT_SRC := ../../src
 # LOCAL_PCH := $(BRT_SRC)/BrittlePch.h
 
 LOCAL_SRC_FILES := \
+	$(BRT_SRC)/BrittlePch.cpp \
 	$(BRT_SRC)/Actions.cpp \
+	$(BRT_SRC)/Animation.cpp \
 	$(BRT_SRC)/Core.cpp \
 	$(BRT_SRC)/Layout.cpp \
+	$(BRT_SRC)/Nodes.cpp \
 	$(BRT_SRC)/Ui.cpp \
 	$(BRT_SRC)/Utils.cpp \
-	$(BRT_SRC).android/CoreAndroid.cpp
+	$(BRT_SRC).android/Core_android.cpp
 	
 	
 LOCAL_C_INCLUDES := \

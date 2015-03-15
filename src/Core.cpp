@@ -135,6 +135,12 @@ void SimpleApp::Launch( const AppSettings& settings )
     m_settings = settings;
 
     this->InitPlatform();
+
+    auto xc = CatchException( [=] ()-> Int { return this->run(); } );
+    if ( xc )
+    {
+    	CARAMEL_ALERT( "Application::run() throws:\n{0}", xc.TracingMessage() );
+    }
 }
 
 #endif  // BRITTLE_SYSTEM
@@ -211,6 +217,8 @@ void SimpleScene::ReplaceScene( Int sceneId )
 
 void SimpleScene::OnKeyPressed( EventKeyboard::KeyCode key, Event* event )
 {
+	TraceInfo( "Key pressed: {0}", key );
+
     if ( key == EventKeyboard::KeyCode::KEY_BACK )
     {
         this->OnBackKeyPressed();

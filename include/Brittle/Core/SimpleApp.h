@@ -90,8 +90,21 @@ private:
 };
 
 
-///////////////////////////////////////////////////////////////////////////////
-
 } // namespace Brittle
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// App Exporting Functions
+// - The apps should provide these functions on each platform, respectively.
+//
+
+//
+// Android Initialize
+// - The apps MUST create a SimpleApp derived class, and fill the settings.
+//
+void NativeInit( Brittle::SimpleApp*& app, Brittle::AppSettings& settings );
+
+
+///////////////////////////////////////////////////////////////////////////////
 
 #endif // __BRITTLE_CORE_SIMPLE_APP_H
