@@ -53,7 +53,7 @@ private:
 
     /// Keyboard Events ///
 
-    virtual void OnKeyPressed( EventKeyboard::KeyCode key, Event* event );
+    virtual void OnKeyReleased( EventKeyboard::KeyCode key, Event* event );
     
     // The "Back button" is pressed.
     // - Desktop : ESC key

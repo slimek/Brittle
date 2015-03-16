@@ -176,7 +176,7 @@ void SimpleScene::onEnter()
     this->scheduleUpdate();
 
     m_keyboardListener = EventListenerKeyboard::create();
-    m_keyboardListener->onKeyPressed = CC_CALLBACK_2( SimpleScene::OnKeyPressed, this );
+    m_keyboardListener->onKeyReleased = CC_CALLBACK_2( SimpleScene::OnKeyReleased, this );
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority( m_keyboardListener, this );
 
     this->OnEnterScene();
@@ -215,9 +215,9 @@ void SimpleScene::ReplaceScene( Int sceneId )
 // Keyboard Events
 //
 
-void SimpleScene::OnKeyPressed( EventKeyboard::KeyCode key, Event* event )
+void SimpleScene::OnKeyReleased( EventKeyboard::KeyCode key, Event* event )
 {
-	TraceInfo( "Key pressed: {0}", key );
+	TraceInfo( "Key released: {0}", key );
 
     if ( key == EventKeyboard::KeyCode::KEY_BACK )
     {
