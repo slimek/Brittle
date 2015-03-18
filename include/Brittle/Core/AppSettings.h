@@ -29,13 +29,14 @@ struct DesktopSettings
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Application Settings
-// - For the same app, each platform has its own setting.
+// - Settings may differ across platforms and configurations.
 //
 
 struct AppSettings
 {
-    Int initialSceneId { 0 };
-    
+    // Call to Director::setDisplayStats().
+    Bool enableDisplayStats { false };
+
     DesktopSettings desktop;
 };
 

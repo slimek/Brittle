@@ -20,9 +20,6 @@ class SimpleApp : public Application
 {
 public:
 
-    explicit SimpleApp( Int initialSceneId );
-
-
     /// Accessors ///
 
     static SimpleApp* Instance();
@@ -63,7 +60,31 @@ public:
     void ReplaceScene( Int sceneId );
 
 
+    /// Properties ///
+
+    Size GetDesignSize() const;
+
+
+protected:
+
+    //
+    // App Descriptor
+    // - No default values. You must desinate theme.
+    //
+    struct AppDesc
+    {
+        // Design resolution.
+        Float designWidth;
+        Float designHeight;
+
+        Int initialSceneId;
+    };
+
+    explicit SimpleApp( const AppDesc& desc );
+
+
 private:
+
 
     /// Application Events ///
 
@@ -89,7 +110,10 @@ private:
     
     /// Data Members ///
 
-    Int m_initialSceneId { 0 };
+    // Descriptor is the same on all platforms/configurations.
+    AppDesc m_desc;
+
+    // Settings may differ across platforms/configurations.
     AppSettings m_settings;
 };
 

@@ -29,8 +29,8 @@ namespace Brittle
 // Simple Application
 //
 
-SimpleApp::SimpleApp( Int initialSceneId )
-    : m_initialSceneId( initialSceneId )
+SimpleApp::SimpleApp( const AppDesc& desc )
+    : m_desc( desc )
 {}
 
 
@@ -48,18 +48,37 @@ Bool SimpleApp::applicationDidFinishLaunching()
 {
     CARAMEL_TRACE_INFO( "Application Did Finish Launching" );
 
-    this->OnLaunch();
-
     auto director = Director::getInstance();
 
-    director->startAnimation();
+    /// Design Resolution ///
 
-    auto initialScene = this->CreateScene( m_initialSceneId );
+    const auto frameSize = director->getOpenGLView()->getFrameSize();
+
+    // Aspect ratios
+    const auto frameAr = frameSize.width / frameSize.height;
+    const auto designAr = m_desc.designWidth / m_desc.designHeight;
+    
+    if ( frameAr > designAr )
+    {
+        director->getOpenGLView()->
+            setDesignResolutionSize( 1, m_desc.designHeight, ResolutionPolicy::FIXED_HEIGHT );
+    }
+    else
+    {
+        director->getOpenGLView()->
+            setDesignResolutionSize( m_desc.designWidth, 1, ResolutionPolicy::FIXED_WIDTH );
+    }
+
+
+    /// Initial Scene ///
+
+    auto initialScene = this->CreateScene( m_desc.initialSceneId );
     director->pushScene( initialScene );
 
 
-    /// Scheduler ///
+    /// Animation and Schedule Update ///
     
+    director->startAnimation();
     director->getScheduler()->scheduleUpdate( this, -1, false );
 
 
@@ -67,6 +86,15 @@ Bool SimpleApp::applicationDidFinishLaunching()
 
     auto fileUtils = CCFileUtils::getInstance();
     fileUtils->addSearchPath( fileUtils->getWritablePath() );
+
+
+    /// App Settings ///
+
+    director->setDisplayStats( m_settings.enableDisplayStats );
+
+
+    // Post event to the derived
+    this->OnLaunch();
 
     return true;
 }
@@ -160,6 +188,16 @@ void SimpleApp::ReplaceScene( Int sceneId )
 {
     auto newScene = this->CreateScene( sceneId );
     Director::getInstance()->replaceScene( newScene );
+}
+
+
+//
+// Properties
+//
+
+Size SimpleApp::GetDesignSize() const
+{
+    return Size( m_desc.designWidth, m_desc.designHeight );
 }
 
 
