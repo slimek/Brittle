@@ -15,9 +15,6 @@
     <Filter Include="1. Public Headers\Setup">
       <UniqueIdentifier>{df96c2d9-f3e6-4d1a-ab6c-389214a6f0be}</UniqueIdentifier>
     </Filter>
-    <Filter Include="4. Precompiled Header">
-      <UniqueIdentifier>{30aa4837-8d49-42b1-b9f2-98fa807d00c6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="3. Win32 Platform">
       <UniqueIdentifier>{d81a9c4b-dbaa-4a85-811b-00e68ac04645}</UniqueIdentifier>
     </Filter>
@@ -51,10 +48,16 @@
     <Filter Include="1. Public Headers\Enums">
       <UniqueIdentifier>{3fef1094-b9df-489b-a122-d8c95df31eeb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="5. Precompiled Header">
+      <UniqueIdentifier>{30aa4837-8d49-42b1-b9f2-98fa807d00c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4. Android %28not build%29">
+      <UniqueIdentifier>{ea2dceb9-52b4-4933-9791-f3464872c16e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
-      <Filter>4. Precompiled Header</Filter>
+      <Filter>5. Precompiled Header</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h">
       <Filter>1. Public Headers\Setup</Filter>
@@ -164,7 +167,7 @@
       <Filter>2. Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\BrittlePch.cpp">
-      <Filter>4. Precompiled Header</Filter>
+      <Filter>5. Precompiled Header</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Ui.cpp">
       <Filter>2. Source Files</Filter>
@@ -186,6 +189,9 @@
     </ClCompile>
     <ClCompile Include="..\src.win32\Core_win32.cpp">
       <Filter>3. Win32 Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src.android\Core_android.cpp">
+      <Filter>4. Android %28not build%29</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -48,6 +48,10 @@
     <ClInclude Include="..\src\Ui\WidgetResizer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src.android\Core_android.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\src.win32\Core_win32.cpp" />
     <ClCompile Include="..\src\Actions.cpp" />
     <ClCompile Include="..\src\Animation.cpp" />
