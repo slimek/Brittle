@@ -29,6 +29,11 @@ namespace Brittle
 // Simple Application
 //
 
+SimpleApp::SimpleApp( Int initialSceneId )
+    : m_initialSceneId( initialSceneId )
+{}
+
+
 SimpleApp* SimpleApp::Instance()
 {
     return static_cast< SimpleApp* >( Application::getInstance() );
@@ -49,7 +54,7 @@ Bool SimpleApp::applicationDidFinishLaunching()
 
     director->startAnimation();
 
-    auto initialScene = this->CreateScene( m_settings.initialSceneId );
+    auto initialScene = this->CreateScene( m_initialSceneId );
     director->pushScene( initialScene );
 
 

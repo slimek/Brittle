@@ -17,31 +17,25 @@ namespace Brittle
 
 struct DesktopSettings
 {
-    DesktopSettings()
-        : frameWidth( 800 )
-        , frameHeight( 600 )
-    {}
-
-    Float frameWidth;
-    Float frameHeight;
+    // Properties of the frame window
+    Float frameWidth { 800 };
+    Float frameHeight { 600 };
     std::string frameTitle;
+
     std::string assetsPath;
 };
 
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Application Settings - Integrated
+// Application Settings
+// - For the same app, each platform has its own setting.
 //
 
 struct AppSettings
 {
-    AppSettings()
-        : initialSceneId( 0 )
-    {}
-
-    Int initialSceneId;
-
+    Int initialSceneId { 0 };
+    
     DesktopSettings desktop;
 };
 

@@ -20,6 +20,9 @@ class SimpleApp : public Application
 {
 public:
 
+    explicit SimpleApp( Int initialSceneId );
+
+
     /// Accessors ///
 
     static SimpleApp* Instance();
@@ -86,6 +89,7 @@ private:
     
     /// Data Members ///
 
+    Int m_initialSceneId { 0 };
     AppSettings m_settings;
 };
 
