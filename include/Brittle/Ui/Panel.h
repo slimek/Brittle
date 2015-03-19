@@ -48,9 +48,6 @@ public:
 
     void SetClickHandler( const std::string& name, ClickHandler handler ); 
 
-    template< typename Function, typename T >
-    void SetClickHandler( const std::string& name, const Function& handler, T* receiver );
-
 
 private:
 
@@ -81,15 +78,6 @@ inline void Panel::GetChild( const std::string& name, WidgetType*& widget ) cons
         CARAMEL_THROW( "Panel {0} child {1} convert failed",
                        this->getName(), name );
     }
-}
-
-
-template< typename Function, typename T >
-inline void Panel::SetClickHandler( const std::string& name, const Function& handler, T* receiver )
-{
-    namespace sp = std::placeholders;
-
-    this->SetClickHandler( name, std::bind( handler, receiver, sp::_1 ));
 }
 
 

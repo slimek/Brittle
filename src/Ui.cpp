@@ -38,13 +38,9 @@ namespace Brittle
 
 LabelButton::LabelButton()
 {
-    namespace sp = std::placeholders;
-
     this->setTouchEnabled( true );
 
-    this->addTouchEventListener(
-        std::bind( &LabelButton::OnTouchEvent, this, sp::_1, sp::_2 )
-    );
+    this->addTouchEventListener( CC_CALLBACK_2( LabelButton::OnTouchEvent, this ));
 }
 
 
@@ -93,11 +89,7 @@ void LabelButton::OnTouchEvent( Ref* sender, TouchEventType type )
 
 SimpleButton::SimpleButton()
 {
-    namespace sp = std::placeholders;
-
-    this->addTouchEventListener(
-        std::bind( &SimpleButton::OnTouchEvent, this, sp::_1, sp::_2 )
-    );
+    this->addTouchEventListener( CC_CALLBACK_2( SimpleButton::OnTouchEvent, this ));
 }
 
 
