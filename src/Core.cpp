@@ -47,7 +47,7 @@ SimpleApp* SimpleApp::Instance()
 
 Bool SimpleApp::applicationDidFinishLaunching()
 {
-    CARAMEL_TRACE_INFO( "Application Did Finish Launching" );
+    TraceInfo( "Application Did Finish Launching" );
 
     auto director = Director::getInstance();
 
@@ -103,7 +103,7 @@ Bool SimpleApp::applicationDidFinishLaunching()
 
 void SimpleApp::applicationDidEnterBackground()
 {
-    CARAMEL_TRACE_INFO( "App enter background" );
+    TraceInfo( "App enter background" );
 
     Director::getInstance()->stopAnimation();
 
@@ -113,7 +113,7 @@ void SimpleApp::applicationDidEnterBackground()
 
 void SimpleApp::applicationWillEnterForeground()
 {
-    CARAMEL_TRACE_INFO( "App enter foreground" );
+    TraceInfo( "App enter foreground" );
 
     Director::getInstance()->startAnimation();
 
@@ -124,7 +124,7 @@ void SimpleApp::applicationWillEnterForeground()
 void SimpleApp::applicationWillTerminate()
 {
     // Only desktop app will receive this event.
-    CARAMEL_TRACE_INFO( "App will terminate" );
+    TraceInfo( "App will terminate" );
 
     this->OnTerminate();
 }

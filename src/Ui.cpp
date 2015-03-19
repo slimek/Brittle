@@ -287,7 +287,7 @@ void PanelBuilder::BuildWidgets()
     JsonArray jwidgets;
     if ( ! m_layoutJson.GetArray( "widgets", jwidgets ))
     {
-        CARAMEL_TRACE_WARN( "Panel layout \"{0}\" has no \"widgets\" attribute", m_layoutPath );
+        CARAMEL_ALERT( "Panel layout \"{0}\" has no \"widgets\" attribute", m_layoutPath );
         return;
     }
 
