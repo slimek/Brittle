@@ -15,7 +15,7 @@ namespace Brittle
 // Simple Scene
 //
 
-class SimpleScene : public Scene
+class SimpleScene : public Node
 {
 public:
 
@@ -42,10 +42,22 @@ public:
     static void ReplaceScene( Int sceneId );
 
 
+    Scene* GetScreen() const { return m_screen; }
+
+
+protected:
+
+    Scene* m_screen { nullptr };
+
+
 private:
+
+    Bool Init( Scene* screen );
+
 
     /// Scene Events ///
 
+    virtual void OnCreate() {}
     virtual void OnEnterScene() {}
     virtual void OnExitScene()  {}
     virtual void OnUpdate() {}
@@ -77,7 +89,7 @@ template< typename SceneType, typename... Args >
 inline SceneType* SimpleScene::Create( Args&&... args )
 {
     auto scene = new SceneType( std::forward< Args >( args )... );
-    if ( scene && scene->init() )
+    if ( scene && scene->Init( Scene::create() ))
     {
         scene->autorelease();
         return scene;
@@ -94,7 +106,7 @@ template< typename SceneType, typename... Args >
 inline SceneType* SimpleScene::CreateWithPhysics( Args&&... args )
 {
     auto scene = new SceneType( std::forward< Args >( args )... );
-    if ( scene && scene->initWithPhysics() )
+    if ( scene && scene->Init( Scene::createWithPhysics() ))
     {
         scene->autorelease();
         return scene;

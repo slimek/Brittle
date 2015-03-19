@@ -7,6 +7,7 @@
 #include <Brittle/Core/FrameClock.h>
 #include <Brittle/Core/SimpleApp.h>
 #include <Brittle/Core/SimpleScene.h>
+#include <Brittle/Layout/Align.h>
 #include <Caramel/Chrono/ClockProxy.h>
 #include <Caramel/Error/CatchException.h>
 
@@ -73,7 +74,7 @@ Bool SimpleApp::applicationDidFinishLaunching()
     /// Initial Scene ///
 
     auto initialScene = this->CreateScene( m_desc.initialSceneId );
-    director->pushScene( initialScene );
+    director->pushScene( initialScene->GetScreen() );
 
 
     /// Animation and Schedule Update ///
@@ -187,7 +188,7 @@ void SimpleApp::Launch( const AppSettings& settings )
 void SimpleApp::ReplaceScene( Int sceneId )
 {
     auto newScene = this->CreateScene( sceneId );
-    Director::getInstance()->replaceScene( newScene );
+    Director::getInstance()->replaceScene( newScene->GetScreen() );
 }
 
 
@@ -207,15 +208,33 @@ Size SimpleApp::GetDesignSize() const
 //
 
 //
+// Initialization
+//
+
+Bool SimpleScene::Init( Scene* screen )
+{
+    this->setContentSize( SimpleApp::Instance()->GetDesignSize() );
+    this->setLocalZOrder( 1 );
+
+    m_screen = screen;
+    m_screen->setContentSize( Director::getInstance()->getVisibleSize() );
+    m_screen->addChild( this );
+
+    Align( this ).MiddleCenter();
+
+    this->OnCreate();
+    return true;
+}
+
+
+//
 // Node Event Handling
 //
 
 void SimpleScene::onEnter()
 {
-    this->Scene::onEnter();
-
-    this->setContentSize( Director::getInstance()->getVisibleSize() );
-
+    this->Node::onEnter();
+ 
     this->scheduleUpdate();
 
     m_keyboardListener = EventListenerKeyboard::create();
@@ -230,11 +249,11 @@ void SimpleScene::onExit()
 {
     this->OnExitScene();
 
-    // NOTES: Event listeners will auto-release when the scene destroyed.
+    this->getEventDispatcher()->removeEventListener( m_keyboardListener );
 
     this->unscheduleUpdate();
 
-    this->Scene::onExit();
+    this->Node::onExit();
 }
 
 
