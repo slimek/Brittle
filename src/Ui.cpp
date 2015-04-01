@@ -40,7 +40,7 @@ LabelButton::LabelButton()
 {
     this->setTouchEnabled( true );
 
-    this->addTouchEventListener( CC_CALLBACK_2( LabelButton::OnTouchEvent, this ));
+    this->addClickEventListener( CC_CALLBACK_1( LabelButton::OnClickEvent, this ));
 }
 
 
@@ -63,21 +63,11 @@ void LabelButton::SetClickHandler( ClickHandler handler )
 }   
 
 
-void LabelButton::OnTouchEvent( Ref* sender, TouchEventType type )
+void LabelButton::OnClickEvent( Ref* sender )
 {
-    switch ( type )
+    if ( m_clickHandler )
     {
-    case TouchEventType::ENDED:
-    {
-        if ( m_clickHandler )
-        {
-            m_clickHandler( this );
-        }
-        break;
-    }
-
-    default:
-        ;
+        m_clickHandler( this );
     }
 }
 
@@ -89,7 +79,7 @@ void LabelButton::OnTouchEvent( Ref* sender, TouchEventType type )
 
 SimpleButton::SimpleButton()
 {
-    this->addTouchEventListener( CC_CALLBACK_2( SimpleButton::OnTouchEvent, this ));
+    this->addClickEventListener( CC_CALLBACK_1( SimpleButton::OnClickEvent, this ));
 }
 
 
@@ -127,16 +117,11 @@ void SimpleButton::SetClickHandler( ClickHandler handler )
 }   
 
 
-void SimpleButton::OnTouchEvent( Ref* sender, TouchEventType type )
+void SimpleButton::OnClickEvent( Ref* sender )
 {
-    switch ( type )
+    if ( m_clickHandler )
     {
-    case TouchEventType::ENDED:
-        if ( m_clickHandler )
-        {
-            m_clickHandler( this );
-        }
-        break;
+        m_clickHandler( this );
     }
 }
 

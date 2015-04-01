@@ -48,7 +48,7 @@ public:
 
 private:
 
-    void OnTouchEvent( Ref* sender, TouchEventType type );
+    void OnClickEvent( Ref* sender );
 
     ClickHandler m_clickHandler;
 
