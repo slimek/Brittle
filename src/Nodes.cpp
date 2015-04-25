@@ -4,6 +4,7 @@
 
 #include <Brittle/Nodes/EllipseTouchable.h>
 #include <Brittle/Nodes/HorizontalScrolling.h>
+#include <Brittle/Nodes/Listen.h>
 #include <Brittle/Nodes/NodeExtensions.h>
 #include <Brittle/Layout/Locate.h>
 #include <Brittle/Utils/Geometry.h>
@@ -18,6 +19,7 @@ namespace Brittle
 //
 //   EllipseTouchable
 //   HorizontalScrolling
+//   ListenCharm
 //
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -240,6 +242,42 @@ void HorizontalScrolling::update( Float delta )
 
         this->LocateRight();
     }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Listen Charm
+//
+
+ListenCharm::ListenCharm( Node* listenee )
+    : m_listenee( listenee )
+{}
+
+
+ListenCharm::~ListenCharm()
+{
+    if ( ! m_applied )
+    {
+        this->Apply();
+    }
+}
+
+
+void ListenCharm::Apply()
+{
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches( true );
+
+    if ( m_touchBegan )
+    {
+        listener->onTouchBegan = m_touchBegan;
+    }
+
+    m_listenee->getEventDispatcher()
+        ->addEventListenerWithSceneGraphPriority( listener, m_listenee );
+
+    m_applied = true;
 }
 
 

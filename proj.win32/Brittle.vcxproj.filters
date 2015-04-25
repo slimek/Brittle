@@ -164,6 +164,9 @@
     <ClInclude Include="..\include\Brittle\Ui\UiBuilders.h">
       <Filter>1. Public Headers\Ui</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Nodes\Listen.h">
+      <Filter>1. Public Headers\Nodes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">
