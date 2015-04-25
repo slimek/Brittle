@@ -100,6 +100,14 @@ inline StretchCharm& StretchCharm::Fit()
 }
 
 
+inline StretchCharm& StretchCharm::Auto()
+{
+    CARAMEL_ASSERT( m_stretchMethod = STRETCH_UNDEF );
+    m_stretchMethod = STRETCH_AUTO;
+    return *this;
+}
+
+
 inline StretchCharm& StretchCharm::Repeat()
 {
     CARAMEL_ASSERT( m_stretchMethod == STRETCH_UNDEF );
