@@ -299,7 +299,7 @@ LayerColor* SimpleScene::CreateScreenCover( const Color4B& color )
 
     auto cover = LayerColor::create( color, screenSize.width, screenSize.height );
     cover->ignoreAnchorPointForPosition( false );
-    cover->setLocalZOrder( 1 );
+    cover->setLocalZOrder( this->getLocalZOrder() + 1 );
     Listen( cover ).SwallowTouchBegan();
 
     m_screen->addChild( cover );

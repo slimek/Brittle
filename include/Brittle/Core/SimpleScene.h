@@ -48,10 +48,10 @@ public:
     /// UI Utilities ///
 
     // Return a Layer with:
-    //   1. Child of screen.
-    //   2. Size of screen.
+    //   1. Child of screen. (Sibling of the Scene)
+    //   2. Size equals to the screen.
     //   3. At the center of screen.
-    //   4. Local Z-order is 1 (in front of the Scene).
+    //   4. In front of the Scene. (Z-order is +1 to the Scene)
     //   5. Swallows all touch events.
     //   6. Color is what you give.
     LayerColor* CreateScreenCover( const Color4B& color );
