@@ -45,6 +45,18 @@ public:
     Scene* GetScreen() const { return m_screen; }
 
 
+    /// UI Utilities ///
+
+    // Return a Layer with:
+    //   1. Child of screen.
+    //   2. Size of screen.
+    //   3. At the center of screen.
+    //   4. Local Z-order is 1 (in front of the Scene).
+    //   5. Swallows all touch events.
+    //   6. Color is what you give.
+    LayerColor* CreateScreenCover( const Color4B& color );
+
+
 protected:
 
     Scene* m_screen { nullptr };

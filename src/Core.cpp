@@ -8,6 +8,7 @@
 #include <Brittle/Core/SimpleApp.h>
 #include <Brittle/Core/SimpleScene.h>
 #include <Brittle/Layout/Align.h>
+#include <Brittle/Nodes/Listen.h>
 #include <Caramel/Chrono/ClockProxy.h>
 #include <Caramel/Error/CatchException.h>
 
@@ -285,6 +286,25 @@ void SimpleScene::OnKeyReleased( EventKeyboard::KeyCode key, Event* event )
     {
         this->OnBackKeyPressed();
     }
+}
+
+
+//
+// UI Utilities
+//
+
+LayerColor* SimpleScene::CreateScreenCover( const Color4B& color )
+{
+    const auto screenSize = m_screen->getContentSize();
+
+    auto cover = LayerColor::create( color, screenSize.width, screenSize.height );
+    cover->ignoreAnchorPointForPosition( false );
+    cover->setLocalZOrder( 1 );
+    Listen( cover ).SwallowTouchBegan();
+
+    m_screen->addChild( cover );
+    Align( cover ).MiddleCenter();
+    return cover;
 }
 
 
