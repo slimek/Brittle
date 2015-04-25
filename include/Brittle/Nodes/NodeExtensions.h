@@ -26,6 +26,12 @@ inline void TranslateX( Node* node, Float xoffset )
 }
 
 
+inline void TranslateY( Node* node, Float yoffset )
+{
+    node->setPositionY( node->getPositionY() + yoffset );
+}
+
+
 //
 // Cooridnations
 //
