@@ -84,11 +84,11 @@ public:
         return *this;
     }
 
-    template< typename Function, typename Arg0 >
-    This& ClickEvent( const Function& func, const Arg0& arg0 )
+    template< typename Function, typename Target >
+    This& ClickEvent( const Function& func, const Target& target )
     {
         m_button->addClickEventListener(
-            std::bind( func, arg0, std::placeholders::_1 ));
+            std::bind( func, target, std::placeholders::_1 ));
         return *this;
     }
 
