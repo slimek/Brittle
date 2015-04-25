@@ -264,6 +264,13 @@ ListenCharm::~ListenCharm()
 }
 
 
+ListenCharm& ListenCharm::SwallowTouchBegan()
+{
+    m_touchBegan = [] ( Touch*, Event* ) { return true; };
+    return *this;
+}
+
+
 void ListenCharm::Apply()
 {
     auto listener = EventListenerTouchOneByOne::create();

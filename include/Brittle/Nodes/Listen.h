@@ -27,8 +27,12 @@ public:
     
     /// Add Listeners ///
 
-    template< typename Function, typename Target >
-    ListenCharm& TouchBegan( const Function& func, const Target& target );
+    template< typename Function, typename... Args >
+    ListenCharm& TouchBegan( const Function& func, const Args&... args );
+
+
+    // Add a listener which always swallows the events.
+    ListenCharm& SwallowTouchBegan();
 
 
 private:
@@ -54,10 +58,10 @@ inline ListenCharm Listen( Node* listenee )
 // Implementation
 //
 
-template< typename Function, typename Target >
-inline ListenCharm& ListenCharm::TouchBegan( const Function& func, const Target& target )
+template< typename Function, typename... Args >
+inline ListenCharm& ListenCharm::TouchBegan( const Function& func, const Args&... args )
 {
-    m_touchBegan = std::bind( func, target, std::placeholders::_1, std::placeholders::_2 );
+    m_touchBegan = std::bind( func, args..., std::placeholders::_1, std::placeholders::_2 );
     return *this;
 }
 
