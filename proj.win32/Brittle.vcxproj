@@ -35,6 +35,7 @@
     <ClInclude Include="..\include\Brittle\Ui\LabelButton.h" />
     <ClInclude Include="..\include\Brittle\Ui\SimpleButton.h" />
     <ClInclude Include="..\include\Brittle\Ui\Panel.h" />
+    <ClInclude Include="..\include\Brittle\Ui\UiBuilders.h" />
     <ClInclude Include="..\include\Brittle\Ui\UiTypes.h" />
     <ClInclude Include="..\include\Brittle\Utils\Geometry.h" />
     <ClInclude Include="..\include\Brittle\Utils\JsonValue.h" />
