@@ -170,6 +170,9 @@
     <ClInclude Include="..\include\Brittle\Utils\Styling.h">
       <Filter>1. Public Headers\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Nodes\ScreenCover.h">
+      <Filter>1. Public Headers\Nodes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">

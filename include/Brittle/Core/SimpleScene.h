@@ -44,19 +44,7 @@ public:
 
     Scene* GetScreen() const { return m_screen; }
 
-
-    /// UI Utilities ///
-
-    // Return a Layer with:
-    //   1. Child of screen. (Sibling of the Scene)
-    //   2. Size equals to the screen.
-    //   3. At the center of screen.
-    //   4. In front of the Scene. (Z-order is +1 to the Scene)
-    //   5. Swallows all touch events.
-    //   6. Color is what you give.
-    LayerColor* CreateScreenCover( const Color4B& color );
-
-
+    
 protected:
 
     Scene* m_screen { nullptr };
@@ -89,6 +77,21 @@ private:
     /// Members ///
 
     EventListenerKeyboard* m_keyboardListener { nullptr };
+};
+
+
+//
+// Constants
+//
+
+
+// The local z-orders when you add children to the screen.
+enum ZOrderInScreen
+{
+    Z_ORDER_BELOW_SCENE  = 0,
+    Z_ORDER_SCENE        = 1,  // the Scene itself
+    Z_ORDER_ABOVE_SCENE  = 2,
+    Z_ORDER_SCREEN_COVER = 3,
 };
 
 

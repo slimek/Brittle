@@ -32,6 +32,7 @@
     <ClInclude Include="..\include\Brittle\Nodes\HorizontalScrolling.h" />
     <ClInclude Include="..\include\Brittle\Nodes\Listen.h" />
     <ClInclude Include="..\include\Brittle\Nodes\NodeExtensions.h" />
+    <ClInclude Include="..\include\Brittle\Nodes\ScreenCover.h" />
     <ClInclude Include="..\include\Brittle\Setup\BrittleDefs.h" />
     <ClInclude Include="..\include\Brittle\Ui\LabelButton.h" />
     <ClInclude Include="..\include\Brittle\Ui\SimpleButton.h" />

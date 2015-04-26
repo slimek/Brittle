@@ -2,10 +2,13 @@
 
 #include "BrittlePch.h"
 
+#include <Brittle/Core/SimpleScene.h>
 #include <Brittle/Nodes/EllipseTouchable.h>
 #include <Brittle/Nodes/HorizontalScrolling.h>
 #include <Brittle/Nodes/Listen.h>
 #include <Brittle/Nodes/NodeExtensions.h>
+#include <Brittle/Nodes/ScreenCover.h>
+#include <Brittle/Layout/Align.h>
 #include <Brittle/Layout/Locate.h>
 #include <Brittle/Utils/Geometry.h>
 #include <Caramel/Memory/UniquePtrUtils.h>
@@ -19,6 +22,7 @@ namespace Brittle
 //
 //   EllipseTouchable
 //   HorizontalScrolling
+//   ScreenCover
 //   ListenCharm
 //
 
@@ -242,6 +246,39 @@ void HorizontalScrolling::update( Float delta )
 
         this->LocateRight();
     }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Screen Cover
+//
+
+ScreenCover* ScreenCover::Create( SimpleScene* scene )
+{
+    CARAMEL_CHECK( scene );
+
+    auto cover = MakeUnique< ScreenCover >();
+    CARAMEL_CHECK( cover->InitWithScene( scene ));
+
+    return cover.release();
+}
+
+
+Bool ScreenCover::InitWithScene( SimpleScene* scene )
+{
+    if ( ! this->init() ) { return false; }
+
+    const auto screen = scene->GetScreen();
+    const auto size = screen->getContentSize();
+
+    this->ignoreAnchorPointForPosition( false );
+    this->setLocalZOrder( Z_ORDER_SCREEN_COVER );
+    Listen( this ).SwallowTouchBegan();
+
+    screen->addChild( this );
+    Align( this ).MiddleCenter();
+    return true;
 }
 
 
