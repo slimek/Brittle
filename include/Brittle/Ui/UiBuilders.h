@@ -6,6 +6,7 @@
 
 #include <Brittle/Setup/BrittleDefs.h>
 #include <Brittle/Layout/Align.h>
+#include <Brittle/Utils/Styling.h>
 
 
 namespace Brittle
@@ -30,9 +31,28 @@ public:
         m_text->setString( text );
     }
 
+    UiTextBuilder( const std::string& text, const FontStyle& font )
+        : m_text( ui::Text::create() )
+    {
+        m_text->setString( text );
+        this->Font( font );
+    }
+
 
     ui::Text* Build()    const { return m_text; }
     operator ui::Text*() const { return m_text; }
+
+
+    UiTextBuilder& Font( const FontStyle& font )
+    {
+        m_text->setFontSize( font.size );
+        m_text->setTextColor( font.color );
+        if ( ! font.name.empty() )
+        {
+            m_text->setFontName( font.name );
+        }
+        return *this;
+    }
 
 
     UiTextBuilder& FontSize( Int fontSize )

@@ -26,6 +26,40 @@ Color4B MakeColor4B( Uint32 hexColor );
 
 
 ///////////////////////////////////////////////////////////////////////////////
+//
+// Font Style
+//
+
+struct FontStyle
+{
+    explicit FontStyle( Int size )
+        : size( size )
+    {}
+
+    explicit FontStyle( const Color4B& color )
+        : color( color )
+    {}
+
+    explicit FontStyle( const Color3B& color )  // opaque color
+        : color( color )
+    {}
+
+    FontStyle( Int size, const Color4B& color )
+        : size( size ), color( color )
+    {}
+
+    FontStyle( Int size, const Color3B& color )  // opaque color
+        : size( size ), color( color )
+    {}
+
+    Int size { 12 };
+    Color4B color { Color4B::BLACK };
+
+    std::string name;  // Use system default if keep empty.
+};
+
+
+///////////////////////////////////////////////////////////////////////////////
 
 } // namespace Brittle
 
