@@ -83,17 +83,6 @@ inline Vec2 GetCenter( const Size& size )
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Node Helpers
-//
-
-inline Vec2 GetCenter( const Node* node )
-{
-    return GetCenter( node->getContentSize() );
-}
-
-
-///////////////////////////////////////////////////////////////////////////////
-//
 // Circle Radius Helper
 // - For building circle physics bodies.
 //
