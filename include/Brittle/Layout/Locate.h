@@ -46,6 +46,13 @@ public:
     LocateCharm& FromLeftBottom ( Float x, Float y );
     LocateCharm& FromRightBottom( Float x, Float y );
 
+    LocateCharm& FromCenterX( Float x );
+    LocateCharm& FromCenterY( Float y );
+
+    LocateCharm& FromCenter( Float x, Float y );
+    LocateCharm& FromCenter( const Vec2& v );
+
+
     // Read attributes from a JSON (which should be an Array)
     LocateCharm& Json( const JsonValue& json );
 
@@ -57,15 +64,17 @@ private:
 
     enum UseFlag
     {
-        USE_X_NORM          = 0x01,  // 0.0 - 1.0
-        USE_X_AT            = 0x02,
-        USE_X_FROM_LEFT     = 0x04,
-        USE_X_FROM_RIGHT    = 0x08,
+        USE_X_NORM          = 0x0001,  // 0.0 - 1.0
+        USE_X_AT            = 0x0002,
+        USE_X_FROM_LEFT     = 0x0004,
+        USE_X_FROM_RIGHT    = 0x0008,
+        USE_X_FROM_CENTER   = 0x0010,
 
-        USE_Y_NORM          = 0x10,  // 0.0 - 1.0
-        USE_Y_AT            = 0x20,
-        USE_Y_FROM_TOP      = 0x40,
-        USE_Y_FROM_BOTTOM   = 0x80,
+        USE_Y_NORM          = 0x0100,  // 0.0 - 1.0
+        USE_Y_AT            = 0x0200,
+        USE_Y_FROM_TOP      = 0x0400,
+        USE_Y_FROM_BOTTOM   = 0x0800,
+        USE_Y_FROM_CENTER   = 0x1000,
     };
 
     Uint32 m_uses { 0 };
@@ -180,6 +189,34 @@ inline LocateCharm& LocateCharm::FromLeftBottom( Float x, Float y )
 inline LocateCharm& LocateCharm::FromRightBottom( Float x, Float y )
 {
     return this->FromRight( x ).FromBottom( y );
+}
+
+
+inline LocateCharm& LocateCharm::FromCenterX( Float x )
+{
+    m_uses |= USE_X_FROM_CENTER;
+    m_paramX = x;
+    return *this;
+}
+
+
+inline LocateCharm& LocateCharm::FromCenterY( Float y )
+{
+    m_uses |= USE_Y_FROM_CENTER;
+    m_paramY = y;
+    return *this;
+}
+
+
+inline LocateCharm& LocateCharm::FromCenter( Float x, Float y )
+{
+    return this->FromCenterX( x ).FromCenterY( y );
+}
+
+
+inline LocateCharm& LocateCharm::FromCenter( const Vec2& v )
+{
+    return this->FromCenterX( v.x ).FromCenterY( v.y );
 }
 
 

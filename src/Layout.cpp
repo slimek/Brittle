@@ -145,6 +145,10 @@ void LocateCharm::Apply()
     {
         m_target->setPositionX( parentSize.width - m_paramX );
     }
+    else if ( m_uses & USE_X_FROM_CENTER )
+    {
+        m_target->setPositionX( parentSize.width / 2.f + m_paramX );
+    }
 
 
     /// Determine Y location ///
@@ -164,6 +168,10 @@ void LocateCharm::Apply()
     else if ( m_uses & USE_Y_FROM_BOTTOM )
     {
         m_target->setPositionY( m_paramY );
+    }
+    else if ( m_uses & USE_Y_FROM_CENTER )
+    {
+        m_target->setPositionY( parentSize.height / 2.f + m_paramY );
     }
 }
 
@@ -190,6 +198,11 @@ LocateCharm& LocateCharm::Json( const JsonValue& json )
                 {
                     CARAMEL_ALERT( "Locate attribute name is empty" );
                 }
+                ATTR( "center",             Center()                                )
+                ATTR( "centerX",            CenterX()                               )
+                ATTR( "centerY",            CenterY()                               )
+                ATTR( "x",                  X( (Float)jb )                          )
+                ATTR( "y",                  Y( (Float)jb )                          )
                 ATTR( "fromLeftTop",        FromLeftTop( (Float)jb, (Float)jb )     )
                 ATTR( "fromRightTop",       FromRightTop( (Float)jb, (Float)jb )    )
                 ATTR( "fromLeftBottom",     FromLeftBottom( (Float)jb, (Float)jb )  )
@@ -198,6 +211,9 @@ LocateCharm& LocateCharm::Json( const JsonValue& json )
                 ATTR( "fromRight",          FromRight( (Float)jb )                  )
                 ATTR( "fromTop",            FromTop( (Float)jb )                    )
                 ATTR( "fromBottom",         FromBottom( (Float)jb )                 )
+                ATTR( "fromCenter",         FromCenter( (Float)jb, (Float)jb )      )
+                ATTR( "fromCenterX",        FromCenterX( (Float)jb )                )
+                ATTR( "fromCenterY",        FromCenterY( (Float)jb )                )
                 else
                 {
                     CARAMEL_ALERT( "Unknown Locate attribute: {0}", attr );
