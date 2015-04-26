@@ -47,6 +47,12 @@ public:
         return *this;
     }
 
+    UiTextBuilder& Color( const Color3B& color )
+    {
+        m_text->setTextColor( Color4B( color ));
+        return *this;
+    }
+
 
 private:
     ui::Text* m_text { nullptr };

@@ -3,6 +3,8 @@
 #include "BrittlePch.h"
 
 #include <Brittle/Utils/Geometry.h>
+#include <Brittle/Utils/Styling.h>
+#include <Caramel/Numeric/UnionBits.h>
 
 
 namespace Brittle
@@ -11,8 +13,34 @@ namespace Brittle
 //
 // Content
 //
+//   MakeColor
 //   Caramel::ToString
 //
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Color Helpers
+//
+
+Color3B MakeColor3B( Uint32 hexColor )
+{
+    // Format: RGB, lower 24-bit
+
+    UnionBits32 b32;
+    b32.ui = hexColor;
+    return Color3B( b32.qb.mh, b32.qb.ml, b32.qb.lo );
+}
+
+
+Color4B MakeColor4B( Uint32 hexColor )
+{
+    // Format: RGBA
+
+    UnionBits32 b32;
+    b32.ui = hexColor;
+    return Color4B( b32.qb.hi, b32.qb.mh, b32.qb.ml, b32.qb.lo );
+}
+
 
 } // namespace Brittle
 
