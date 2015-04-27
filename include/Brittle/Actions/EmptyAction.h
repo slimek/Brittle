@@ -16,6 +16,8 @@ namespace Brittle
 // Empty Action
 // - A valid action which does nothing, done immediately.
 //
+//   NOTE: Does this duplicate with cocos2d::ExtraAction ?
+//
 
 class EmptyAction : public FiniteTimeAction
 {

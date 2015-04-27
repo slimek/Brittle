@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Brittle\Actions\ActionBuilder.h" />
+    <ClInclude Include="..\include\Brittle\Actions\ActionVector.h" />
     <ClInclude Include="..\include\Brittle\Actions\ActionWrappers.h" />
     <ClInclude Include="..\include\Brittle\Actions\EmptyAction.h" />
     <ClInclude Include="..\include\Brittle\Actions\IntervalActions.h" />

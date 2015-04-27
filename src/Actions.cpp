@@ -3,6 +3,7 @@
 #include "BrittlePch.h"
 
 #include <Brittle/Actions/ActionBuilder.h>
+#include <Brittle/Actions/ActionVector.h>
 #include <Brittle/Actions/ActionWrappers.h>
 #include <Brittle/Actions/EmptyAction.h>
 #include <Brittle/Actions/SkippableSequence.h>
@@ -18,6 +19,7 @@ namespace Actions
 // [Contents]
 //
 //   ActionBuilder
+//   ActionVector
 //   CompleteIf
 //   SkippableSequence
 //   EmptyAction
@@ -173,7 +175,27 @@ void ActionBuilder::Compact()
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Complete When
+// Action Vector
+//
+
+ActionVector::ActionVector( Usize capacity )
+    : Vector< FiniteTimeAction* >( static_cast< ssize_t >( capacity ))
+{}
+
+
+ActionVector::ActionVector( std::initializer_list< FiniteTimeAction* > actions )
+    : Vector< FiniteTimeAction* >( static_cast< ssize_t >( actions.size() ))  // set capacity
+{
+    for ( auto action : actions )
+    {
+        this->pushBack( action );
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Complete If
 //
 
 CompleteIf* CompleteIf::Create( FiniteTimeAction* action, std::function< Bool() > condition )
