@@ -270,7 +270,9 @@ Bool ScreenCover::InitWithScene( SimpleScene* scene )
     if ( ! this->init() ) { return false; }
 
     const auto screen = scene->GetScreen();
-    const auto size = screen->getContentSize();
+
+    // The default size of a LayerColor should be the screen size.
+    CARAMEL_ASSERT( screen->getContentSize() == this->getContentSize() );
 
     this->ignoreAnchorPointForPosition( false );
     this->setLocalZOrder( Z_ORDER_SCREEN_COVER );
