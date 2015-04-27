@@ -112,11 +112,15 @@ public:
     }
 
     // Put a text at the center of the Button.
-    UiButtonBuilder& Text( ui::Text* text )
+    UiButtonBuilder& Title( const std::string& text, const FontStyle& font )
     {
-        m_button->setCascadeOpacityEnabled( true );
-        m_button->addChild( text );
-        Locate( text ).Center();
+        m_button->setTitleText( text );
+        m_button->setTitleFontSize( static_cast< Float >( font.size ));
+        m_button->setTitleColor( Color3B( font.color ));
+        if ( ! font.name.empty() )
+        {
+            m_button->setTitleFontName( font.name );
+        }
         return *this;
     }
 
