@@ -176,6 +176,9 @@
     <ClInclude Include="..\include\Brittle\Actions\ActionVector.h">
       <Filter>1. Public Headers\Actions</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Utils\Promises.h">
+      <Filter>1. Public Headers\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">

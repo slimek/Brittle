@@ -3,6 +3,7 @@
 #include "BrittlePch.h"
 
 #include <Brittle/Utils/Geometry.h>
+#include <Brittle/Utils/Promises.h>
 #include <Brittle/Utils/Styling.h>
 #include <Caramel/Numeric/UnionBits.h>
 
@@ -13,13 +14,32 @@ namespace Brittle
 //
 // Content
 //
+//   AnyEventPromise
 //   MakeColor
 //   Caramel::ToString
 //
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Color Helpers
+// Any Event Promise
+//
+
+CallFunc* AnyEventPromise::Runner( AnyEvent event )
+{
+    auto clone = std::make_shared< AnyEventPromise >( *this );
+    return CallFunc::create( [=] { clone->RunTask( event ); });
+}
+
+
+CallFunc* AnyEventPromise::Runner( Int eventId )
+{
+    return this->Runner( AnyEvent( eventId ));
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Make Color
 //
 
 Color3B MakeColor3B( Uint32 hexColor )
