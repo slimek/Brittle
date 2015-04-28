@@ -14,7 +14,7 @@ namespace Brittle
 // Content
 //
 //   MakeColor
-//   Caramel::ToString
+//   ToString for cocos2d types
 //
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -44,26 +44,27 @@ Color4B MakeColor4B( Uint32 hexColor )
 
 } // namespace Brittle
 
-namespace Caramel
-{
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// To String Functions
+// To String Functions for cocos2d Types
 //
+
+namespace cocos2d
+{
 
 std::string ToString( const cocos2d::Vec2& vec )
 {
-    return Format( "({0}, {1})", vec.x, vec.y );
+    return Caramel::Format( "({0}, {1})", vec.x, vec.y );
 }
 
 
 std::string ToString( const cocos2d::Size& size )
 {
-    return Format( "({0}, {1})", size.width, size.height );
+    return Caramel::Format( "({0}, {1})", size.width, size.height );
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////
 
-} // namespace Caramel
+} // namespace cocos2d

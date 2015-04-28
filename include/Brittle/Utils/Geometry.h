@@ -102,14 +102,14 @@ inline Float InnerRadius( const Rect& box )
 // ToString Helper Functions
 //
 
-namespace Caramel
+namespace cocos2d
 {
 
 std::string ToString( const cocos2d::Vec2& vec );
 std::string ToString( const cocos2d::Size& size );
 
 
-} // namespace Caramel
+} // namespace cocos2d
 
 ///////////////////////////////////////////////////////////////////////////////
 
