@@ -309,8 +309,6 @@ void StretchCharm::Apply()
 
 void StretchCharm::ApplyRepeat()
 {
-    // NOTES: The target has been already stretched to the parent's content area in Apply().
-
     auto sprite = dynamic_cast< Sprite* >( m_target );
     if ( ! sprite )
     {
@@ -336,7 +334,10 @@ void StretchCharm::ApplyRepeat()
     const auto w = parSize.width;
     const auto h = parSize.height;
 
-    sprite->setTextureRect( { - w / 2, - h / 2, w, h } );
+    // After this function, the sprite will be expanded to the parent's size.
+    sprite->setTextureRect( Rect( - w/2, - h/2, w, h ));
+
+    CARAMEL_ASSERT( sprite->getContentSize() == parSize );
 }
 
 
