@@ -73,6 +73,9 @@ void AlignCharm::Apply()
         case ALIGNMENT_RIGHT:
             m_target->setPositionX( pw + ( tax - 1 ) * tsw );
             break;
+            
+        default:
+            break;
         }
     }
 
@@ -94,6 +97,9 @@ void AlignCharm::Apply()
 
         case ALIGNMENT_BOTTOM:
             m_target->setPositionY( ph + ( tay - 1 ) * tsh );
+            
+        default:
+            break;
         }
     }
 }

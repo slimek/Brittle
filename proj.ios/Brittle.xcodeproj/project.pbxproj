@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01CB3AEA1AEF9A9B00EF8238 /* Actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01CB3AD71AEF9A9B00EF8238 /* Actions.cpp */; };
+		01CB3AEB1AEF9A9B00EF8238 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01CB3AD81AEF9A9B00EF8238 /* Animation.cpp */; };
+		01CB3AEC1AEF9A9B00EF8238 /* BrittlePch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01CB3AD91AEF9A9B00EF8238 /* BrittlePch.cpp */; };
+		01CB3AED1AEF9A9B00EF8238 /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01CB3ADD1AEF9A9B00EF8238 /* Core.cpp */; };
+		01CB3AEE1AEF9A9B00EF8238 /* Layout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01CB3AE11AEF9A9B00EF8238 /* Layout.cpp */; };
+		01CB3AEF1AEF9A9B00EF8238 /* Nodes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01CB3AE21AEF9A9B00EF8238 /* Nodes.cpp */; };
+		01CB3AF01AEF9A9B00EF8238 /* Ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01CB3AE81AEF9A9B00EF8238 /* Ui.cpp */; };
+		01CB3AF11AEF9A9B00EF8238 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01CB3AE91AEF9A9B00EF8238 /* Utils.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		01CB3AB21AEF995700EF8238 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		01CB3AB41AEF995700EF8238 /* libBrittle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBrittle.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		01CB3AD71AEF9A9B00EF8238 /* Actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Actions.cpp; sourceTree = "<group>"; };
+		01CB3AD81AEF9A9B00EF8238 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
+		01CB3AD91AEF9A9B00EF8238 /* BrittlePch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BrittlePch.cpp; sourceTree = "<group>"; };
+		01CB3ADA1AEF9A9B00EF8238 /* BrittlePch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrittlePch.h; sourceTree = "<group>"; };
+		01CB3ADC1AEF9A9B00EF8238 /* AsyncCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncCenter.h; sourceTree = "<group>"; };
+		01CB3ADD1AEF9A9B00EF8238 /* Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Core.cpp; sourceTree = "<group>"; };
+		01CB3ADF1AEF9A9B00EF8238 /* LayoutJsonImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutJsonImpl.h; sourceTree = "<group>"; };
+		01CB3AE01AEF9A9B00EF8238 /* SpriteBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBuilder.h; sourceTree = "<group>"; };
+		01CB3AE11AEF9A9B00EF8238 /* Layout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layout.cpp; sourceTree = "<group>"; };
+		01CB3AE21AEF9A9B00EF8238 /* Nodes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nodes.cpp; sourceTree = "<group>"; };
+		01CB3AE41AEF9A9B00EF8238 /* PanelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelBuilder.h; sourceTree = "<group>"; };
+		01CB3AE51AEF9A9B00EF8238 /* WidgetBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetBuilder.h; sourceTree = "<group>"; };
+		01CB3AE61AEF9A9B00EF8238 /* WidgetProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetProperties.h; sourceTree = "<group>"; };
+		01CB3AE71AEF9A9B00EF8238 /* WidgetResizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetResizer.h; sourceTree = "<group>"; };
+		01CB3AE81AEF9A9B00EF8238 /* Ui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ui.cpp; sourceTree = "<group>"; };
+		01CB3AE91AEF9A9B00EF8238 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
+		01CB3AF61AEF9AB300EF8238 /* ActionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionBuilder.h; sourceTree = "<group>"; };
+		01CB3AF71AEF9AB300EF8238 /* ActionVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionVector.h; sourceTree = "<group>"; };
+		01CB3AF81AEF9AB300EF8238 /* ActionWrappers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionWrappers.h; sourceTree = "<group>"; };
+		01CB3AF91AEF9AB300EF8238 /* EmptyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyAction.h; sourceTree = "<group>"; };
+		01CB3AFA1AEF9AB300EF8238 /* IntervalActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntervalActions.h; sourceTree = "<group>"; };
+		01CB3AFB1AEF9AB300EF8238 /* SkippableSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkippableSequence.h; sourceTree = "<group>"; };
+		01CB3AFD1AEF9AB300EF8238 /* FlipbookAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipbookAnimation.h; sourceTree = "<group>"; };
+		01CB3AFF1AEF9AB300EF8238 /* AppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSettings.h; sourceTree = "<group>"; };
+		01CB3B001AEF9AB300EF8238 /* Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Async.h; sourceTree = "<group>"; };
+		01CB3B011AEF9AB300EF8238 /* FrameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameClock.h; sourceTree = "<group>"; };
+		01CB3B021AEF9AB300EF8238 /* SimpleApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleApp.h; sourceTree = "<group>"; };
+		01CB3B031AEF9AB300EF8238 /* SimpleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleScene.h; sourceTree = "<group>"; };
+		01CB3B051AEF9AB300EF8238 /* Alignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alignment.h; sourceTree = "<group>"; };
+		01CB3B061AEF9AB300EF8238 /* Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Orientation.h; sourceTree = "<group>"; };
+		01CB3B081AEF9AB300EF8238 /* Align.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Align.h; sourceTree = "<group>"; };
+		01CB3B091AEF9AB300EF8238 /* LayoutJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutJson.h; sourceTree = "<group>"; };
+		01CB3B0A1AEF9AB300EF8238 /* Locate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Locate.h; sourceTree = "<group>"; };
+		01CB3B0B1AEF9AB300EF8238 /* Stretch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stretch.h; sourceTree = "<group>"; };
+		01CB3B0D1AEF9AB300EF8238 /* EllipseTouchable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EllipseTouchable.h; sourceTree = "<group>"; };
+		01CB3B0E1AEF9AB300EF8238 /* HorizontalScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalScrolling.h; sourceTree = "<group>"; };
+		01CB3B0F1AEF9AB300EF8238 /* Listen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listen.h; sourceTree = "<group>"; };
+		01CB3B101AEF9AB300EF8238 /* NodeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeExtensions.h; sourceTree = "<group>"; };
+		01CB3B111AEF9AB300EF8238 /* ScreenCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenCover.h; sourceTree = "<group>"; };
+		01CB3B131AEF9AB300EF8238 /* BrittleDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrittleDefs.h; sourceTree = "<group>"; };
+		01CB3B151AEF9AB300EF8238 /* LabelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelButton.h; sourceTree = "<group>"; };
+		01CB3B161AEF9AB300EF8238 /* Panel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panel.h; sourceTree = "<group>"; };
+		01CB3B171AEF9AB300EF8238 /* SimpleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleButton.h; sourceTree = "<group>"; };
+		01CB3B181AEF9AB300EF8238 /* UiBuilders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UiBuilders.h; sourceTree = "<group>"; };
+		01CB3B191AEF9AB300EF8238 /* UiTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UiTypes.h; sourceTree = "<group>"; };
+		01CB3B1B1AEF9AB300EF8238 /* Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geometry.h; sourceTree = "<group>"; };
+		01CB3B1C1AEF9AB300EF8238 /* JsonValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonValue.h; sourceTree = "<group>"; };
+		01CB3B1D1AEF9AB300EF8238 /* Styling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Styling.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01CB3AB11AEF995700EF8238 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01CB3AAB1AEF995700EF8238 = {
+			isa = PBXGroup;
+			children = (
+				01CB3AF31AEF9AB300EF8238 /* include */,
+				01CB3AF21AEF9AA600EF8238 /* proj.ios */,
+				01CB3AD61AEF9A9B00EF8238 /* src */,
+				01CB3AD51AEF9A8F00EF8238 /* src.ios */,
+				01CB3AB51AEF995700EF8238 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		01CB3AB51AEF995700EF8238 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3AB41AEF995700EF8238 /* libBrittle.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01CB3AD51AEF9A8F00EF8238 /* src.ios */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = src.ios;
+			sourceTree = "<group>";
+		};
+		01CB3AD61AEF9A9B00EF8238 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3AD71AEF9A9B00EF8238 /* Actions.cpp */,
+				01CB3AD81AEF9A9B00EF8238 /* Animation.cpp */,
+				01CB3AD91AEF9A9B00EF8238 /* BrittlePch.cpp */,
+				01CB3ADA1AEF9A9B00EF8238 /* BrittlePch.h */,
+				01CB3ADB1AEF9A9B00EF8238 /* Core */,
+				01CB3ADD1AEF9A9B00EF8238 /* Core.cpp */,
+				01CB3ADE1AEF9A9B00EF8238 /* Layout */,
+				01CB3AE11AEF9A9B00EF8238 /* Layout.cpp */,
+				01CB3AE21AEF9A9B00EF8238 /* Nodes.cpp */,
+				01CB3AE31AEF9A9B00EF8238 /* Ui */,
+				01CB3AE81AEF9A9B00EF8238 /* Ui.cpp */,
+				01CB3AE91AEF9A9B00EF8238 /* Utils.cpp */,
+			);
+			name = src;
+			path = ../src;
+			sourceTree = "<group>";
+		};
+		01CB3ADB1AEF9A9B00EF8238 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3ADC1AEF9A9B00EF8238 /* AsyncCenter.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		01CB3ADE1AEF9A9B00EF8238 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3ADF1AEF9A9B00EF8238 /* LayoutJsonImpl.h */,
+				01CB3AE01AEF9A9B00EF8238 /* SpriteBuilder.h */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		01CB3AE31AEF9A9B00EF8238 /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3AE41AEF9A9B00EF8238 /* PanelBuilder.h */,
+				01CB3AE51AEF9A9B00EF8238 /* WidgetBuilder.h */,
+				01CB3AE61AEF9A9B00EF8238 /* WidgetProperties.h */,
+				01CB3AE71AEF9A9B00EF8238 /* WidgetResizer.h */,
+			);
+			path = Ui;
+			sourceTree = "<group>";
+		};
+		01CB3AF21AEF9AA600EF8238 /* proj.ios */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = proj.ios;
+			sourceTree = "<group>";
+		};
+		01CB3AF31AEF9AB300EF8238 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3AF41AEF9AB300EF8238 /* Brittle */,
+			);
+			name = include;
+			path = ../include;
+			sourceTree = "<group>";
+		};
+		01CB3AF41AEF9AB300EF8238 /* Brittle */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3AF51AEF9AB300EF8238 /* Actions */,
+				01CB3AFC1AEF9AB300EF8238 /* Animation */,
+				01CB3AFE1AEF9AB300EF8238 /* Core */,
+				01CB3B041AEF9AB300EF8238 /* Enums */,
+				01CB3B071AEF9AB300EF8238 /* Layout */,
+				01CB3B0C1AEF9AB300EF8238 /* Nodes */,
+				01CB3B121AEF9AB300EF8238 /* Setup */,
+				01CB3B141AEF9AB300EF8238 /* Ui */,
+				01CB3B1A1AEF9AB300EF8238 /* Utils */,
+			);
+			path = Brittle;
+			sourceTree = "<group>";
+		};
+		01CB3AF51AEF9AB300EF8238 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3AF61AEF9AB300EF8238 /* ActionBuilder.h */,
+				01CB3AF71AEF9AB300EF8238 /* ActionVector.h */,
+				01CB3AF81AEF9AB300EF8238 /* ActionWrappers.h */,
+				01CB3AF91AEF9AB300EF8238 /* EmptyAction.h */,
+				01CB3AFA1AEF9AB300EF8238 /* IntervalActions.h */,
+				01CB3AFB1AEF9AB300EF8238 /* SkippableSequence.h */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		01CB3AFC1AEF9AB300EF8238 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3AFD1AEF9AB300EF8238 /* FlipbookAnimation.h */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		01CB3AFE1AEF9AB300EF8238 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3AFF1AEF9AB300EF8238 /* AppSettings.h */,
+				01CB3B001AEF9AB300EF8238 /* Async.h */,
+				01CB3B011AEF9AB300EF8238 /* FrameClock.h */,
+				01CB3B021AEF9AB300EF8238 /* SimpleApp.h */,
+				01CB3B031AEF9AB300EF8238 /* SimpleScene.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		01CB3B041AEF9AB300EF8238 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3B051AEF9AB300EF8238 /* Alignment.h */,
+				01CB3B061AEF9AB300EF8238 /* Orientation.h */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		01CB3B071AEF9AB300EF8238 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3B081AEF9AB300EF8238 /* Align.h */,
+				01CB3B091AEF9AB300EF8238 /* LayoutJson.h */,
+				01CB3B0A1AEF9AB300EF8238 /* Locate.h */,
+				01CB3B0B1AEF9AB300EF8238 /* Stretch.h */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		01CB3B0C1AEF9AB300EF8238 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3B0D1AEF9AB300EF8238 /* EllipseTouchable.h */,
+				01CB3B0E1AEF9AB300EF8238 /* HorizontalScrolling.h */,
+				01CB3B0F1AEF9AB300EF8238 /* Listen.h */,
+				01CB3B101AEF9AB300EF8238 /* NodeExtensions.h */,
+				01CB3B111AEF9AB300EF8238 /* ScreenCover.h */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		01CB3B121AEF9AB300EF8238 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3B131AEF9AB300EF8238 /* BrittleDefs.h */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
+		01CB3B141AEF9AB300EF8238 /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3B151AEF9AB300EF8238 /* LabelButton.h */,
+				01CB3B161AEF9AB300EF8238 /* Panel.h */,
+				01CB3B171AEF9AB300EF8238 /* SimpleButton.h */,
+				01CB3B181AEF9AB300EF8238 /* UiBuilders.h */,
+				01CB3B191AEF9AB300EF8238 /* UiTypes.h */,
+			);
+			path = Ui;
+			sourceTree = "<group>";
+		};
+		01CB3B1A1AEF9AB300EF8238 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				01CB3B1B1AEF9AB300EF8238 /* Geometry.h */,
+				01CB3B1C1AEF9AB300EF8238 /* JsonValue.h */,
+				01CB3B1D1AEF9AB300EF8238 /* Styling.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		01CB3AB31AEF995700EF8238 /* Brittle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01CB3AC81AEF995700EF8238 /* Build configuration list for PBXNativeTarget "Brittle" */;
+			buildPhases = (
+				01CB3AB01AEF995700EF8238 /* Sources */,
+				01CB3AB11AEF995700EF8238 /* Frameworks */,
+				01CB3AB21AEF995700EF8238 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Brittle;
+			productName = Brittle;
+			productReference = 01CB3AB41AEF995700EF8238 /* libBrittle.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		01CB3AAC1AEF995700EF8238 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Slimek;
+				TargetAttributes = {
+					01CB3AB31AEF995700EF8238 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 01CB3AAF1AEF995700EF8238 /* Build configuration list for PBXProject "Brittle" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 01CB3AAB1AEF995700EF8238;
+			productRefGroup = 01CB3AB51AEF995700EF8238 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01CB3AB31AEF995700EF8238 /* Brittle */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01CB3AB01AEF995700EF8238 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01CB3AEB1AEF9A9B00EF8238 /* Animation.cpp in Sources */,
+				01CB3AF01AEF9A9B00EF8238 /* Ui.cpp in Sources */,
+				01CB3AEF1AEF9A9B00EF8238 /* Nodes.cpp in Sources */,
+				01CB3AF11AEF9A9B00EF8238 /* Utils.cpp in Sources */,
+				01CB3AEA1AEF9A9B00EF8238 /* Actions.cpp in Sources */,
+				01CB3AED1AEF9A9B00EF8238 /* Core.cpp in Sources */,
+				01CB3AEC1AEF9A9B00EF8238 /* BrittlePch.cpp in Sources */,
+				01CB3AEE1AEF9A9B00EF8238 /* Layout.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		01CB3AC61AEF995700EF8238 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					CC_TARGET_OS_IPHONE,
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../include,
+					../../Macaron/include,
+					../../Caramel/include,
+					../../CandyJar/include,
+					"../../Cocos2d-x3/cocos/platform/ios",
+					"../../Cocos2d-x3/cocos",
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = ../src;
+			};
+			name = Debug;
+		};
+		01CB3AC71AEF995700EF8238 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = CC_TARGET_OS_IPHONE;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../include,
+					../../Macaron/include,
+					../../Caramel/include,
+					../../CandyJar/include,
+					"../../Cocos2d-x3/cocos/platform/ios",
+					"../../Cocos2d-x3/cocos",
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = ../src;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		01CB3AC91AEF995700EF8238 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		01CB3ACA1AEF995700EF8238 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		01CB3AAF1AEF995700EF8238 /* Build configuration list for PBXProject "Brittle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01CB3AC61AEF995700EF8238 /* Debug */,
+				01CB3AC71AEF995700EF8238 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01CB3AC81AEF995700EF8238 /* Build configuration list for PBXNativeTarget "Brittle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01CB3AC91AEF995700EF8238 /* Debug */,
+				01CB3ACA1AEF995700EF8238 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 01CB3AAC1AEF995700EF8238 /* Project object */;
+}
