@@ -176,6 +176,9 @@
     <ClInclude Include="..\include\Brittle\Actions\ActionVector.h">
       <Filter>1. Public Headers\Actions</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Utils\LanguageId.h">
+      <Filter>1. Public Headers\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">
@@ -207,6 +210,9 @@
     </ClCompile>
     <ClCompile Include="..\src.android\Core_android.cpp">
       <Filter>4. Android %28not build%29</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src.win32\Utils_win32.cpp">
+      <Filter>3. Win32 Platform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

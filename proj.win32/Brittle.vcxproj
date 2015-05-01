@@ -42,6 +42,7 @@
     <ClInclude Include="..\include\Brittle\Ui\UiTypes.h" />
     <ClInclude Include="..\include\Brittle\Utils\Geometry.h" />
     <ClInclude Include="..\include\Brittle\Utils\JsonValue.h" />
+    <ClInclude Include="..\include\Brittle\Utils\LanguageId.h" />
     <ClInclude Include="..\include\Brittle\Utils\Styling.h" />
     <ClInclude Include="..\src\BrittlePch.h" />
     <ClInclude Include="..\src\Core\AsyncCenter.h" />
@@ -58,6 +59,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\src.win32\Core_win32.cpp" />
+    <ClCompile Include="..\src.win32\Utils_win32.cpp" />
     <ClCompile Include="..\src\Actions.cpp" />
     <ClCompile Include="..\src\Animation.cpp" />
     <ClCompile Include="..\src\BrittlePch.cpp">
