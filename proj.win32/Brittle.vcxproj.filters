@@ -54,6 +54,9 @@
     <Filter Include="4. Android %28not build%29">
       <UniqueIdentifier>{ea2dceb9-52b4-4933-9791-f3464872c16e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="1. Public Headers\Service">
+      <UniqueIdentifier>{338579ae-5f76-4974-a053-72317890baff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BrittlePch.h">
@@ -178,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="..\include\Brittle\Utils\LanguageId.h">
       <Filter>1. Public Headers\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Brittle\Service\Localization.h">
+      <Filter>1. Public Headers\Service</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
