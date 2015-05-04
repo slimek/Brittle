@@ -185,6 +185,9 @@
     <ClInclude Include="..\include\Brittle\Service\Localization.h">
       <Filter>1. Public Headers\Service</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Brittle\Core\Overlay.h">
+      <Filter>1. Public Headers\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core.cpp">

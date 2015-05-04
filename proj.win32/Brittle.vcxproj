@@ -20,6 +20,7 @@
     <ClInclude Include="..\include\Brittle\Animation\FlipbookAnimation.h" />
     <ClInclude Include="..\include\Brittle\Core\Async.h" />
     <ClInclude Include="..\include\Brittle\Core\FrameClock.h" />
+    <ClInclude Include="..\include\Brittle\Core\Overlay.h" />
     <ClInclude Include="..\include\Brittle\Core\SimpleApp.h" />
     <ClInclude Include="..\include\Brittle\Core\AppSettings.h" />
     <ClInclude Include="..\include\Brittle\Core\SimpleScene.h" />

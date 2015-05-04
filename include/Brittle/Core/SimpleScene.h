@@ -91,7 +91,9 @@ enum ZOrderInScreen
     Z_ORDER_BELOW_SCENE  = 0,
     Z_ORDER_SCENE        = 1,  // the Scene itself
     Z_ORDER_ABOVE_SCENE  = 2,
-    Z_ORDER_SCREEN_COVER = 3,
+    Z_ORDER_DIALOG       = 3,
+    Z_ORDER_INDICATOR    = 4,
+    Z_ORDER_ALERT        = 5,
 };
 
 

@@ -32,6 +32,8 @@ public:
 
     Bool InitWithScene( SimpleScene* scene );
 
+    virtual void Show() {}
+    virtual void Hide() {}
 };
 
 
